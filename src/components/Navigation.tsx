@@ -24,12 +24,15 @@ export function Navigation() {
       </Stack>
 
       <Stack pb="6">
-        <NavSectionTitle>Factorización</NavSectionTitle>
+      {user && ( <>
+      <NavSectionTitle>Factorización</NavSectionTitle>
         <SidebarLink  href="/1"> Factor Común</SidebarLink>
         <SidebarLink  href="/2"> Factor Común Compuesto</SidebarLink>
         <SidebarLink  href="/3"> Diferencia de Cuadradros</SidebarLink>
         <SidebarLink  href="/4"> Diferencia y Suma de Cubos</SidebarLink>
         <SidebarLink  href="/5"> Trinomios Cuadráticos</SidebarLink>
+        </>
+        )}
       </Stack>
 
       <Stack alignItems="center">

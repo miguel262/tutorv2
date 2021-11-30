@@ -4,6 +4,7 @@ import data from "../../tutor/factorComun/ejercicioFC.json";
 import { Stack } from "@chakra-ui/react";
 import { useAction } from "../../utils/action";
 import {useEffect} from "react";
+
 function IndexPage({ejercicio}) {
   const action=useAction();
   useEffect(() => {
