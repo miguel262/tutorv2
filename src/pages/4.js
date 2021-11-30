@@ -1,7 +1,7 @@
-import FCC from "../../tutor/factorComunCompuesto/FactorComunCompuesto";
-import data from "../../tutor/factorComunCompuesto/ejerciciosFCC.json";
+import DSC from "../tutor/diferenciaSumaCubos/DiferenciaSumaCubos";
+import data from "../tutor/diferenciaSumaCubos/ejerciciosDSC.json";
 import { Stack } from "@chakra-ui/react";
-import { useAction } from "../../utils/action";
+import { useAction } from "../utils/action";
 import {useEffect} from "react";
 
 function IndexPage({ejercicio}) {
@@ -9,19 +9,15 @@ function IndexPage({ejercicio}) {
   useEffect(() => {
     action({
       verbName: "loadContent",
-      contentID:"5",
-    //  stepID: ""+ejercicio.steps[0].stepId,
-     // topicID: ""+ejercicio.itemId,
+      contentID:"7",
     })}, [])
   return (
     <Stack width="100%" padding="1em">
-      <FCC ejercicio={ejercicio}></FCC>
+      <DSC ejercicio={ejercicio}></DSC>
     </Stack>
   );
 }
 export async function getServerSideProps() {
-  //const fs = require('fs');
-  //const exercise = data[0]
   return {
     props: {ejercicio:data[0]}, // will be passed to the page component as props
   }
