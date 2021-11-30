@@ -4,7 +4,7 @@ import { Stack } from "@chakra-ui/react";
 import { useAction } from "../../utils/action";
 import {useEffect} from "react";
 
-function IndexPage({ejercicio=data[0]}) {
+function IndexPage({ejercicio}) {
   const action=useAction();
   useEffect(() => {
     action({
@@ -19,12 +19,12 @@ function IndexPage({ejercicio=data[0]}) {
     </Stack>
   );
 }
-/*export async function getServerSideProps() {
+export async function getServerSideProps() {
   //const fs = require('fs');
   //const exercise = data[0]
   return {
     props: {ejercicio:data[1]}, // will be passed to the page component as props
   }
-}*/
+}
 
 export default IndexPage;
