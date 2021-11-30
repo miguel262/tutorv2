@@ -1,0 +1,90 @@
+[ {
+    "itemId": 4000,
+    "code":"",
+    "label":"",
+    "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
+    "itemTitle": "Factorización por diferencia de cubos.",
+    "sign": "-",
+    "level": "1",
+    "text": "Texto problema/ejercicio, planteamiento",
+    "steps": [
+      {
+        "stepId": "0",
+        "expression": "x^3-y^3",
+        "stepTitle": "Paso 1: identificar los términos al cubo x₁ y x₂",
+        "displayResult": "(x)^3-(y)^3",
+        "hints": [
+          { "hintId": 0, "hint": "Ingresar raices cúbicas de los valores" },
+          { "hintId": 1, "hint": "Un valor al cubo a ingresar es x" },
+          { "hintId": 2, "hint": "Los cubos a ingresar son: (x)³ - (y)³" }
+        ],
+        "answers": [{ "answer": ["x", "y"], "nextStep": "1" }],
+        "incorrectMsg":
+          "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
+        "correctMsg": "Haz encontrado los términos al cubo",
+        "summary":"1) Para aplicar factorización por diferencia de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ - (x₂)³ como se muestra a continuación:"
+      },
+      {
+        "stepId": "1",
+        "expression": "(x)^3-(y)^3",
+        "stepTitle": "Paso 2: ingresar la identidad (diferencia de cubos) (x₁ - x₂)(x₁² + x₁x₂ + x₂²)",
+        "displayResult": "(x-y)(x^2+xy+y^2)",
+        "hints": [
+          { "hintId": 0, "hint": "Utilice identidad de cubos" },
+          { "hintId": 1, "hint": "La identidad de cubos es (x₁±x₂)(x₁²±x₁x₂+x₂²)" },
+          { "hintId": 2, "hint": "(x-y)(x²+xy+y²)" }
+        ],
+        "answers": [{ "answer": ["x-y", "x^2+xy+y^2"], "nextStep": null }],
+        "incorrectMsg": "valores mal ingresados",
+        "correctMsg": "Haz encontrado la diferencia de cubos",
+        "summary":"2) Ya identificado x₁ y x₂ se puede aplicar la fórmula que permite factorizar la expresión por diferencia de cubos (x₁-x₂)(x₁²+x₁x₂+x₂²)"
+      }
+    ]
+  },
+   {
+    "itemId": 4001,
+    "itemTitle": "Factorización por suma de cubos.",
+    "sign": "+",
+    "level": "1",
+    "text": "Texto problema/ejercicio, planteamiento",
+    "steps": [
+      {
+        "stepId": "0",
+        "expression": "8x^3+y^3",
+        "stepTitle": "Paso 1: identificar términos al cubo  x₁ y x₂",
+        "displayResult": "(2x)^3+(y)^3",
+        "hints": [
+          { "hintId": 0, "hint": "Ingresar raices cúbicas de los valores" },
+          { "hintId": 1, "hint": "hint 2" },
+          {
+            "hintId": 2,
+            "hint": "los cubos son: (2x)^3 + (y)^3, donde los valores a ingresar son x e y"
+          }
+        ],
+        "answers": [{ "answer": ["2x", "y"], "nextStep": "1" }],
+        "incorrectMsg":
+          "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
+        "correctMsg": "Haz encontrado los términos al cubo",
+        "summary":"1) Para aplicar factorización por suma de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ + (x₂)³ como se muestra a continuación:"
+      },
+      {
+        "stepId": "1",
+        "expression": "(2x)^3+(y)^3",
+        "stepTitle": "Paso 2: ingresar la identidad (suma de cubos) (x₁ + x₂)(x₁² - x₁x₂ + x₂²)",
+        "displayResult": "(2x+y)(4x^2-2xy+y^2)",
+        "hints": [
+          { "hintId": 0, "hint": "Utilice identidad de cubos" },
+          { "hintId": 1, "hint": "La identidad de cubos es (x₁±x₂)(x₁²±x₁x₂+x₂²)" },
+          {
+            "hintId": 2,
+            "hint": "Factorización por suma de cubos: (2x+y)(4x^2-2xy+y^2)"
+          }
+        ],
+        "answers": [{ "answer": ["2x+y", "4x^2-2xy+y^2"], "nextStep": null }],
+        "incorrectMsg": "Valores mal ingresados",
+        "correctMsg": "Haz encontrado la diferencia de cubos",
+        "summary":"2) Ya identificado x₁ y x₂ se puede aplicar la fórmula que permite factorizar la expresión por suma de cubos (x₁+x₂)(x₁²-x₁x₂+x₂²)"
+      }
+    ]
+  }
+]
