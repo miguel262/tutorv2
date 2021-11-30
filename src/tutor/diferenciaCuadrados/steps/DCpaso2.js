@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Hint from "../../tools/Hint";
 import { MathComponent } from "../../../components/MathJax";
-
+import { useAction } from "../../../utils/action";
 import {
   Alert,
   AlertIcon,
@@ -25,7 +25,7 @@ export const DCpaso2 = ({
   const correcta = ejercicio.answers[0].answer;
   const [estado, setEstado] = useState(null);
   const [error, setError] = useState(false);
-
+  const action=useAction();
   const comparar = () => {
     const entrada = [
       respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
@@ -34,6 +34,12 @@ export const DCpaso2 = ({
 
     if (entrada[0] === correcta[0] && entrada[1] === correcta[1]) {
       setPaso2Valido((paso2Valido = "Terminado"));
+      action({
+        verbName: "completeContent",
+        contentID:"6",
+        result: 1,
+      // topicID: ""+ejercicio.itemId,
+      });
       setEstado(
         <Alert status="success">
           <AlertIcon />

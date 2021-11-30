@@ -52,9 +52,6 @@ const FCCpaso1 = ({
         verbName: "completeContent",
         stepID: ""+ejercicio.stepId,
         contentID:"4",
-        result: 1,
-        kcsIDs:[1],
-      // topicID: ""+ejercicio.itemId,
       });
     } else {
       /**/
