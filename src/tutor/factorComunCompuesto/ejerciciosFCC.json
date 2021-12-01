@@ -1,18 +1,19 @@
 [
     {
-        "ItemId": 2000,
+        "ItemId": 5,
         "itemTitle": "Factor común compuesto",
         "code":"",
         "label":"",
         "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
         "level": "3",
         "text": "Resolver el siguiente ejercicio de factorización por factor común compuesto",
+        "selectSteps":true,
         "steps": [
           {
             "stepId": "0",
             "KCs":[],
             "expression": "ax + bx + ay + by",
-            "stepTitle": "Paso 1: agrupar los sumandos",
+            "stepTitle": "Agrupar los sumandos",
             "displayResult": ["(ax + ay) + (bx + by)", "(ax + bx) + (ay + by)"],
             "hints": [
               { "hintId": 0, "hint": "agrupa los sumandos con términos que se repiten" },
@@ -36,7 +37,7 @@
           {
             "stepId": "1",
             "expression": "(ax + ay) + (bx + by)",
-            "stepTitle": "Paso 2: ingrese el factor común de cada grupo",
+            "stepTitle": "Ingrese el factor común de cada grupo",
             "displayResult": [
               ["(a)", "(x+y)"],
               ["(b)", "(x+y)"]
@@ -58,7 +59,7 @@
           {
             "stepId": "2",
             "expression": "(ax + bx) + (ay + by)",
-            "stepTitle": "Paso 2: ingrese el factor común de cada grupo",
+            "stepTitle": "Ingrese el factor común de cada grupo",
             "displayResult": [
               ["(x)", "(a+b)"],
               ["(y)", "(a+b)"]
@@ -80,7 +81,7 @@
           {
             "stepId": "3",
             "expression": "a(x+y)+b(x+y)",
-            "stepTitle": "Paso 3: ingrese el factor común",
+            "stepTitle": "Ingrese el factor común",
             "displayResult": "(a+b)",
             "hints": [
               { "hintId": 0, "hint": "ver variable que se repite en ambos sumandos" },
@@ -96,7 +97,7 @@
           {
             "stepId": "4",
             "expression": "x(a+b)+y(a+b)",
-            "stepTitle": "Paso 3: ingrese el factor común",
+            "stepTitle": "Ingrese el factor común",
             "displayResult": "(x+y)",
             "hints": [
               { "hintId": 0, "hint": "Ver variable que se repite en ambos sumandos" },
@@ -116,6 +117,7 @@
         "itemTitle": "Factorización por factor común compuesto.",
         "level": "3",
         "text": "Texto problema/ejercicio, planteamiento",
+        "selectSteps":true,
         "steps": [
           {
             "stepId": "0",

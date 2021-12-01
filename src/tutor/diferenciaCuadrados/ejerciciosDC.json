@@ -6,11 +6,12 @@
     "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
     "level": "1",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",
         "expression": "9x²-1",
-        "stepTitle": "Paso 1: identificar los términos al cuadrado x₁ y x₂",
+        "stepTitle": "Identificar los términos al cuadrado x₁ y x₂",
         "displayResult": "(3x)^2-(1)^2",
         "hints": [
           {
@@ -32,7 +33,7 @@
       {
         "stepId": "1",
         "expression": "(3x)^2-(1)^2",
-        "stepTitle": "Paso 2: ingresar suma por diferencia (x₁ + x₂)(x₁ - x₂)",
+        "stepTitle": "Ingresar suma por diferencia (x₁ + x₂)(x₁ - x₂)",
         "displayResult": "(3x+1)(3x-1)",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
@@ -55,6 +56,7 @@
     "itemTitle": "Factorización por diferencia de cuadrados.",
     "level": "1",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",
@@ -103,6 +105,7 @@
     "itemTitle": "Factorización por diferencia de cuadrados.",
     "level": "1",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",

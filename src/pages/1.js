@@ -10,9 +10,7 @@ function IndexPage({ejercicio}) {
   useEffect(() => {
     action({
       verbName: "loadContent",
-      contentID:"4",
-    //  stepID: ""+ejercicio.steps[0].stepId,
-     // topicID: ""+ejercicio.itemId,
+      contentID:ejercicio.itemId,// leer contentId del JSON
     })}, [])
   
   return (

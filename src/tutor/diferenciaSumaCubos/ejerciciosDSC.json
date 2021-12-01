@@ -7,11 +7,12 @@
     "sign": "-",
     "level": "1",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",
         "expression": "x^3-y^3",
-        "stepTitle": "Paso 1: identificar los términos al cubo x₁ y x₂",
+        "stepTitle": "Identificar los términos al cubo x₁ y x₂",
         "displayResult": "(x)^3-(y)^3",
         "hints": [
           { "hintId": 0, "hint": "Ingresar raices cúbicas de los valores" },
@@ -27,7 +28,7 @@
       {
         "stepId": "1",
         "expression": "(x)^3-(y)^3",
-        "stepTitle": "Paso 2: ingresar la identidad (diferencia de cubos) (x₁ - x₂)(x₁² + x₁x₂ + x₂²)",
+        "stepTitle": "Ingresar la identidad (diferencia de cubos) (x₁ - x₂)(x₁² + x₁x₂ + x₂²)",
         "displayResult": "(x-y)(x^2+xy+y^2)",
         "hints": [
           { "hintId": 0, "hint": "Utilice identidad de cubos" },
@@ -47,6 +48,7 @@
     "sign": "+",
     "level": "1",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",

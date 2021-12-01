@@ -19,7 +19,7 @@ function IndexPage({ejercicio}) {
 }
 export async function getServerSideProps() {
   return {
-    props: {ejercicio:data[0]}, // will be passed to the page component as props
+    props: {ejercicio:data[1]}, // will be passed to the page component as props
   }
 }
 

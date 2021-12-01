@@ -101,7 +101,7 @@ const FCC = ({ejercicio}) => {//info usuario, ---
                 }
                 {paso1Valido != null && !select &&"    ✔ "
                 }
-                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID="5"></SelectStep>
+                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={ejercicio.itemId}></SelectStep>
                 </Wrap>}
               </Box>
               <AccordionIcon />
@@ -153,7 +153,7 @@ const FCC = ({ejercicio}) => {//info usuario, ---
               <Box flex="1" textAlign="left">
                 {!select2&&ejercicio.steps[1].stepTitle}
                 {paso2Valido != null && !select2 && "    ✔ "}
-                {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID="5"></SelectStep>
+                {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID={ejercicio.itemId}></SelectStep>
                 </Wrap>}
               </Box>
               <AccordionIcon />
@@ -204,7 +204,7 @@ const FCC = ({ejercicio}) => {//info usuario, ---
               <Box flex="1" textAlign="left">
                 {!select3&&ejercicio.steps[ejercicio.steps[1].answers.nextStep].stepTitle}
                 {paso3Valido != null && !select3 && "    ✔ "}
-                {select3&&paso2Valido != null&&<Wrap>Paso 2:<SelectStep correct={2} steps={steps} setSelect={setSelect3} contentID="5"></SelectStep>
+                {select3&&paso2Valido != null&&<Wrap>Paso 2:<SelectStep correct={2} steps={steps} setSelect={setSelect3} contentID={ejercicio.itemId}></SelectStep>
                 </Wrap>}
               </Box>
               <AccordionIcon />

@@ -65,7 +65,7 @@ const FC = ({ ejercicio }) => {
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"4",//cambiar para leer del json
+                    contentID:ejercicio.itemId,//cambiar para leer del json
                   });
                 }                
                 else { //no select= false (abrirTab)
@@ -73,9 +73,8 @@ const FC = ({ ejercicio }) => {
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"4", //leer del json (cambiar)
+                    contentID:ejercicio.itemId, //leer del json (cambiar)
                   });
-                  console.log(ejercicio.itemId);
                 }
               }}
             >
@@ -84,7 +83,7 @@ const FC = ({ ejercicio }) => {
                 }
                 {paso1Valido != null && !select && "    ✔ "
                 }
-                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID="4"></SelectStep>
+                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={ejercicio.itemId}></SelectStep>
                 </Wrap>}
               </Box>
               <AccordionIcon />

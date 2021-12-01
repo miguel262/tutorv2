@@ -1,5 +1,5 @@
 [ {
-    "itemId": 1000,
+    "itemId": 4,
     "itemTitle": "Factor común",
     "code":"",
     "label":"",
@@ -11,7 +11,7 @@
       {
         "stepId": 0,
         "expression": "6xy^2 - 15x^2y + 21x^2y^2",
-        "stepTitle": "Paso 1: Ingrese el factor común de la siguiente expresión: ",
+        "stepTitle": "Ingrese el factor común de la siguiente expresión: ",
         "displayResult": "(2y-5x+7xy)",
         "hints": [
           {
@@ -41,6 +41,7 @@
     "itemTitle": "Factor común",
     "level": "3",
     "text": "Resolver la siguiente expresión por factor común",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": 0,
@@ -76,6 +77,7 @@
     "itemTitle": "Factor común",
     "level": "1",
     "text": "Resolver la siguiente expresión por factor común",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": 0,
@@ -103,6 +105,7 @@
     "itemTitle": "Factor común",
     "level": "1",
     "text": "Resolver la siguiente expresión por factor común",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": 0,
@@ -134,6 +137,7 @@
     "itemTitle": "Factor común",
     "level": "4",
     "text": "Resolver la siguiente expresión por factor común",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": 0,
@@ -170,6 +174,7 @@
     "itemTitle": "Factor común",
     "level": "3",
     "text": "Resolver la siguiente expresión por factor común",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": 0,
@@ -201,6 +206,7 @@
     "itemTitle": "Factor común",
     "level": "4",
     "text": "Resolver la siguiente expresión por factor común",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": 0,

@@ -6,11 +6,12 @@
     "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
     "level": "1",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",
         "expression": "x^2+8x+12",
-        "stepTitle": "Paso 1: identificar el valor de a en la expresión dada",
+        "stepTitle": "Identificar el valor de 'a' en la expresión dada",
         "displayResult": "a=1",
         "hints": [
           { "hintId": 0, "hint": "El valor es una constante" },
@@ -25,7 +26,7 @@
       {
         "stepId": "1",
         "expression": "x^2+8x+12",
-        "stepTitle": "Paso 2: identificar los valores de a, b y c de la expresión cuadrática",
+        "stepTitle": "Identificar los valores de a, b y c de la expresión cuadrática",
         "displayResult": "a=1, b=8, c=12",
         "hints": [
           { "hintId": 0, "hint": "El valor de a es el que acompaña al x^2" },
@@ -40,7 +41,7 @@
       {
         "stepId": "2",
         "expression": "a=1, b=8, c=12",
-        "stepTitle": "Paso 3: calcular discriminante Δ = b²-4ac",
+        "stepTitle": "Calcular discriminante Δ = b²-4ac",
         "displayResult": "Δ=b²-4ac=8²-4*1*12=16",
         "hints": [
           { "hintId": 0, "hint": "reemplace en la fórmula Δ por: a=1, b=8 y c=12" },
@@ -56,7 +57,7 @@
       {
         "stepId": "3",
         "expression": "Δ=16",
-        "stepTitle": "Paso 4: ¿a que caso corresponde el discriminante?",
+        "stepTitle": "¿A qué caso corresponde el discriminante?",
         "displayResult":
           "Este ejercicio posee 2 raíces diferentes, Δ>0 (Factorizable con diferentes raices)",
           "hints": [
@@ -78,7 +79,7 @@
       {
         "stepId": "4",
         "expression": "Δ = 16, a = 1, b = 8, c = 12 ",
-        "stepTitle": "Paso 5: Calcular raices x1 y x2",
+        "stepTitle": "Calcular raices x1 y x2",
         "formula": [
           "x_{1}=\\frac{-b+\\sqrt{Δ}}{2a}",
           "x_{2}=\\frac{-b-\\sqrt{Δ}}{2a}"
@@ -97,7 +98,7 @@
       {
         "stepId": "5",
         "expression": "x_{1}=-2, x_{2}=-6",
-        "stepTitle": "Paso 6: Ingresar factorización por trinomios cuadráticos",
+        "stepTitle": "Ingresar factorización por trinomios cuadráticos",
         "displayResult": "(x+2)(x+6)",
         "hints": [
           { "hintId": 0, "hint": "Hint 1" },
@@ -124,6 +125,7 @@
     "itemTitle": "Trinomios cuadráticos.",
     "level": "4",
     "text": "Texto problema/ejercicio, planteamiento",
+    "selectSteps":true,
     "steps": [
       {
         "stepId": "0",

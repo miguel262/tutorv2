@@ -24,20 +24,23 @@ export const SelectStep = ({steps, correct, setSelect, contentID}) => {
                 onClick={()=>{
                     onToggle();
                     action({
-                        verbName: "orderStepView",
-                        stepID: ""+correct,
-                        contentID: contentID, //leer del json
+                        verbName: "displayStepOrderList",
+                        contentID: contentID,
+                        stepID: ""+correct, //la id siempre debe ser el paso
+                         //leer del json
                         extra:{
                             source:isOpen?"Close":"Open"
-                          }
+                          },
+                        //kcsIDs:[] ver mas adelante 
                     })
                 }}
                 onChange={
                     (e)=> {resp(e.target.value);
                         action({
                             verbName: "checkOrder",
-                            stepID: ""+correct,
                             contentID:contentID, //leer del json
+                            stepID: ""+correct,
+                            
                             result: e.target.value==correct?1:0,
                         })
                     }
