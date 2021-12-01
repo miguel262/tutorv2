@@ -130,7 +130,7 @@
       {
         "stepId": "0",
         "expression": "3x^2+8x-11",
-        "stepTitle": "Paso 1: identificar el valor de a en la expresión dada (este valor se multiplica al resultado final)",
+        "stepTitle": "Identificar el valor de a en la expresión dada (este valor se multiplica al resultado final)",
         "displayResult": "a=3",
         "hints": [
           { "hintId": 0, "hint": "El valor es una constante" },
@@ -145,7 +145,7 @@
       {
         "stepId": "1",
         "expression": "3x^2+8x-11",
-        "stepTitle": "Paso 2: identificar los valores de a, b y c de la expresión cuadrática",
+        "stepTitle": "Identificar los valores de a, b y c de la expresión cuadrática",
         "displayResult": "a=3, b=8, c=-11",
         "hints": [
           { "hintId": 0, "hint": "El valor de a es el que acompaña al x²" },
@@ -160,7 +160,7 @@
       {
         "stepId": "2",
         "expression": "a=3, b=8, c=-11",
-        "stepTitle": "Paso 3: calcular discriminante utilizando la fórmula  Δ = b² - 4ac",
+        "stepTitle": "Calcular discriminante utilizando la fórmula  Δ = b² - 4ac",
         "displayResult": "Δ=196",
         "hints": [
           {
@@ -179,7 +179,7 @@
       {
         "stepId": "3",
         "expression": "Δ=196",
-        "stepTitle": "Paso 4: ¿a que caso corresponde el discriminante?",
+        "stepTitle": "¿A qué caso corresponde el discriminante?",
         "displayResult":
           "Este ejercicio posee 2 raíces diferentes, Δ>0 (Factorizable con diferentes raices)",
         "hints": [
@@ -201,7 +201,7 @@
       {
         "stepId": "4",
         "expression": "Δ = 196, a = 3, b = 8, c = -11 ",
-        "stepTitle": "Paso 5: Calcular los valores de x₁ y x₂",
+        "stepTitle": "Calcular los valores de x₁ y x₂",
         "formula": [
           "x_{1}=\\frac{-b+\\sqrt{Δ}}{2a}",
           "x_{2}=\\frac{-b-\\sqrt{Δ}}{2a}"
@@ -220,7 +220,7 @@
       {
         "stepId": "5",
         "expression": "x_{1}=1, x_{2}=-11/3",
-        "stepTitle": "Paso 6: Ingresar factorización por trinomios cuadráticos",
+        "stepTitle": "Ingresar factorización por trinomios cuadráticos",
         "displayResult": "3(x-1)(x+11/3)",
         "hints": [
           { "hintId": 0, "hint": "Los factores a ingresar son restas" },
