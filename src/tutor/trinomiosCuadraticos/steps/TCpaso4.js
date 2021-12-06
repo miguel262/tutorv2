@@ -23,7 +23,7 @@ export const TCpaso4 = ({
   const respuesta2 = useRef(null);
   const [estado, setEstado] = useState(null);
   const [error, setError] = useState(false);
-
+//
   let idPasoSiguiente = null;
   const correctas = ejercicio.answers.map((elemento) => elemento.answer);
   const comparar = () => {
