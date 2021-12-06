@@ -7,7 +7,6 @@ import { TCpaso2 } from "./steps/TCpaso2";
 import { TCpaso3 } from "./steps/TCpaso3";
 import { TCpaso4 } from "./steps/TCpaso4";
 import { TCpaso5 } from "./steps/TCpaso5";
-import { TCpaso6 } from "./steps/TCpaso6";
 import { TCsummary } from "../tools/Summary";
 import { Loading } from "../tools/Spinner";
 
@@ -35,12 +34,12 @@ const TC = ({ejercicio}) => {
   const [paso3Valido, setPaso3Valido] = useState(null);
   const [paso4Valido, setPaso4Valido] = useState(null);
   const [paso5Valido, setPaso5Valido] = useState(null);
-  const [paso6Valido, setPaso6Valido] = useState(null);
+  //const [paso6Valido, setPaso6Valido] = useState(null);
   const [hintsTerminado, setHintsTerminado] = useState(null);
   const [hintsTerminado2, setHintsTerminado2] = useState(null);
   const [hintsTerminado3, setHintsTerminado3] = useState(null);
+  const [hintsTerminado4, setHintsTerminado4] = useState(null);
   const [hintsTerminado5, setHintsTerminado5] = useState(null);
-  const [hintsTerminado6, setHintsTerminado6] = useState(null);
   const [index, setIndex] = useState([0]);
 
    //selectStep
@@ -49,7 +48,7 @@ const TC = ({ejercicio}) => {
    const [select3, setSelect3] = useState(true);
    const [select4, setSelect4] = useState(true);
    const [select5, setSelect5] = useState(true);
-   const [select6, setSelect6] = useState(true);
+   //const [select6, setSelect6] = useState(true);
    const steps = ejercicio.steps.map((i)=>i.stepTitle);
 
   useEffect(() => {
@@ -80,12 +79,12 @@ const TC = ({ejercicio}) => {
     }
   }, [paso4Valido]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     //cierra paso 3 al completarlo
     if (paso5Valido != null) {
       setIndex([5]);
     }
-  }, [paso5Valido]);
+  }, [paso5Valido]);*/
 
   const [loading, setLoading] = useState(true);
   const change = () => setLoading(false);
@@ -147,14 +146,15 @@ const TC = ({ejercicio}) => {
             </AccordionButton>
           </Alert>
           <AccordionPanel style={{ padding: 0 }}>
-          {!select&&<TCpaso1
-              ejercicio={ejercicio.steps[0]}
-              setPaso1Valido={setPaso1Valido}
-              paso1Valido={paso1Valido}
-              hintsTerminado={hintsTerminado}
-              setHintsTerminado={setHintsTerminado}
-              loading={loading}
-            ></TCpaso1>}
+          {!select&&
+            <TCpaso1
+                ejercicio={ejercicio.steps[0]}
+                setPaso2Valido={setPaso1Valido}
+                paso2Valido={paso1Valido}
+                hintsTerminado={hintsTerminado}
+                setHintsTerminado={setHintsTerminado}
+              ></TCpaso1>
+            }
           </AccordionPanel>
         </AccordionItem>
 
@@ -199,8 +199,8 @@ const TC = ({ejercicio}) => {
             {paso1Valido != null && !select2&& (
               <TCpaso2
                 ejercicio={ejercicio.steps[1]}
-                setPaso2Valido={setPaso2Valido}
-                paso2Valido={paso2Valido}
+                setPaso3Valido={setPaso2Valido}
+                paso3Valido={paso2Valido}
                 hintsTerminado={hintsTerminado2}
                 setHintsTerminado={setHintsTerminado2}
               ></TCpaso2>
@@ -249,8 +249,8 @@ const TC = ({ejercicio}) => {
             {paso2Valido != null && !select3&& (
               <TCpaso3
                 ejercicio={ejercicio.steps[2]}
-                setPaso3Valido={setPaso3Valido}
-                paso3Valido={paso3Valido}
+                setPaso4Valido={setPaso3Valido}
+                paso4Valido={paso3Valido}
                 hintsTerminado={hintsTerminado3}
                 setHintsTerminado={setHintsTerminado3}
               ></TCpaso3>
@@ -299,10 +299,10 @@ const TC = ({ejercicio}) => {
             {paso3Valido != null && !select4&&  (
               <TCpaso4
                 ejercicio={ejercicio.steps[3]}
-                setPaso4Valido={setPaso4Valido}
-                paso4Valido={paso4Valido}
-                hintsTerminado={hintsTerminado3}
-                setHintsTerminado={setHintsTerminado3}
+                setPaso5Valido={setPaso4Valido}
+                paso5Valido={paso4Valido}
+                hintsTerminado={hintsTerminado4}
+                setHintsTerminado={setHintsTerminado4}
               ></TCpaso4>
             )}
           </AccordionPanel>
@@ -349,76 +349,25 @@ const TC = ({ejercicio}) => {
             {paso4Valido != null && !select5&& (
               <TCpaso5
                 ejercicio={ejercicio.steps[4]}
-                setPaso5Valido={setPaso5Valido}
-                paso5Valido={paso5Valido}
+                setPaso6Valido={setPaso5Valido}
+                paso6Valido={paso5Valido}
                 hintsTerminado={hintsTerminado5}
                 setHintsTerminado={setHintsTerminado5}
+                a={ejercicio.steps[0].answers[0].answer[0]}
               ></TCpaso5>
             )}
           </AccordionPanel>
         </AccordionItem>
-
-        <AccordionItem isDisabled = {select6}>
-          <Alert
-            colorScheme={
-              paso6Valido == null
-                ? paso5Valido == null
-                  ? "gray"
-                  : "blue"
-                : "green"
-            }
-          >
-            <AccordionButton
-              onClick={() => {
-                if (index.some((element) => element === 5)) {
-                  setIndex(index.filter((e) => e !== 5));
-                  action({
-                    verbName: "closeStep",
-                    stepID: ""+ejercicio.steps[5].stepId,
-                    contentID:"8",//cambiar para leer del json
-                  });
-                } else {
-                  setIndex(index.concat(5));
-                  action({
-                    verbName: "openStep",
-                    stepID: ""+ejercicio.steps[5].stepId,
-                    contentID:"8", //leer del json
-                  });
-                }
-              }}
-            >
-              <Box flex="1" textAlign="left">
-                {!select6 && ejercicio.steps[5].stepTitle}
-                {paso6Valido != null && !select6 && "    ✔ "}
-                {select6&&paso5Valido != null&&<Wrap>Paso 6:<SelectStep correct={5} steps={steps} setSelect={setSelect6} contentID="8"></SelectStep></Wrap>}
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </Alert>
-          <AccordionPanel style={{ padding: 0 }}>
-            {paso5Valido != null && !select6 &&  (
-              <TCpaso6
-                ejercicio={ejercicio.steps[5]}
-                setPaso6Valido={setPaso6Valido}
-                paso6Valido={paso6Valido}
-                hintsTerminado={hintsTerminado6}
-                setHintsTerminado={setHintsTerminado6}
-                a={ejercicio.steps[0].answers[0].answer}
-              ></TCpaso6>
-            )}
-          </AccordionPanel>
-        </AccordionItem>
       </Accordion>
-      {paso6Valido != null && (
+      {paso5Valido != null && (
               <TCsummary
                 step1={ejercicio.steps[0]}
                 step2={ejercicio.steps[1]}
                 step3={ejercicio.steps[2]}
                 step4={ejercicio.steps[3]}
                 step5={ejercicio.steps[4]}
-                step6={ejercicio.steps[5]}
               />
-            )}
+      )}
     </>
   );
 };

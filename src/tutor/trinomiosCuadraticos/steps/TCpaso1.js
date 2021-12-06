@@ -1,8 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import Hint from "../../tools/Hint";
 import { MathComponent } from "../../../components/MathJax";
-import { Loading } from "../../tools/Spinner";
-
 import {
   Alert,
   AlertIcon,
@@ -16,28 +14,41 @@ import {
 
 export const TCpaso1 = ({
   ejercicio,
-  setPaso1Valido,
-  paso1Valido,
+  setPaso2Valido,
+  paso2Valido,
   hintsTerminado,
   setHintsTerminado,
-  loading,
 }) => {
   const respuesta1 = useRef(null);
+  const respuesta2 = useRef(null);
+  const respuesta3 = useRef(null);
   const [estado, setEstado] = useState(null);
   const [error, setError] = useState(false);
 
-  //let idPasoSiguiente = null;
-  const correcta = ejercicio.answers.map((elemento) => elemento.answer);
+  let idPasoSiguiente = null;
+  const correctas = ejercicio.answers.map((elemento) => elemento.answer);
 
   const comparar = () => {
     const entrada = [
       respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
+      respuesta2.current.value.replace(/[*]| /g, "").toLowerCase(),
+      respuesta3.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
-    const valida = (element) => element[0] === entrada[0];
-    if (correcta.some(valida)) {
-      setPaso1Valido(
-        (paso1Valido = ejercicio.answers[correcta.findIndex(valida)].nextStep)
+    const valida = (element) =>
+      element[0] === entrada[0] &&
+      element[1] === entrada[1] &&
+      element[2] === entrada[2];
+    if (correctas.some(valida)) {
+      setPaso2Valido(
+        (paso2Valido = ejercicio.answers[correctas.findIndex(valida)].nextStep)
       );
+      /*setEstado(
+                <div className="alert alert-success"> 
+                        <p>{ejercicio.validacion}:&nbsp;
+                        <MathComponent tex={ejercicio.result_final}  display={false}/>
+                        </p>
+                </div>
+            );*/
     } else {
       setError(true);
       setEstado(
@@ -54,7 +65,6 @@ export const TCpaso1 = ({
       <Wrap padding="15px 10px 10px 10px">
         <WrapItem padding="5px 0px 10px 0px">
           <Center>
-            {loading && <Loading />}
             <MathComponent
               tex={String.raw`${ejercicio.expression}`}
               display={false}
@@ -66,7 +76,7 @@ export const TCpaso1 = ({
 
         <WrapItem>
           <Center>
-            <label>a =&nbsp; </label>
+            <label>a =</label>
             <Input
               style={{
                 textAlign: "center",
@@ -74,11 +84,41 @@ export const TCpaso1 = ({
                 fontWeight: "600",
               }}
               size="sm"
-              w={125}
+              w={85}
               focusBorderColor="#9DECF9"
               placeholder="Ingrese a"
               ref={respuesta1}
-              isReadOnly={paso1Valido != null}
+              isReadOnly={paso2Valido != null}
+              //FormLabel={paso1Valido != null && "data-disabled"}
+            />
+            <label> , b =</label>
+            <Input
+              style={{
+                textAlign: "center",
+                fontStyle: "italic",
+                fontWeight: "600",
+              }}
+              size="sm"
+              w={85}
+              focusBorderColor="#9DECF9"
+              placeholder="Ingrese b"
+              ref={respuesta2}
+              isReadOnly={paso2Valido != null}
+              //FormLabel={paso1Valido != null && "data-disabled"}
+            />
+            <label>, c = &nbsp;</label>
+            <Input
+              style={{
+                textAlign: "center",
+                fontStyle: "italic",
+                fontWeight: "600",
+              }}
+              size="sm"
+              w={85}
+              focusBorderColor="#9DECF9"
+              placeholder="Ingrese c"
+              ref={respuesta3}
+              isReadOnly={paso2Valido != null}
               //FormLabel={paso1Valido != null && "data-disabled"}
             />
           </Center>
@@ -87,7 +127,7 @@ export const TCpaso1 = ({
         <Spacer />
 
         <WrapItem>
-          {paso1Valido == null && (
+          {paso2Valido == null && (
             <>
               <Button
                 colorScheme="cyan"
@@ -110,7 +150,7 @@ export const TCpaso1 = ({
           )}
         </WrapItem>
       </Wrap>
-      {paso1Valido == null && estado}
+      {paso2Valido == null && estado}
     </>
   );
 };

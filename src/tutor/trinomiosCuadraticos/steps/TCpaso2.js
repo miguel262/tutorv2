@@ -14,39 +14,39 @@ import {
 
 export const TCpaso2 = ({
   ejercicio,
-  setPaso2Valido,
-  paso2Valido,
+  setPaso3Valido,
+  paso3Valido,
   hintsTerminado,
   setHintsTerminado,
 }) => {
-  const respuesta1 = useRef(null);
-  const respuesta2 = useRef(null);
-  const respuesta3 = useRef(null);
+  //hook para obtener un input
+  const respuesta = useRef(null);
+  //hook para volver a renderizar cuando el estudiante ingrese una respuesta
   const [estado, setEstado] = useState(null);
+
   const [error, setError] = useState(false);
 
+  //resultado correcto (hay que validar para todas las entradas posibles)
+  const correcta = ejercicio.answers[0].answer;
   let idPasoSiguiente = null;
-  const correctas = ejercicio.answers.map((elemento) => elemento.answer);
-
+  //esta función se ejecuta cuando se oprime el boton aceptar
   const comparar = () => {
-    const entrada = [
-      respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
-      respuesta2.current.value.replace(/[*]| /g, "").toLowerCase(),
-      respuesta3.current.value.replace(/[*]| /g, "").toLowerCase(),
-    ];
-    const valida = (element) =>
-      element[0] === entrada[0] &&
-      element[1] === entrada[1] &&
-      element[2] === entrada[2];
-    if (correctas.some(valida)) {
-      setPaso2Valido(
-        (paso2Valido = ejercicio.answers[correctas.findIndex(valida)].nextStep)
-      );
+    //parametro de entrada recibido, replace elimina "espacios" y "*", trabajar todo en minuscula
+    const entrada = respuesta.current.value.replace(/[*]| /g, "").toLowerCase();
+
+    if (correcta === entrada) {
+      //valida que la entrada es correcta
+      setPaso3Valido((paso3Valido = ejercicio.answers[0].nextStep));
       /*setEstado(
                 <div className="alert alert-success"> 
-                        <p>{ejercicio.validacion}:&nbsp;
-                        <MathComponent tex={ejercicio.result_final}  display={false}/>
-                        </p>
+                    <p>{ejercicio.validacion}:&nbsp;
+                    <MathComponent tex={ejercicio.soluciones[0].entrada}  display={false}/>
+                    </p>
+                    <p>
+                    Entonces el discriminante es:
+                    &nbsp;
+                    <MathComponent tex={ejercicio.result_final}  display={false}/>
+                    </p>
                 </div>
             );*/
     } else {
@@ -60,6 +60,7 @@ export const TCpaso2 = ({
       );
     }
   };
+
   return (
     <>
       <Wrap padding="15px 10px 10px 10px">
@@ -76,7 +77,7 @@ export const TCpaso2 = ({
 
         <WrapItem>
           <Center>
-            <label>a =</label>
+            <label>Δ = &nbsp;</label>
             <Input
               style={{
                 textAlign: "center",
@@ -84,42 +85,11 @@ export const TCpaso2 = ({
                 fontWeight: "600",
               }}
               size="sm"
-              w={85}
+              w={165}
               focusBorderColor="#9DECF9"
-              placeholder="Ingrese a"
-              ref={respuesta1}
-              isReadOnly={paso2Valido != null}
-              //FormLabel={paso1Valido != null && "data-disabled"}
-            />
-            <label> , b =</label>
-            <Input
-              style={{
-                textAlign: "center",
-                fontStyle: "italic",
-                fontWeight: "600",
-              }}
-              size="sm"
-              w={85}
-              focusBorderColor="#9DECF9"
-              placeholder="Ingrese b"
-              ref={respuesta2}
-              isReadOnly={paso2Valido != null}
-              //FormLabel={paso1Valido != null && "data-disabled"}
-            />
-            <label>, c = &nbsp;</label>
-            <Input
-              style={{
-                textAlign: "center",
-                fontStyle: "italic",
-                fontWeight: "600",
-              }}
-              size="sm"
-              w={85}
-              focusBorderColor="#9DECF9"
-              placeholder="Ingrese c"
-              ref={respuesta3}
-              isReadOnly={paso2Valido != null}
-              //FormLabel={paso1Valido != null && "data-disabled"}
+              placeholder="Ingrese discriminante"
+              ref={respuesta}
+              isReadOnly={paso3Valido != null}
             />
           </Center>
         </WrapItem>
@@ -127,7 +97,7 @@ export const TCpaso2 = ({
         <Spacer />
 
         <WrapItem>
-          {paso2Valido == null && (
+          {paso3Valido == null && (
             <>
               <Button
                 colorScheme="cyan"
@@ -150,7 +120,7 @@ export const TCpaso2 = ({
           )}
         </WrapItem>
       </Wrap>
-      {paso2Valido == null && estado}
+      {paso3Valido == null && estado}
     </>
   );
 };

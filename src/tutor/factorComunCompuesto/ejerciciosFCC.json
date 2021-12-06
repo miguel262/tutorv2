@@ -32,7 +32,7 @@
             ],
             "incorrectMsg": "no se ha agrupado correctamente la expresión",
             "correctMsg": "Has agrupado los sumandos",
-            "summary": "1) se agrupan los sumandos que contengan términos iguales en dos grupos diferentes (este ejercicio puede desarrollarse de dos formas diferentes)"
+            "summary": "1) se agrupan los sumandos que contengan factores en común en dos grupos diferentes (este ejercicio puede desarrollarse de dos formas diferentes)"
           },
           {
             "stepId": "1",
@@ -180,7 +180,7 @@
             ],
             "incorrectMsg": "no se ha agrupado correctamente la expresión",
             "correctMsg": "Haz agrupado los sumandos",
-            "summary": "1) se agrupan los sumandos que contengan términos iguales en dos grupos diferentes"
+            "summary": "1) se agrupan los sumandos que contengan factores en común en dos grupos diferentes"
           },
           {
             "stepId": "1",

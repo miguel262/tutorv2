@@ -1570,7 +1570,7 @@ export type User = {
   /**
    * Active flag
    *
-   * By default it starts as "false", and the first time the user access the system, it's set as "true"
+   * By default it starts as "false", and the first time the user accesses the system, it's set as "true"
    */
   active: Scalars["Boolean"];
   /** Date of creation */

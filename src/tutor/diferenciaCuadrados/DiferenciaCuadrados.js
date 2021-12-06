@@ -77,18 +77,18 @@ const DC = ({ejercicio}) => {
               onClick={() => {
                 if (index.some((element) => element === 0)) {
                   setIndex(index.filter((e) => e !== 0));
-                  action({
+                  /*action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[0].stepId,
                     contentID:"6",//cambiar para leer del json
-                  });
+                  });*/
                 } else {
                   setIndex(index.concat(0));
-                  action({
+                  /*action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[0].stepId,
                     contentID:"6", //leer del json
-                  });
+                  });*/
                 }
               }}
             >
@@ -130,18 +130,18 @@ const DC = ({ejercicio}) => {
               onClick={() => {
                 if (index.some((element) => element === 1)) {
                   setIndex(index.filter((e) => e !== 1));
-                  action({
+                  /*action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[1].stepId,
                     contentID:"6",//cambiar para leer del json
-                  });
+                  });*/
                 } else {
                   setIndex(index.concat(1));
-                  action({
+                  /*action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[1].stepId,
                     contentID:"6", //leer del json
-                  });
+                  });*/
                 }
               }}
             >
@@ -173,8 +173,7 @@ const DC = ({ejercicio}) => {
       </Accordion>
       {paso2Valido != null && (
               <DCsummary
-                step1={ejercicio.steps[0]}
-                step2={ejercicio.steps[1]}
+                ejercicio={ejercicio}
               />
             )}
     </>

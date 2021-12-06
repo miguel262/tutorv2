@@ -14,30 +14,38 @@ import {
 
 export const TCpaso5 = ({
   ejercicio,
-  setPaso5Valido,
-  paso5Valido,
+  setPaso6Valido,
+  paso6Valido,
   hintsTerminado,
   setHintsTerminado,
+  a,
 }) => {
   const respuesta1 = useRef(null);
   const respuesta2 = useRef(null);
+  const respuesta3 = useRef(null);
   const [estado, setEstado] = useState(null);
   const [error, setError] = useState(false);
 
-  let idPasoSiguiente = null;
-  const correctas = ejercicio.answers.map((elemento) => elemento.answer);
+  const correctas = ejercicio.answers[0].answer;
   const comparar = () => {
     const entrada = [
       respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
       respuesta2.current.value.replace(/[*]| /g, "").toLowerCase(),
+      respuesta3.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
     const valida = (element) =>
-      (element[0] === entrada[0] && element[1] === entrada[1]) ||
-      (element[0] === entrada[1] && element[1] === entrada[0]);
+      (element[0] === entrada[0] && element[1] === entrada[1] && element[2] === entrada[2]) ||
+      (element[0] === entrada[0] && element[1] === entrada[2] && element[2] === entrada[1]);
     if (correctas.some(valida)) {
-      setPaso5Valido(
-        (paso5Valido = ejercicio.answers[correctas.findIndex(valida)].nextStep)
+      setEstado(
+        <Alert status="success">
+          <AlertIcon />
+          {ejercicio.correctMsg}
+          &nbsp;
+          <MathComponent tex={ejercicio.displayResult} display={false} />
+        </Alert>
       );
+      setPaso6Valido((paso6Valido = "Terminado"));
     } else {
       setError(true);
       setEstado(
@@ -65,7 +73,6 @@ export const TCpaso5 = ({
 
         <WrapItem>
           <Center>
-            <label>x₁ =&nbsp;</label>
             <Input
               style={{
                 textAlign: "center",
@@ -73,14 +80,13 @@ export const TCpaso5 = ({
                 fontWeight: "600",
               }}
               size="sm"
-              w={100}
+              w={50}
               focusBorderColor="#9DECF9"
-              placeholder="Ingrese x₁"
+              placeholder="a"
               ref={respuesta1}
-              isReadOnly={paso5Valido != null}
+              isReadOnly={paso6Valido != null}
             />
-
-            <label>&nbsp;&nbsp;, x₂ =&nbsp;</label>
+            <label>(</label>
             <Input
               style={{
                 textAlign: "center",
@@ -88,19 +94,34 @@ export const TCpaso5 = ({
                 fontWeight: "600",
               }}
               size="sm"
-              w={100}
+              w={120}
               focusBorderColor="#9DECF9"
-              placeholder="Ingrese x₂"
+              placeholder="Primer factor"
               ref={respuesta2}
-              isReadOnly={paso5Valido != null}
+              isReadOnly={paso6Valido != null}
             />
+            <label>)(</label>
+            <Input
+              style={{
+                textAlign: "center",
+                fontStyle: "italic",
+                fontWeight: "600",
+              }}
+              size="sm"
+              w={120}
+              focusBorderColor="#9DECF9"
+              placeholder="Segundo factor"
+              ref={respuesta3}
+              isReadOnly={paso6Valido != null}
+            />
+            <label>)</label>
           </Center>
         </WrapItem>
 
         <Spacer />
 
         <WrapItem>
-          {paso5Valido == null && (
+          {paso6Valido == null && (
             <>
               <Button
                 colorScheme="cyan"
@@ -109,8 +130,8 @@ export const TCpaso5 = ({
                 size="sm"
               >
                 Aceptar
-              </Button>
-              &nbsp;&nbsp;
+              </Button>{" "}
+              &nbsp; &nbsp;
               <Hint
                 ejercicio={ejercicio.hints}
                 setHintsTerminado={setHintsTerminado}
@@ -123,7 +144,7 @@ export const TCpaso5 = ({
           )}
         </WrapItem>
       </Wrap>
-      {paso5Valido == null && estado}
+      {estado}
     </>
   );
 };
