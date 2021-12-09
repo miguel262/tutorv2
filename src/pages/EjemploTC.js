@@ -13,7 +13,7 @@ function IndexPage({ejercicio}) {
     })}, [])
   return (
     <Stack width="100%" padding="1em">
-      <TC ejercicio={ejercicio}></TC>
+      <TC ejercicio={ejercicio} nextRouter="/"></TC>
     </Stack>
   );
 }

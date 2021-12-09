@@ -53,11 +53,11 @@
       {
         "stepId": "0",
         "expression": "8x^3+y^3",
-        "stepTitle": "Paso 1: identificar términos al cubo  x₁ y x₂",
+        "stepTitle": "Identificar términos al cubo  x₁ y x₂",
         "displayResult": "(2x)^3+(y)^3",
         "hints": [
           { "hintId": 0, "hint": "Calcular raices cúbicas de cada sumando" },
-          { "hintId": 1, "hint": "hint 2" },
+          { "hintId": 1, "hint": "Un valor al cubo a ingresar es 2x" },
           {
             "hintId": 2,
             "hint": "los cubos son: (2x)^3 + (y)^3, donde los valores a ingresar son x e y"
@@ -72,7 +72,7 @@
       {
         "stepId": "1",
         "expression": "(2x)^3+(y)^3",
-        "stepTitle": "Paso 2: ingresar la identidad (suma de cubos) (x₁ + x₂)(x₁² - x₁x₂ + x₂²)",
+        "stepTitle": "Ingresar la identidad (suma de cubos) (x₁ + x₂)(x₁² - x₁x₂ + x₂²)",
         "displayResult": "(2x+y)(4x^2-2xy+y^2)",
         "hints": [
           { "hintId": 0, "hint": "Reemplace la identidad de cubos con x₁ y x₂" },
