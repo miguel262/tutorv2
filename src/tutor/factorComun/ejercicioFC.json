@@ -13,7 +13,7 @@
       "hints": [
         {
           "hintId": 0,
-          "hint": "Un factor común de esta ecuación es x, pero la eexpresión todavía es factorizable"
+          "hint": "Un factor común de esta ecuación es x, pero la expresión todavía es factorizable"
         },
         { "hintId": 1, "hint": "Es un valor elevado al cuadrado" },
         { "hintId": 2, "hint": "El factor común de la expresión es x^2" }

@@ -21,6 +21,7 @@ export const DCpaso1 = ({
   hintsTerminado,
   setHintsTerminado,
   loading,
+  contentID,
 }) => {
   const respuesta1 = useRef(null);
   const respuesta2 = useRef(null);

@@ -5,7 +5,7 @@
     "label":"",
     "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
     "level": "1",
-    "text": "Texto problema/ejercicio, planteamiento",
+    "text": "Factorice la siguiente expresión",
     "selectSteps":true,
     "steps": [
       {

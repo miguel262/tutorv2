@@ -19,6 +19,7 @@ export const DCpaso2 = ({
   paso2Valido,
   hintsTerminado,
   setHintsTerminado,
+  contentID,
 }) => {
   const respuesta1 = useRef(null);
   const respuesta2 = useRef(null);
