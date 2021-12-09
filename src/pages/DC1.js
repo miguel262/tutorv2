@@ -1,5 +1,5 @@
-import FCC from "../tutor/factorComunCompuesto/FactorComunCompuesto";
-import data from "../tutor/factorComunCompuesto/ejerciciosFCC.json";
+import DC from "../tutor/diferenciaCuadrados/DiferenciaCuadrados";
+import data from "../tutor/diferenciaCuadrados/ejerciciosDC.json";
 import { Stack } from "@chakra-ui/react";
 import { useAction } from "../utils/action";
 import {useEffect} from "react";
@@ -9,11 +9,11 @@ function IndexPage({ejercicio}) {
   useEffect(() => {
     action({
       verbName: "loadContent",
-      contentID:"5",
+      contentID: ejercicio.itemId,
     })}, [])
   return (
     <Stack width="100%" padding="1em">
-      <FCC ejercicio={ejercicio}></FCC>
+      <DC ejercicio={ejercicio}></DC>
     </Stack>
   );
 }

@@ -1,9 +1,7 @@
 [
     {
-        "ItemId": 5,
+        "itemId": "fcc1",
         "itemTitle": "Factor común compuesto",
-        "code":"",
-        "label":"",
         "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
         "level": "3",
         "text": "Resolver el siguiente ejercicio de factorización por factor común compuesto",
@@ -45,7 +43,7 @@
             "hints": [
               {
                 "hintId": 0,
-                "hint": "El factor común del primer grupo es el término que se repite en ambos sumando"
+                "hint": "El factor común del primer grupo es el término que se repite en ambos sumando del primer grupo"
               },
               { "hintId": 1, "hint": "El factor común del primer grupo es a" },
               { "hintId": 2, "hint": "Los factores comunes a ingresar son a y b" }
@@ -67,7 +65,7 @@
             "hints": [
               {
                 "hintId": 0,
-                "hint": "El factor común del primer grupo es el término que se repite en ambos sumando"
+                "hint": "El factor común del primer grupo es el término que se repite en ambos sumando del primer grupo"
               },
               { "hintId": 1, "hint": "El factor común del primer grupo es x" },
               { "hintId": 2, "hint": "Los factores comunes a ingresar son x e y" }
@@ -84,9 +82,9 @@
             "stepTitle": "Ingrese el factor común",
             "displayResult": "(a+b)",
             "hints": [
-              { "hintId": 0, "hint": "ver variable que se repite en ambos sumandos" },
-              { "hintId": 1, "hint": "el factor común es una suma de variables" },
-              { "hintId": 2, "hint": "el factor común de la expresión es: x + y" }
+              { "hintId": 0, "hint": "Ver variables que se repite en ambos sumandos" },
+              { "hintId": 1, "hint": "El factor común es una suma de variables" },
+              { "hintId": 2, "hint": "El factor común de la expresión es: x + y" }
             ],
             "answers": [{ "answer": "x+y", "nextStep": null }],
             "incorrectMsg":
@@ -100,7 +98,7 @@
             "stepTitle": "Ingrese el factor común",
             "displayResult": "(x+y)",
             "hints": [
-              { "hintId": 0, "hint": "Ver variable que se repite en ambos sumandos" },
+              { "hintId": 0, "hint": "Ver variables que se repite en ambos sumandos" },
               { "hintId": 1, "hint": "El factor común es una suma de variables" },
               { "hintId": 2, "hint": "El factor común de la expresión es: a + b" }
             ],

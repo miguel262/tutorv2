@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Hint from "../../tools/Hint";
 import { MathComponent } from "../../../components/MathJax";
+import { useAction } from "../../../utils/action";
 import {
   Alert,
   AlertIcon,
@@ -17,7 +18,7 @@ export const TCpaso4 = ({
   setPaso5Valido,
   paso5Valido,
   hintsTerminado,
-  setHintsTerminado,
+  setHintsTerminado,contentID,
 }) => {
   const respuesta1 = useRef(null);
   const respuesta2 = useRef(null);
@@ -26,6 +27,7 @@ export const TCpaso4 = ({
 
   let idPasoSiguiente = null;
   const correctas = ejercicio.answers.map((elemento) => elemento.answer);
+  const action=useAction();
   const comparar = () => {
     const entrada = [
       respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
@@ -105,7 +107,17 @@ export const TCpaso4 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={comparar}
+                onClick={()=>{
+                  comparar();
+                  action({
+                    verbName: "tryStep",
+                    stepID: ""+ejercicio.stepId,
+                    contentID:contentID,
+                    result: paso5Valido===null?0:1,
+                    kcsIDs:[7],
+                  // topicID: ""+ejercicio.itemId,
+                  })
+                }}
                 size="sm"
               >
                 Aceptar
@@ -114,6 +126,8 @@ export const TCpaso4 = ({
               <Hint
                 ejercicio={ejercicio.hints}
                 setHintsTerminado={setHintsTerminado}
+                //stepId={ejercicio.stepId}
+                contentId={contentID}
                 stepId={ejercicio.stepId}
                 itemTitle="Trinomios cuadráticos"
                 error={error}

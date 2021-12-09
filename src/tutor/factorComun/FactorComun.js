@@ -3,6 +3,7 @@ import FCpaso1 from "./steps/FCpaso1";
 import { MathComponent } from "../../components/MathJax";
 import { BreadcrumbTutor } from "../tools/BreadcrumbTutor";
 import { Loading } from "../tools/Spinner";
+import Link from 'next/link'
 
 import {
   Accordion,
@@ -12,7 +13,7 @@ import {
   AccordionIcon,
   Alert,
   Box,
-  Wrap, Spacer
+  Wrap, Spacer, Button, Stack
 } from "@chakra-ui/react";
 
 import { FCsummary } from "../tools/Summary";
@@ -20,7 +21,7 @@ import { SelectStep } from "../tools/SelectStep";
 import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../utils/action";
 
-const FC = ({ ejercicio }) => {
+const FC = ({ ejercicio, nextRouter }) => {
 
   const action=useAction();
     
@@ -96,14 +97,25 @@ const FC = ({ ejercicio }) => {
                 setPaso1Valido={setPaso1Valido}
                 paso1Valido={paso1Valido}
                 loading={loading}
-                contentID="4" //cambiar a futuro
+                contentID={ejercicio.itemId} //cambiar a futuro
               ></FCpaso1>}
             </>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      {paso1Valido != null && (
+      {paso1Valido != null && (<>
                 <FCsummary ejercicio={ejercicio.steps[0]} />
+                <Stack padding="1em"  alignItems="center">
+                  <Link href={nextRouter}>
+                    <Button 
+                      colorScheme="cyan" 
+                      variant="outline"
+                      size="sm">
+                        Siguiente
+                    </Button>
+                  </Link>
+                </Stack>
+                </>
               )}
     </div>
   );

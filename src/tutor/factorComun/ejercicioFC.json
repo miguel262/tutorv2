@@ -1,5 +1,33 @@
 [ {
-    "itemId": 4,
+  "itemId": "fc1",
+  "itemTitle": "Factor común",
+  "level": "1",
+  "text": "Resolver la siguiente expresión por factor común",
+  "selectSteps":true,
+  "steps": [
+    {
+      "stepId": 0,
+      "expression": "2x^2y+3x^2z",
+      "stepTitle": "Ingrese el factor común de la siguiente expresión: ",
+      "displayResult": "(2y+3z)",
+      "hints": [
+        {
+          "hintId": 0,
+          "hint": "Un factor común de esta ecuación es x, pero la eexpresión todavía es factorizable"
+        },
+        { "hintId": 1, "hint": "Es un valor elevado al cuadrado" },
+        { "hintId": 2, "hint": "El factor común de la expresión es x^2" }
+      ],
+      "answers": [{ "answer": "x^2", "nextStep": null }],
+      "incorrectMsg":
+        "Factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
+      "correctMsg": "Haz encontrado el factor común",
+      "summary": "El factor común es el término que se encuentra en cada sumando y se puede factorizar, así, la expresión puede ser representada por la multiplicación entre su factor común y nuevos sumandos, la nueva representación queda: "
+    }
+  ]
+},
+{
+    "itemId": "fc2",
     "itemTitle": "Factor común",
     "code":"",
     "label":"",
@@ -37,7 +65,7 @@
   },
   
   {
-    "itemId": 1001,
+    "itemId": 4,
     "itemTitle": "Factor común",
     "level": "3",
     "text": "Resolver la siguiente expresión por factor común",
@@ -72,36 +100,9 @@
       }
     ]
   },
+  
   {
-    "itemId": 1002,
-    "itemTitle": "Factor común",
-    "level": "1",
-    "text": "Resolver la siguiente expresión por factor común",
-    "selectSteps":true,
-    "steps": [
-      {
-        "stepId": 0,
-        "expression": "2x^2y+3x^2z",
-        "stepTitle": "Ingrese el factor común de la siguiente expresión: ",
-        "displayResult": "(2y+3z)",
-        "hints": [
-          {
-            "hintId": 0,
-            "hint": "Un factor común de esta ecuación es x, pero la eexpresión todavía es factorizable"
-          },
-          { "hintId": 1, "hint": "Es un valor elevado al cuadrado" },
-          { "hintId": 2, "hint": "El factor común de la expresión es x^2" }
-        ],
-        "answers": [{ "answer": "x^2", "nextStep": null }],
-        "incorrectMsg":
-          "Factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
-        "correctMsg": "Haz encontrado el factor común",
-        "summary": "El factor común es el término que se encuentra en cada sumando y se puede factorizar, así, la expresión puede ser representada por la multiplicación entre su factor común y nuevos sumandos, la nueva representación queda: "
-      }
-    ]
-  },
-  {
-    "itemId": 1003,
+    "itemId": 4,
     "itemTitle": "Factor común",
     "level": "1",
     "text": "Resolver la siguiente expresión por factor común",
@@ -133,7 +134,7 @@
   },
   
   {
-    "itemId": 1004,
+    "itemId": 4,
     "itemTitle": "Factor común",
     "level": "4",
     "text": "Resolver la siguiente expresión por factor común",
@@ -170,7 +171,7 @@
   },
   
   {
-    "itemId": 1005,
+    "itemId": 4,
     "itemTitle": "Factor común",
     "level": "3",
     "text": "Resolver la siguiente expresión por factor común",
@@ -202,7 +203,7 @@
   },
   
   {
-    "itemId": 1006,
+    "itemId": 4,
     "itemTitle": "Factor común",
     "level": "4",
     "text": "Resolver la siguiente expresión por factor común",

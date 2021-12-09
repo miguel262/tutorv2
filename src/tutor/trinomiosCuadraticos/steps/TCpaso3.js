@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Hint from "../../tools/Hint";
+import { useAction } from "../../../utils/action";
 import {
   Alert,
   AlertIcon,
@@ -12,12 +13,12 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido }) => {
+export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido, contentID, }) => {
   let idPasoSiguiente = null;
   const [estado, setEstado] = useState(null);
   const [value, setValue] = React.useState(); //checked radio
   const [error, setError] = useState(false);
-
+  const action=useAction();
   const comparar = () => {
     if (ejercicio.answers[0].answer === value) {
       setPaso4Valido((paso4Valido = ejercicio.answers[0].nextStep));
@@ -59,7 +60,17 @@ export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido }) => {
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={comparar}
+                onClick={()=>{
+                  comparar();
+                  action({
+                    verbName: "tryStep",
+                    stepID: ""+ejercicio.stepId,
+                    contentID:contentID,
+                    result: paso4Valido===null?0:1,
+                    kcsIDs:[6],
+                  // topicID: ""+ejercicio.itemId,
+                  })
+                }}
                 size="sm"
               >
                 Aceptar
@@ -67,6 +78,8 @@ export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido }) => {
               &nbsp;&nbsp;
               <Hint
                 ejercicio={ejercicio.hints}
+                //stepId={ejercicio.stepId}
+                contentId={contentID}
                 stepId={ejercicio.stepId}
                 itemTitle="Trinomios cuadráticos"
                 error={error}

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Hint from "../../tools/Hint";
 import { MathComponent } from "../../../components/MathJax";
+import { useAction } from "../../../utils/action";
 import {
   Alert,
   AlertIcon,
@@ -18,13 +19,14 @@ export const DSCpaso2 = ({
   paso2Valido,
   hintsTerminado,
   setHintsTerminado,
+  contentID,
 }) => {
   const respuesta1 = useRef(null);
   const respuesta2 = useRef(null);
   const correcta = ejercicio.answers[0].answer;
   const [estado, setEstado] = useState(null);
   const [error, setError] = useState(false);
-
+  const action=useAction();
   const comparar = () => {
     const entrada = [
       respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
@@ -33,6 +35,12 @@ export const DSCpaso2 = ({
 
     if (entrada[0] === correcta[0] && entrada[1] === correcta[1]) {
       setPaso2Valido((paso2Valido = "Terminado"));
+      action({
+        verbName: "completeContent",
+        contentID: contentID,
+        result: 1,
+      // topicID: ""+ejercicio.itemId,
+      });
       setEstado(
         <Alert status="success">
           <AlertIcon />
@@ -108,7 +116,17 @@ export const DSCpaso2 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={comparar}
+                onClick={()=>{
+                  comparar();
+                  action({
+                    verbName: "tryStep",
+                    stepID: ""+ejercicio.stepId,
+                    contentID:contentID,
+                    result: paso2Valido===null?0:1,
+                    kcsIDs:[4],
+                  // topicID: ""+ejercicio.itemId,
+                  })
+                }}
                 size="sm"
               >
                 Aceptar
@@ -117,6 +135,8 @@ export const DSCpaso2 = ({
               <Hint
                 ejercicio={ejercicio.hints}
                 setHintsTerminado={setHintsTerminado}
+                //stepId={ejercicio.stepId}
+                contentId={contentID}
                 stepId={ejercicio.stepId}
                 itemTitle="Diferencia/suma de cubos"
                 error={error}

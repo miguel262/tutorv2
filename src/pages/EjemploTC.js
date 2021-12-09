@@ -1,5 +1,5 @@
-import DC from "../tutor/diferenciaCuadrados/DiferenciaCuadrados";
-import data from "../tutor/diferenciaCuadrados/ejerciciosDC.json";
+import TC from "../tutor/trinomiosCuadraticos/TrinomiosCuadraticos";
+import data from "../tutor/trinomiosCuadraticos/ejerciciosTC.json";
 import { Stack } from "@chakra-ui/react";
 import { useAction } from "../utils/action";
 import {useEffect} from "react";
@@ -9,17 +9,17 @@ function IndexPage({ejercicio}) {
   useEffect(() => {
     action({
       verbName: "loadContent",
-      contentID:"6",
+      contentID:ejercicio.itemId,
     })}, [])
   return (
     <Stack width="100%" padding="1em">
-      <DC ejercicio={ejercicio}></DC>
+      <TC ejercicio={ejercicio}></TC>
     </Stack>
   );
 }
 export async function getServerSideProps() {
   return {
-    props: {ejercicio:data[0]}, // will be passed to the page component as props
+    props: {ejercicio:data[2]}, // will be passed to the page component as props
   }
 }
 
