@@ -7,6 +7,7 @@ import { BreadcrumbTutor } from "../tools/BreadcrumbTutor";
 import { FCCsummary } from "../tools/Summary";
 import { Loading } from "../tools/Spinner";
 import { SelectStep } from "../tools/SelectStep";
+import Link from 'next/link'
 import {
   Accordion,
   AccordionItem,
@@ -15,7 +16,7 @@ import {
   AccordionIcon,
   Box,
   Alert,
-  Wrap, Spacer
+  Wrap, Spacer, Stack, Button
 } from "@chakra-ui/react";
 import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../utils/action";
@@ -83,14 +84,14 @@ const FCC = ({ejercicio}) => {//info usuario, ---
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"5",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(0));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"5", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -116,7 +117,7 @@ const FCC = ({ejercicio}) => {//info usuario, ---
               setHintsTerminado={setHintsTerminado}
               loading={loading}
               stepId={""+ejercicio.steps[0].stepId}
-              contentId="5"
+              contentID={ejercicio.itemId}
             ></FCCpaso1>}
           </AccordionPanel>
         </AccordionItem>
@@ -138,14 +139,14 @@ const FCC = ({ejercicio}) => {//info usuario, ---
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[1].stepId,
-                    contentID:"5",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(1));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[1].stepId,
-                    contentID:"5", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -167,6 +168,7 @@ const FCC = ({ejercicio}) => {//info usuario, ---
                 paso2Valido={paso2Valido}
                 hintsTerminado={hintsTerminado2}
                 setHintsTerminado={setHintsTerminado2}
+                contentID={ejercicio.itemId}
               ></FCCpaso2>
             )}
           </AccordionPanel>
@@ -189,14 +191,14 @@ const FCC = ({ejercicio}) => {//info usuario, ---
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[2].stepId,
-                    contentID:"5",//cambiar para leer del json
+                    contentID:ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(2));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[2].stepId,
-                    contentID:"5", //leer del json
+                    contentID:ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -218,6 +220,7 @@ const FCC = ({ejercicio}) => {//info usuario, ---
                 paso1Valido={paso3Valido}
                 hintsTerminado={hintsTerminado3}
                 setHintsTerminado={setHintsTerminado3}
+                contentID={ejercicio.itemId}
               ></FCpaso1>
             )}
             
@@ -226,10 +229,21 @@ const FCC = ({ejercicio}) => {//info usuario, ---
 
       </Accordion>
       {paso3Valido != null && (
-        
+        <>
           <FCCsummary 
             ejercicio={ejercicio}
           />
+          <Stack padding="1em"  alignItems="center">
+                  <Link href="/DC1">
+                    <Button 
+                      colorScheme="cyan" 
+                      variant="outline"
+                      size="sm">
+                        Siguiente
+                    </Button>
+                  </Link>
+                </Stack>
+                </>
           )}
     </>
   );

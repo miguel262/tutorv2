@@ -15,7 +15,7 @@ function IndexPage({ejercicio}) {
   
   return (
       <Stack width="100%" padding="1em">
-        <FC ejercicio={ejercicio}></FC>
+        <FC ejercicio={ejercicio} nextRouter="/FCC1"></FC>
       </Stack>
   );
 }
@@ -23,7 +23,7 @@ export async function getServerSideProps() {
   //const fs = require('fs');
   //const exercise = data[0]
   return {
-    props: {ejercicio:data[0]}, // will be passed to the page component as props
+    props: {ejercicio:data[1]}, // will be passed to the page component as props
   }
 }
 

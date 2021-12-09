@@ -23,26 +23,26 @@ export const SelectStep = ({steps, correct, setSelect, contentID}) => {
             <Select variant="filled" placeholder="Seleccionar paso" size="sm" 
                 onClick={()=>{
                     onToggle();
-                    /*action({
+                    action({
                         verbName: "displayStepOrderList",
                         contentID: contentID,
-                        stepID: ""+correct, //la id siempre debe ser el paso
-                         //leer del json
                         extra:{
                             source:isOpen?"Close":"Open"
                           },
                         //kcsIDs:[] ver mas adelante 
-                    })*/
+                    })
                 }}
                 onChange={
                     (e)=> {resp(e.target.value);
-                        /*action({
-                            verbName: "checkOrder",
+                        action({
+                            verbName: "chooseNextStep",
                             contentID:contentID, //leer del json
                             stepID: ""+correct,
-                            
                             result: e.target.value==correct?1:0,
-                        })*/
+                            extra:{
+                                choosenStepID:""+e.target.value
+                            }
+                        })
                     }
                 }
             >

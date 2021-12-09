@@ -1,5 +1,5 @@
-import TC from "../tutor/trinomiosCuadraticos/TrinomiosCuadraticos";
-import data from "../tutor/trinomiosCuadraticos/ejerciciosTC.json";
+import DSC from "../tutor/diferenciaSumaCubos/DiferenciaSumaCubos";
+import data from "../tutor/diferenciaSumaCubos/ejerciciosDSC.json";
 import { Stack } from "@chakra-ui/react";
 import { useAction } from "../utils/action";
 import {useEffect} from "react";
@@ -9,11 +9,11 @@ function IndexPage({ejercicio}) {
   useEffect(() => {
     action({
       verbName: "loadContent",
-      contentID:"8",
+      contentID: ejercicio.itemId,
     })}, [])
   return (
     <Stack width="100%" padding="1em">
-      <TC ejercicio={ejercicio}></TC>
+      <DSC ejercicio={ejercicio} nextRouter="/TC1"></DSC>
     </Stack>
   );
 }

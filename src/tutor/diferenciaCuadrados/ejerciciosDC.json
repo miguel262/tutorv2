@@ -1,5 +1,5 @@
 [{
-    "itemId": 3000,
+    "itemId": "dc1",
     "itemTitle": "Diferencia de cuadrados",
     "code":"",
     "label":"",
@@ -40,7 +40,7 @@
         "displayResult": "(3x+1)(3x-1)",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = 3x" },
           {
             "hintId": 2,
             "hint": "Factorización por suma y diferencia: (3x+1)(3x-1)"
@@ -58,7 +58,7 @@
         "displayResult": "(-3x+1)(-3x-1)",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = -3x" },
           {
             "hintId": 2,
             "hint": "Factorización por suma y diferencia: (-3x+1)(-3x-1)"
@@ -76,7 +76,7 @@
         "displayResult": "(3x-1)(3x+1)",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = 3x" },
           {
             "hintId": 2,
             "hint": "Factorización por suma y diferencia: (3x-1)(3x+1)"
@@ -94,7 +94,7 @@
         "displayResult": "(-3x-1)(-3x+1)",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = -3x" },
           {
             "hintId": 2,
             "hint": "Factorización por suma y diferencia: (-3x-1)(-3x+1)"
@@ -261,7 +261,7 @@
         "displayResult": "(2xy^2+4xy)(2xy^2-4xy)",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = 2xy^2" },
           { "hintId": 2, "hint": "(2xy^2+4xy)(2xy^2-4xy)" }
         ],
         "answers": [{ "answer": ["2xy^2+4xy", "2xy^2-4xy"], "nextStep": null }],

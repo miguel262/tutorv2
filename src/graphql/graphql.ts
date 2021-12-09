@@ -1739,7 +1739,11 @@ export const CurrentUserDocument = {
               {
                 kind: "Argument",
                 name: { kind: "Name", value: "code" },
-                value: { kind: "StringValue", value: "project1", block: false },
+                value: {
+                  kind: "StringValue",
+                  value: "factorize_tutor",
+                  block: false,
+                },
               },
             ],
             selectionSet: {

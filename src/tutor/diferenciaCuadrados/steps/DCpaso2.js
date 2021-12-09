@@ -36,7 +36,7 @@ export const DCpaso2 = ({
       setPaso2Valido((paso2Valido = "Terminado"));
       action({
         verbName: "completeContent",
-        contentID:"6",
+        contentID: contentID,
         result: 1,
       // topicID: ""+ejercicio.itemId,
       });
@@ -113,7 +113,17 @@ export const DCpaso2 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={comparar}
+                onClick={()=>{
+                  comparar();
+                  action({
+                    verbName: "tryStep",
+                    stepID: ""+ejercicio.stepId,
+                    contentID:contentID,
+                    result: paso2Valido===null?0:1,
+                    kcsIDs:[4],
+                  // topicID: ""+ejercicio.itemId,
+                  })
+                }}
                 size="sm"
               >
                 Aceptar
@@ -122,6 +132,8 @@ export const DCpaso2 = ({
               <Hint
                 ejercicio={ejercicio.hints}
                 setHintsTerminado={setHintsTerminado}
+                //stepId={ejercicio.stepId}
+                contentId={contentID}
                 stepId={ejercicio.stepId}
                 itemTitle="Diferencia de cuadrados"
                 error={error}

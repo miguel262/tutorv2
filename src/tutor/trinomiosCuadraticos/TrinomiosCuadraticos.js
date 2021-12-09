@@ -9,7 +9,7 @@ import { TCpaso4 } from "./steps/TCpaso4";
 import { TCpaso5 } from "./steps/TCpaso5";
 import { TCsummary } from "../tools/Summary";
 import { Loading } from "../tools/Spinner";
-
+import Link from 'next/link'
 import {
   Accordion,
   AccordionItem,
@@ -18,7 +18,7 @@ import {
   AccordionIcon,
   Box,
   Alert,
-  Wrap, Spacer
+  Wrap, Spacer,Stack,Button
 } from "@chakra-ui/react";
 
 import { VideoScreen } from "../tools/VideoScreen";
@@ -26,7 +26,7 @@ import { SelectStep } from "../tools/SelectStep";
 import { useAction } from "../../utils/action";
 
 //react functional component
-const TC = ({ejercicio}) => {
+const TC = ({ejercicio, nextRouter}) => {
   //const ejemplo = Ejercicio1;
   //const ejercicio = Ejercicio2;
   const [paso1Valido, setPaso1Valido] = useState(null);
@@ -125,14 +125,14 @@ const TC = ({ejercicio}) => {
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"8",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(0));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"8", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -140,7 +140,7 @@ const TC = ({ejercicio}) => {
               <Box flex="1" textAlign="left">
                 {!select&&ejercicio.steps[0].stepTitle}
                 {paso1Valido != null && !select&& "    ✔ "}
-                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID="8"></SelectStep></Wrap>}
+                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={ejercicio.itemId}></SelectStep></Wrap>}
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -153,6 +153,7 @@ const TC = ({ejercicio}) => {
                 paso2Valido={paso1Valido}
                 hintsTerminado={hintsTerminado}
                 setHintsTerminado={setHintsTerminado}
+                contentID={ejercicio.itemId}
               ></TCpaso1>
             }
           </AccordionPanel>
@@ -175,14 +176,14 @@ const TC = ({ejercicio}) => {
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[1].stepId,
-                    contentID:"8",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(1));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[1].stepId,
-                    contentID:"8", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -190,7 +191,7 @@ const TC = ({ejercicio}) => {
               <Box flex="1" textAlign="left">
                 {!select2&& ejercicio.steps[1].stepTitle}
                 {paso2Valido != null && !select2&& "    ✔ "}
-                {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID="8"></SelectStep></Wrap>}
+                {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID={ejercicio.itemId}></SelectStep></Wrap>}
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -203,6 +204,7 @@ const TC = ({ejercicio}) => {
                 paso3Valido={paso2Valido}
                 hintsTerminado={hintsTerminado2}
                 setHintsTerminado={setHintsTerminado2}
+                contentID={ejercicio.itemId}
               ></TCpaso2>
             )}
           </AccordionPanel>
@@ -225,14 +227,14 @@ const TC = ({ejercicio}) => {
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[2].stepId,
-                    contentID:"8",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(2));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[2].stepId,
-                    contentID:"8", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -240,7 +242,7 @@ const TC = ({ejercicio}) => {
               <Box flex="1" textAlign="left">
                 {!select3 && ejercicio.steps[2].stepTitle}
                 {paso3Valido != null && !select3 && "    ✔ "}
-                {select3&&paso2Valido != null&&<Wrap>Paso 3:<SelectStep correct={2} steps={steps} setSelect={setSelect3} contentID="8"></SelectStep></Wrap>}
+                {select3&&paso2Valido != null&&<Wrap>Paso 3:<SelectStep correct={2} steps={steps} setSelect={setSelect3} contentID={ejercicio.itemId}></SelectStep></Wrap>}
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -253,6 +255,7 @@ const TC = ({ejercicio}) => {
                 paso4Valido={paso3Valido}
                 hintsTerminado={hintsTerminado3}
                 setHintsTerminado={setHintsTerminado3}
+                contentID={ejercicio.itemId}
               ></TCpaso3>
             )}
           </AccordionPanel>
@@ -275,14 +278,14 @@ const TC = ({ejercicio}) => {
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[3].stepId,
-                    contentID:"8",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(3));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[3].stepId,
-                    contentID:"8", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -290,7 +293,7 @@ const TC = ({ejercicio}) => {
               <Box flex="1" textAlign="left">
                 {!select4 && ejercicio.steps[3].stepTitle}
                 {paso4Valido != null && !select4&& "    ✔ "}
-                {select4&&paso3Valido != null&&<Wrap>Paso 4:<SelectStep correct={3} steps={steps} setSelect={setSelect4} contentID="8"></SelectStep></Wrap>}
+                {select4&&paso3Valido != null&&<Wrap>Paso 4:<SelectStep correct={3} steps={steps} setSelect={setSelect4} contentID={ejercicio.itemId}></SelectStep></Wrap>}
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -303,6 +306,7 @@ const TC = ({ejercicio}) => {
                 paso5Valido={paso4Valido}
                 hintsTerminado={hintsTerminado4}
                 setHintsTerminado={setHintsTerminado4}
+                contentID={ejercicio.itemId}
               ></TCpaso4>
             )}
           </AccordionPanel>
@@ -325,14 +329,14 @@ const TC = ({ejercicio}) => {
                   action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[4].stepId,
-                    contentID:"8",//cambiar para leer del json
+                    contentID: ejercicio.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(4));
                   action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[4].stepId,
-                    contentID:"8", //leer del json
+                    contentID: ejercicio.itemId, //leer del json
                   });
                 }
               }}
@@ -340,7 +344,7 @@ const TC = ({ejercicio}) => {
               <Box flex="1" textAlign="left">
                 {!select5&& ejercicio.steps[4].stepTitle}
                 {paso5Valido != null && !select5&& "    ✔ "}
-                {select5&&paso4Valido != null&&<Wrap>Paso 5:<SelectStep correct={4} steps={steps} setSelect={setSelect5} contentID="8"></SelectStep></Wrap>}
+                {select5&&paso4Valido != null&&<Wrap>Paso 5:<SelectStep correct={4} steps={steps} setSelect={setSelect5} contentID={ejercicio.itemId}></SelectStep></Wrap>}
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -354,12 +358,14 @@ const TC = ({ejercicio}) => {
                 hintsTerminado={hintsTerminado5}
                 setHintsTerminado={setHintsTerminado5}
                 a={ejercicio.steps[0].answers[0].answer[0]}
+                contentID={ejercicio.itemId}
               ></TCpaso5>
             )}
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
       {paso5Valido != null && (
+        <>
               <TCsummary
                 step1={ejercicio.steps[0]}
                 step2={ejercicio.steps[1]}
@@ -367,6 +373,17 @@ const TC = ({ejercicio}) => {
                 step4={ejercicio.steps[3]}
                 step5={ejercicio.steps[4]}
               />
+              <Stack padding="1em"  alignItems="center">
+                  <Link href={nextRouter}>
+                    <Button 
+                      colorScheme="cyan" 
+                      variant="outline"
+                      size="sm">
+                        Siguiente
+                    </Button>
+                  </Link>
+                </Stack>
+                </>
       )}
     </>
   );

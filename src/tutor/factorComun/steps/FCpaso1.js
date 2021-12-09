@@ -50,8 +50,7 @@ const FCCpaso1 = ({
       setPaso1Valido((paso1Valido = "Terminado"));
       action({
         verbName: "completeContent",
-        stepID: ""+ejercicio.stepId,
-        contentID:"4",
+        contentID: contentID,
       });
     } else {
       /**/
@@ -124,9 +123,12 @@ const FCCpaso1 = ({
                     action({
                       verbName: "tryStep",
                       stepID: ""+ejercicio.stepId,
-                      contentID:"4",
+                      contentID:contentID,
                       result: paso1Valido===null?0:1,
                       kcsIDs:[1],
+                      //extra:{
+                       // resp: response
+                     // }
                     // topicID: ""+ejercicio.itemId,
                     });
                     
@@ -138,8 +140,8 @@ const FCCpaso1 = ({
               &nbsp;&nbsp;
               <Hint
                 ejercicio={ejercicio.hints}
-                contentId="4"
-                stepId="0"
+                contentId={contentID}
+                stepId={ejercicio.stepId}
                 itemTitle="Factor Común"
                 error={error}
                 setError={setError}

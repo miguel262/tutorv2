@@ -7,7 +7,7 @@ import { DCpaso1 } from "./steps/DCpaso1";
 import { DCpaso2 } from "./steps/DCpaso2";
 import { DCsummary } from "../tools/Summary";
 import { Loading } from "../tools/Spinner";
-
+import Link from 'next/link'
 import {
   Accordion,
   AccordionItem,
@@ -17,7 +17,7 @@ import {
   Box,
   Alert,
   Wrap,
-  Center, Spacer
+  Center, Spacer, Stack, Button
 } from "@chakra-ui/react";
 import { VideoScreen } from "../tools/VideoScreen";
 import { SelectStep } from "../tools/SelectStep";
@@ -77,18 +77,18 @@ const DC = ({ejercicio}) => {
               onClick={() => {
                 if (index.some((element) => element === 0)) {
                   setIndex(index.filter((e) => e !== 0));
-                  /*action({
+                  action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"6",//cambiar para leer del json
-                  });*/
+                    contentID: ejercicio.itemId,//cambiar para leer del json
+                  });
                 } else {
                   setIndex(index.concat(0));
-                  /*action({
+                  action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:"6", //leer del json
-                  });*/
+                    contentID: ejercicio.itemId, //leer del json
+                  });
                 }
               }}
             >
@@ -97,7 +97,7 @@ const DC = ({ejercicio}) => {
                   <Center>
                     {!select&&ejercicio.steps[0].stepTitle}&nbsp;&nbsp;
                     {paso1Valido != null && !select&&  "✔ "}
-                    {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID="6"></SelectStep></Wrap>}
+                    {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={ejercicio.itemId}></SelectStep></Wrap>}
                   </Center>
                 </Wrap>
               </Box>
@@ -112,6 +112,7 @@ const DC = ({ejercicio}) => {
               hintsTerminado={hintsTerminado}
               setHintsTerminado={setHintsTerminado}
               loading={loading}
+              contentID={ejercicio.itemId}
             ></DCpaso1>}
           </AccordionPanel>
         </AccordionItem>
@@ -130,18 +131,18 @@ const DC = ({ejercicio}) => {
               onClick={() => {
                 if (index.some((element) => element === 1)) {
                   setIndex(index.filter((e) => e !== 1));
-                  /*action({
+                  action({
                     verbName: "closeStep",
                     stepID: ""+ejercicio.steps[1].stepId,
-                    contentID:"6",//cambiar para leer del json
-                  });*/
+                    contentID: ejercicio.itemId,//cambiar para leer del json
+                  });
                 } else {
                   setIndex(index.concat(1));
-                  /*action({
+                  action({
                     verbName: "openStep",
                     stepID: ""+ejercicio.steps[1].stepId,
-                    contentID:"6", //leer del json
-                  });*/
+                    contentID: ejercicio.itemId, //leer del json
+                  });
                 }
               }}
             >
@@ -150,7 +151,7 @@ const DC = ({ejercicio}) => {
                   <Center>
                     {!select2 && ejercicio.steps[1].stepTitle}
                     {paso2Valido != null && !select2 && "✔ "}
-                    {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID="6"></SelectStep></Wrap>}
+                    {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID={ejercicio.itemId}></SelectStep></Wrap>}
                   </Center>
                 </Wrap>
               </Box>
@@ -165,6 +166,7 @@ const DC = ({ejercicio}) => {
                 paso2Valido={paso2Valido}
                 hintsTerminado={hintsTerminado2}
                 setHintsTerminado={setHintsTerminado2}
+                contentID={ejercicio.itemId}
               ></DCpaso2>
             )}
             
@@ -172,9 +174,21 @@ const DC = ({ejercicio}) => {
         </AccordionItem>
       </Accordion>
       {paso2Valido != null && (
+            <>
               <DCsummary
                 ejercicio={ejercicio}
               />
+              <Stack padding="1em"  alignItems="center">
+                  <Link href="/DSC1">
+                    <Button 
+                      colorScheme="cyan" 
+                      variant="outline"
+                      size="sm">
+                        Siguiente
+                    </Button>
+                  </Link>
+                </Stack>
+                </>
             )}
     </>
   );

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { MathComponent } from "../../../components/MathJax";
 import Hint from "../../tools/Hint";
 import { Loading } from "../../tools/Spinner";
-
+import { useAction } from "../../../utils/action";
 import {
   Alert,
   AlertIcon,
@@ -21,6 +21,7 @@ const FCCpaso1 = ({
   hintsTerminado,
   setHintsTerminado,
   loading,
+  contentID,
 }) => {
   const respuesta1 = useRef(null);
   const respuesta2 = useRef(null);
@@ -29,7 +30,7 @@ const FCCpaso1 = ({
 
   //let idPasoSiguiente = null;
   const correctas = ejercicio.answers.map((elemento) => elemento.answer);
-
+  const action=useAction();
   const comparar = () => {
     //parametro de entrada recibido, replace elimina "espacios" y "*", trabajar todo en minuscula
     const entrada = [
@@ -116,7 +117,18 @@ const FCCpaso1 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={comparar}
+                onClick={()=>{
+                  comparar();
+                  action({
+                    verbName: "tryStep",
+                    stepID: ""+ejercicio.stepId,
+                    contentID:contentID,
+                    result: paso1Valido===null?0:1,
+                    kcsIDs:[2],
+                  // topicID: ""+ejercicio.itemId,
+                  })
+                }
+                }
                 size="sm"
               >
                 Aceptar
@@ -125,6 +137,8 @@ const FCCpaso1 = ({
               <Hint
                 ejercicio={ejercicio.hints}
                 setHintsTerminado={setHintsTerminado}
+                //stepId={ejercicio.stepId}
+                contentId={contentID}
                 stepId={ejercicio.stepId}
                 itemTitle="Factor Común compuesto "
                 error={error}

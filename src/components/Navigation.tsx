@@ -26,11 +26,15 @@ export function Navigation() {
       <Stack pb="6">
       {user && ( <>
       <NavSectionTitle>Factorización</NavSectionTitle>
-        <SidebarLink  href="/1"> Factor Común</SidebarLink>
-        <SidebarLink  href="/2"> Factor Común Compuesto</SidebarLink>
-        <SidebarLink  href="/3"> Diferencia de Cuadradros</SidebarLink>
-        <SidebarLink  href="/4"> Diferencia y Suma de Cubos</SidebarLink>
-        <SidebarLink  href="/5"> Trinomios Cuadráticos</SidebarLink>
+        <SidebarLink  href="/EjemploTC"> Ejemplo de Trinomio Cuadrático</SidebarLink>
+        <SidebarLink  href="/FC1"> Factor Común I</SidebarLink>
+        <SidebarLink  href="/FC2"> Factor Común II</SidebarLink>
+        <SidebarLink  href="/FCC1"> Factor Común Compuesto I</SidebarLink>
+        <SidebarLink  href="/DC1"> Diferencia de Cuadradros I</SidebarLink>
+        <SidebarLink  href="/DSC1"> Diferencia/Suma de Cubos I</SidebarLink>
+        <SidebarLink  href="/DSC2"> Diferencia/Suma de Cubos II</SidebarLink>
+        <SidebarLink  href="/TC1"> Trinomios Cuadráticos I</SidebarLink>
+        <SidebarLink  href="/TC2"> Trinomios Cuadráticos II</SidebarLink>
         </>
         )}
       </Stack>
