@@ -80,6 +80,7 @@ const FCCpaso2 = ({
               isReadOnly={paso2Valido != null}
             />
             <label>)</label>
+            
             <MathComponent tex={ejercicio.displayResult[0][1]} display={false} />
             <label>&nbsp;+&nbsp;</label>
             <label>(</label>
