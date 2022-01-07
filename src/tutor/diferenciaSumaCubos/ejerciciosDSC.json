@@ -13,7 +13,7 @@
         "stepId": "0",
         "expression": "x^3-y^3",
         "stepTitle": "Identificar los términos al cubo x₁ y x₂",
-        "displayResult": "(x)^3-(y)^3",
+        "displayResult": "x₁ = x, \\hspace{1cm} x₂=y",
         "hints": [
           { "hintId": 0, "hint": "Calcular raices cúbicas de cada sumando" },
           { "hintId": 1, "hint": "Un valor al cubo a ingresar es x" },
@@ -23,7 +23,7 @@
         "incorrectMsg":
           "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
         "correctMsg": "Haz encontrado los términos al cubo",
-        "summary":"1) Para aplicar factorización por diferencia de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ - (x₂)³ como se muestra a continuación:"
+        "summary":"1) Para aplicar factorización por diferencia de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ - (x₂)³, donde: "
       },
       {
         "stepId": "1",
@@ -47,14 +47,14 @@
     "itemTitle": "Factorice la siguiente expresión",
     "sign": "+",
     "level": "1",
-    "text": "Texto problema/ejercicio, planteamiento",
+    "text": "Factorice la siguiente expresión:",
     "selectSteps":true,
     "steps": [
       {
         "stepId": "0",
         "expression": "8x^3+y^3",
         "stepTitle": "Identificar términos al cubo  x₁ y x₂",
-        "displayResult": "(2x)^3+(y)^3",
+        "displayResult": "x₁ = 2x, \\hspace{1cm} x₂=y",
         "hints": [
           { "hintId": 0, "hint": "Calcular raices cúbicas de cada sumando" },
           { "hintId": 1, "hint": "Un valor al cubo a ingresar es 2x" },
@@ -67,7 +67,7 @@
         "incorrectMsg":
           "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
         "correctMsg": "Haz encontrado los términos al cubo",
-        "summary":"1) Para aplicar factorización por suma de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ + (x₂)³ como se muestra a continuación:"
+        "summary":"1) Para aplicar factorización por suma de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ + (x₂)³, donde: "
       },
       {
         "stepId": "1",

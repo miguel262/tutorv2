@@ -124,45 +124,45 @@ export const DCsummary = ({ ejercicio }) => {
           <Text w="100%">{ejercicio.steps[0].summary}</Text>
 
           <Text> Forma 1: <MathComponent
-            tex={String.raw`${ejercicio.steps[1].expression}`}
-            display={false}
-          /></Text>
-          <Spacer/>
-          <Text> Forma 2: 
-            <MathComponent
-              tex={String.raw`${ejercicio.steps[2].expression}`}
-              display={false}
-            /></Text><Spacer/>
-          <Text> Forma 3: <MathComponent
-            tex={String.raw`${ejercicio.steps[3].expression}`}
-            display={false}
-          /></Text>
-          <Spacer/>
-          <Text> Forma 4: 
-            <MathComponent
-              tex={String.raw`${ejercicio.steps[4].expression}`}
-              display={false}
-          /></Text><Spacer/>              
-
-          <Text w="100%">{ejercicio.steps[1].summary}</Text>
-          <Text> Forma 1: <MathComponent
             tex={String.raw`${ejercicio.steps[1].displayResult}`}
             display={false}
           /></Text>
           <Spacer/>
           <Text> Forma 2: 
-          <MathComponent
-            tex={String.raw`${ejercicio.steps[2].displayResult}`}
-            display={false}
-          /></Text><Spacer/>
+            <MathComponent
+              tex={String.raw`${ejercicio.steps[2].displayResult}`}
+              display={false}
+            /></Text><Spacer/>
           <Text> Forma 3: <MathComponent
             tex={String.raw`${ejercicio.steps[3].displayResult}`}
             display={false}
           /></Text>
           <Spacer/>
           <Text> Forma 4: 
+            <MathComponent
+              tex={String.raw`${ejercicio.steps[4].displayResult}`}
+              display={false}
+          /></Text><Spacer/>              
+
+          <Text w="100%">{ejercicio.steps[1].summary}</Text>
+          <Text> Forma 1: <MathComponent
+            tex={String.raw`(${ejercicio.steps[1].answers[0].answer[0]})(${ejercicio.steps[1].answers[0].answer[1]})`}
+            display={false}
+          /></Text>
+          <Spacer/>
+          <Text> Forma 2: 
           <MathComponent
-            tex={String.raw`${ejercicio.steps[4].displayResult}`}
+            tex={String.raw`(${ejercicio.steps[2].answers[0].answer[0]})(${ejercicio.steps[2].answers[0].answer[1]})`}
+            display={false}
+          /></Text><Spacer/>
+          <Text> Forma 3: <MathComponent
+            tex={String.raw`(${ejercicio.steps[3].answers[0].answer[0]})(${ejercicio.steps[3].answers[0].answer[1]})`}
+            display={false}
+          /></Text>
+          <Spacer/>
+          <Text> Forma 4: 
+          <MathComponent
+            tex={String.raw`(${ejercicio.steps[4].answers[0].answer[0]})(${ejercicio.steps[4].answers[0].answer[1]})`}
             display={false}
           /></Text><Spacer/>
         </Wrap>

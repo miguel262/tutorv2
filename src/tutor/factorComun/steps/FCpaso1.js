@@ -28,17 +28,17 @@ const FCCpaso1 = ({
   const correctAlternatives = ejercicio.answers.map((element) => element.answer);
   const action=useAction();
 
-  const comparar = () => {
+  const compare = () => {
     //parametro de entrada recibido, replace elimina "espacios" y "*", trabajar todo en minuscula
     const responseStudent = response.current.value.replace(/[*]| /g, "").toLowerCase();
 
     //valida que la entrada es correctas
-    const valida = (element) => element === responseStudent;
+    const validate = (element) => element === responseStudent;
     //El método some() comprueba si al menos un elemento del array
     //cumple con la condición implementada por la función proporcionada.
     
 
-    if (correctAlternatives.some(valida)) {
+    if (correctAlternatives.some(validate)) {
       setEstado(
         <>
           <Alert status="success">
@@ -119,7 +119,7 @@ const FCCpaso1 = ({
                 size="sm"
                 variant="outline"
                 onClick={()=>{
-                    comparar();
+                    compare();
                     action({
                       verbName: "tryStep",
                       stepID: ""+ejercicio.stepId,

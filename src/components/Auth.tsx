@@ -1,5 +1,5 @@
 import { useAuth0, User as Auth0User } from "@auth0/auth0-react";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, useLatestRef } from "@chakra-ui/react";
 import Router from "next/router";
 import { FC, memo, useEffect } from "react";
 import { useGQLQuery } from "rq-gql";
@@ -13,6 +13,7 @@ export const AuthState = proxy<{
   user: CurrentUserQuery["currentUser"];
   project: CurrentUserQuery["project"];
   isLoading: boolean;
+  authorizationToken?: string;
 }>({
   auth0User: null,
   user: null,
@@ -22,9 +23,11 @@ export const AuthState = proxy<{
 
 export function SyncAuth() {
   const { user, getIdTokenClaims, isLoading } = useAuth0();
-  const headersSnap = useSnapshot(rqGQLClient.headers);
+  const { authorization } = useSnapshot(rqGQLClient.headers);
 
-  const hasAuthorizationToken = !!headersSnap.authorization;
+  const latestGetIdToken = useLatestRef(getIdTokenClaims);
+
+  const hasAuthorizationToken = !!authorization;
 
   const { isLoading: currentUserIsLoading } = useGQLQuery(
     gql(/* GraphQL */ `
@@ -79,18 +82,19 @@ export function SyncAuth() {
   useEffect(() => {
     if (user) {
       AuthState.isLoading = true;
-      getIdTokenClaims().then((data) => {
-        rqGQLClient.headers.authorization = `Bearer ${data.__raw}`;
+      latestGetIdToken.current().then((data) => {
+        AuthState.authorizationToken =
+          rqGQLClient.headers.authorization = `Bearer ${data.__raw}`;
 
         AuthState.isLoading = true;
       });
     }
-  }, [user]);
+  }, [user, latestGetIdToken]);
 
   return <OnStart />;
 }
 
-const OnStart = memo(() => {
+const OnStart = memo(function OnStart() {
   const { project } = useAuth();
 
   const startAction = useAction({

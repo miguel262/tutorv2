@@ -5,7 +5,7 @@
     "label":"",
     "KCs":[{"code":"", "label":""},{"code":"", "label":""}],
     "level": "1",
-    "text": "Factorice la siguiente expresión",
+    "text": "Factorice la siguiente expresión:",
     "selectSteps":true,
     "steps": [
       {
@@ -16,9 +16,9 @@
         "hints": [
           {
             "hintId": 0,
-            "hint": "Enfocarse en los valores que acompañan al cuadrado"
+            "hint": "Calcular raices cuadradas de cada sumando"
           },
-          { "hintId": 1, "hint": "Un valor a ingresar es 1" },
+          { "hintId": 1, "hint": "x₁ es la raíz cuadrada del primer sumando" },
           {
             "hintId": 2,
             "hint": "Los cuadrados son: (3x)² - (1)², donde los valores a ingresar son 3x y 1"
@@ -31,13 +31,13 @@
         "incorrectMsg":
           "No se han ingresado correctamente los términos que al cuadrado dan como resultado la expresión",
         "correctMsg": "Haz encontrado los términos al cuadrado",
-        "summary":"1) Para aplicar factorización por diferencia de cuadrados, se deben identificar los términos que están al cuadrado de la forma (x₁)² - (x₂)² como se muestra a continuación:"
+        "summary":"1) Para aplicar factorización por diferencia de cuadrados, se deben identificar los términos que están al cuadrado de la forma (x₁)² - (x₂)², donde:"
       },
       {
         "stepId": "1",
         "expression": "(3x)^2-(1)^2",
         "stepTitle": "Ingresar suma por diferencia (x₁ + x₂)(x₁ - x₂)",
-        "displayResult": "(3x+1)(3x-1)",
+        "displayResult": "x₁ = 3x, \\hspace{0.3cm} x₂=1",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "x₁ = 3x" },
@@ -55,7 +55,7 @@
         "stepId": "2",
         "expression": "(-3x)^2-(1)^2",
         "stepTitle": "Ingresar suma por diferencia (x₁ + x₂)(x₁ - x₂)",
-        "displayResult": "(-3x+1)(-3x-1)",
+        "displayResult": "x₁ = -3x, \\hspace{0.3cm} x₂=1",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "x₁ = -3x" },
@@ -73,7 +73,7 @@
         "stepId": "3",
         "expression": "(3x)^2-(-1)^2",
         "stepTitle": "Ingresar suma por diferencia (x₁ + x₂)(x₁ - x₂)",
-        "displayResult": "(3x-1)(3x+1)",
+        "displayResult": "x₁ = 3x, \\hspace{0.3cm} x₂=-1",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "x₁ = 3x" },
@@ -91,7 +91,7 @@
         "stepId": "4",
         "expression": "(-3x)^2-(-1)^2",
         "stepTitle": "Ingresar suma por diferencia (x₁ + x₂)(x₁ - x₂)",
-        "displayResult": "(-3x-1)(-3x+1)",
+        "displayResult": "x₁ = -3x, \\hspace{0.3cm} x₂=-1",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "x₁ = -3x" },
@@ -112,22 +112,22 @@
     "itemId": 3001,
     "itemTitle": "Factorización por diferencia de cuadrados.",
     "level": "1",
-    "text": "Texto problema/ejercicio, planteamiento",
+    "text": "Factorice la siguiente expresión:",
     "selectSteps":true,
     "steps": [
       {
         "stepId": "0",
         "expression": "x^2-y^2",
-        "stepTitle": "Paso 1: identificar terminos al cuadrado",
+        "stepTitle": "Identificar los términos al cuadrado x₁ y x₂",
         "displayResult": "(x)^2-(y)^2",
         "hints": [
           {
             "hintId": 0,
-            "hint": "Enfocarse en los valores que acompañan al cuadrado"
+            "hint": "Calcular raices cuadradas de cada sumando"
           },
           {
             "hintId": 1,
-            "hint": "Un valor a ingresar es x"
+            "hint": "x₁ es la raíz cuadrada del primer sumando"
           },
           {
             "hintId": 2,
@@ -138,16 +138,16 @@
         "incorrectMsg":
           "no se han ingresado correctamente los términos que al cuadrado dan como resultado la expresión",
         "correctMsg": "Haz encontrado los términos al cuadrado",
-        "summary":"1) Para aplicar factorización por diferencia de cuadrados, se deben identificar los términos que están al cuadrado de la forma (x₁)² - (x₂)² como se muestra a continuación:"
+        "summary":"1) Para aplicar factorización por diferencia de cuadrados, se deben identificar los términos que están al cuadrado de la forma (x₁)² - (x₂)², donde:"
       },
       {
         "stepId": "1",
         "expression": "(x)^2-(y)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(x+y)(x-y)",
+        "displayResult": "x₁ = x, \\hspace{0.3cm} x₂=y",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = x" },
           { "hintId": 2, "hint": "Factorización por suma y diferencia: (x+y)(x-y)" }
         ],
         "answers": [{ "answer": ["x+y", "x-y"], "nextStep": null }],
@@ -159,10 +159,10 @@
         "stepId": "2",
         "expression": "(-x)^2-(y)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(-x+y)(-x-y)",
+        "displayResult": "x₁ = -x, \\hspace{0.3cm} x₂=y",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = -x" },
           { "hintId": 2, "hint": "Factorización por suma y diferencia: (-x+y)(-x-y)" }
         ],
         "answers": [{ "answer": ["-x+y", "-x-y"], "nextStep": null }],
@@ -174,10 +174,10 @@
         "stepId": "3",
         "expression": "(x)^2-(-y)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(x-y)(x+y)",
+        "displayResult": "x₁ = x, \\hspace{0.3cm} x₂=-y",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = x" },
           { "hintId": 2, "hint": "Factorización por suma y diferencia: (x-y)(x+y)" }
         ],
         "answers": [{ "answer": ["x-y", "x+y"], "nextStep": null }],
@@ -189,10 +189,10 @@
         "stepId": "4",
         "expression": "(-x)^2-(-y)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(-x-y)(-x+y)",
+        "displayResult": "x₁ = -x, \\hspace{0.3cm} x₂=-y",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
-          { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
+          { "hintId": 1, "hint": "x₁ = -x" },
           { "hintId": 2, "hint": "Factorización por suma y diferencia: (-x-y)(-x+y)" }
         ],
         "answers": [{ "answer": ["-x-y", "-x+y"], "nextStep": null }],
@@ -206,7 +206,7 @@
     "itemId": 3001,
     "itemTitle": "Factorización por diferencia de cuadrados.",
     "level": "1",
-    "text": "Texto problema/ejercicio, planteamiento",
+    "text": "Factorice la siguiente expresión:",
     "selectSteps":true,
     "steps": [
       {
@@ -217,11 +217,11 @@
         "hints": [
           {
             "hintId": 0,
-            "hint": ""
+            "hint": "Calcular raices cuadradas de cada sumando"
           },
           {
             "hintId": 1,
-            "hint": ""
+            "hint": "x₁ es la raíz cuadrada del primer sumando"
           },
           {
             "hintId": 2,
@@ -252,13 +252,13 @@
         "incorrectMsg":
           "no se han ingresado correctamente los términos que al cuadrado dan como resultado la expresión",
         "correctMsg": "Haz encontrado los términos al cuadrado",
-        "summary":"1) Para aplicar factorización por diferencia de cuadrados, se deben identificar los términos que están al cuadrado de la forma (x₁)² - (x₂)² como se muestra a continuación:"
+        "summary":"1) Para aplicar factorización por diferencia de cuadrados, se deben identificar los términos que están al cuadrado de la forma (x₁)² - (x₂)², donde:"
       },
       {
         "stepId": "1",
         "expression": "(2xy^2)^2+(4xy)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(2xy^2+4xy)(2xy^2-4xy)",
+        "displayResult": "x₁ = 2xy², \\hspace{0.3cm} x₂=4xy",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "x₁ = 2xy^2" },
@@ -273,7 +273,7 @@
         "stepId": "2",
         "expression": "(-2xy^2)^2+(4xy)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(-2xy^2+4xy)(-2xy^2-4xy)",
+        "displayResult": "x₁ = -2xy², \\hspace{0.3cm} x₂=4xy",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
@@ -288,7 +288,7 @@
         "stepId": "3",
         "expression": "(2xy^2)^2+(-4xy)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(2xy^2-4xy)(2xy^2+4xy)",
+        "displayResult": "x₁ = 2xy², \\hspace{0.3cm} x₂=-4xy",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },
@@ -303,7 +303,7 @@
         "stepId": "4",
         "expression": "(-2xy^2)^2+(-4xy)^2",
         "stepTitle": "Paso 2: ingresar suma por diferencia",
-        "displayResult": "(-2xy^2-4xy)(-2xy^2+4xy)",
+        "displayResult": "x₁ = -2xy², \\hspace{0.3cm} x₂=-4xy",
         "hints": [
           { "hintId": 0, "hint": "Primer paréntesis ingresar suma" },
           { "hintId": 1, "hint": "Segundo paréntesis ingresar resta" },

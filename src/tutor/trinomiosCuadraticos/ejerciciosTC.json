@@ -2,13 +2,13 @@
   "itemId": "tc1",
   "itemTitle": "Trinomios cuadráticos.",
   "level": "4",
-  "text": "Factorice la expresión de la forma: a(x - x₁)(x - x₂)",
+  "text": "Factorice la expresión de la forma: 𝑎(x - x₁)(x - x₂)",
   "selectSteps":true,
   "steps": [
     {
       "stepId": "0",
       "expression": "3x^2+8x-11",
-      "stepTitle": "Identificar coeficientes a, b y c",
+      "stepTitle": "Identificar coeficientes 𝑎, 𝑏 y 𝑐",
       "displayResult": "a=3, b=8, c=-11",
       "hints": [
         { "hintId": 0, "hint": "El valor de a es el coeficiente de x²" },
@@ -18,7 +18,7 @@
       "answers": [{ "answer": ["3", "8", "-11"], "nextStep": "1" }],
       "incorrectMsg": "no son los valores correspondientes a los valores a, b y c",
       "correctMsg": "Haz identificado los valores de a, b y c",
-      "summary":"1) Para factorizar la expresión de la forma a(x - x₁)(x - x₂), es necesario determinar los valores de a, x₁ y x₂. Donde x₁, x₂ son raíces del polinomio ax + bx + c = 0. Por lo tanto, para llevar a cabo esta factorización, la expresión debe ser tratada como un polinomio y para ello, se debe identificar los valores de a, b y c."
+      "summary":"1) Para factorizar la expresión de la forma a(x - x₁)(x - x₂), es necesario determinar los valores de a, x₁ y x₂. Donde x₁, x₂ son las soluciones de la ecuación ax² + bx + c = 0. Por lo tanto, para llevar a cabo esta factorización, se debe identificar los valores de a, b y c."
     },
     {
       "stepId": "1",
@@ -37,7 +37,7 @@
       "incorrectMsg":
         "no se han ingresado correctamente el discriminante de la expresión",
       "correctMsg": "Haz calculado correctamente el discriminante",
-      "summary":"2) Ya con los valores de a, b y c se puede calcular x₁ y x₂ con la fórmula x₁, x₂= (-b ± √Δ)/2a. Entonces es necesario calcular el discriminante Δ=b²-4ac"
+      "summary":"2) Ya con los valores de a, b y c se puede calcular x₁ y x₂ con la fórmula x₁ = (-b + √Δ)/2a, x₂ = (-b - √Δ)/2a. Entonces es necesario calcular el discriminante Δ=b²-4ac"
     },
     {
       "stepId": "2",
@@ -47,7 +47,7 @@
       "hints": [
         {
           "hintId": 0,
-          "hint": "Recuerda que el discriminante determina si el trinomio tiene soluciones"
+          "hint": "Recuerda que el discriminante determina si el trinomio tiene soluciones reales o complejas conjugadas"
         },
         {
           "hintId": 1,
@@ -58,26 +58,26 @@
       "answers": [{ "answer": "1", "nextStep": "3" }],
       "incorrectMsg": "caso mal ingresado",
       "correctMsg": "Haz descubierto a que caso corresponde el discriminante",
-      "summary":"3) Si Δ>0 posee dos raices reales diferentes, si Δ=0 posee dos raices reales iguales y Δ<0 posee raices complejas conjugadas, entonces:"
+      "summary":"3) Si Δ>0 posee dos raices reales diferentes, si Δ=0 posee dos raices reales iguales y Δ<0 posee raices complejas conjugadas, aquí:"
     },
     {
       "stepId": "3",
       "expression": "Δ = 196, a = 3, b = 8",
-      "stepTitle": "Calcular raíces x₁, x₂ = (-b ± √Δ)/2a ",
+      "stepTitle": "Calcular raíces x₁ = (-b + √Δ)/2a, x₂ = (-b - √Δ)/2a ",
       "formula": [
         "x_{1}=\\frac{-b+\\sqrt{Δ}}{2a}",
         "x_{2}=\\frac{-b-\\sqrt{Δ}}{2a}"
       ],
       "displayResult": "x_{1}=1, x_{2}=-11/3",
       "hints": [
-        { "hintId": 0, "hint": "x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a" },
-        { "hintId": 1, "hint": "Reemplace los valores de a, b y Δ en la fórmula de x₁ y x₂" },
+        { "hintId": 0, "hint": "Reemplace los valores de a, b y Δ en la fórmula para calcular x₁ y x₂" },
+        { "hintId": 1, "hint": "x₁= 1" },
         { "hintId": 2, "hint": "El valor de x₁= 1 y x₂= -11/3" }
       ],
       "answers": [{ "answer": ["1", "-11/3"], "nextStep": "4" }],
       "incorrectMsg": "raices mal ingresadas",
       "correctMsg": "Haz encontrado las raices del polinomio",
-      "summary":"4) Obtenidos los valores de a, b y Δ se puede calcular x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2"
+      "summary":"4) Obtenidos los valores de a, b y Δ se puede calcular x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a, entonces:"
     },
     {
       "stepId": "4",
@@ -132,7 +132,7 @@
         "answers": [{ "answer": ["1", "8", "12"], "nextStep": "1" }],
         "incorrectMsg": "no son los valores correspondientes a los valores a, b y c",
         "correctMsg": "Haz identificado los valores de a, b y c",
-        "summary":"1) Para factorizar la expresión de la forma a(x - x₁)(x - x₂), es necesario determinar los valores de a, x₁ y x₂. Donde x₁, x₂ son raíces del polinomio ax + bx + c = 0. Por lo tanto, para llevar a cabo esta factorización, la expresión debe ser tratada como un polinomio y para ello, se debe identificar los valores de a, b y c."
+        "summary":"1) Para factorizar la expresión de la forma a(x - x₁)(x - x₂), es necesario determinar los valores de a, x₁ y x₂. Donde x₁, x₂ son las soluciones de la ecuación ax² + bx + c = 0. Por lo tanto, para llevar a cabo esta factorización, se debe identificar los valores de a, b y c."
       },
       {
         "stepId": "1",
@@ -148,7 +148,7 @@
         "incorrectMsg":
           "no se han ingresado correctamente el discriminante de la expresión",
         "correctMsg": "Haz calculado correctamente el discriminante",
-        "summary":"2) Ya con los valores de a, b y c se puede calcular x₁ y x₂ con la fórmula x₁, x₂= (-b ± √Δ)/2a. Entonces es necesario calcular el discriminante Δ=b²-4ac"
+        "summary":"2) Ya con los valores de a, b y c se puede calcular x₁ y x₂ con la fórmula x₁ = (-b + √Δ)/2a, x₂ = (-b - √Δ)/2a. Entonces es necesario calcular el discriminante Δ=b²-4ac"
       },
       {
         "stepId": "2",
@@ -169,32 +169,32 @@
         "answers": [{ "answer": "1", "nextStep": "3" }],
         "incorrectMsg": "caso mal ingresado",
         "correctMsg": "Haz descubierto a que caso corresponde el discriminante",
-        "summary":"3) Si Δ>0 posee dos raices reales diferentes, si Δ=0 posee dos raices reales iguales y Δ<0 posee raices complejas conjugadas, entonces:"
+        "summary":"3) Si Δ>0 posee dos raices reales diferentes, si Δ=0 posee dos raices reales iguales y Δ<0 posee raices complejas conjugadas, aquí:"
       },
       {
         "stepId": "3",
         "expression": "Δ = 16, a = 1, b = 8 ",
-        "stepTitle": "Calcular raices x1, x2  = (-b ± √Δ)/2a ",
+        "stepTitle": "Calcular raíces x₁ = (-b + √Δ)/2a, x₂ = (-b - √Δ)/2a ",
         "formula": [
           "x_{1}=\\frac{-b+\\sqrt{Δ}}{2a}",
           "x_{2}=\\frac{-b-\\sqrt{Δ}}{2a}"
         ],
         "displayResult": "x_{1}=-2, x_{2}=-6",
         "hints": [
-          { "hintId": 0, "hint": "x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a" },
-          { "hintId": 1, "hint": "Reemplace los valores de a, b y Δ en la fórmula de x₁ y x₂" },
+          { "hintId": 0, "hint": "Reemplace los valores de a, b y Δ en la fórmula para calcular x₁ y x₂" },
+          { "hintId": 1, "hint": "x1=-2" },
           { "hintId": 2, "hint": "El valor de x1=-2 y x2=-6" }
         ],
         "answers": [{ "answer": ["-2", "-6"], "nextStep": "4" }],
         "incorrectMsg": "raices mal ingresadas",
         "correctMsg": "Haz encontrado las raices del polinomio",
-        "summary":"4) Obtenidos los valores de a, b y Δ se puede calcular x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2"
+        "summary":"4) Obtenidos los valores de a, b y Δ se puede calcular x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a, entonces:"
       },
       {
         "stepId": "4",
         "expression": "x_{1}=-2, x_{2}=-6",
         "stepTitle": "Factorizar de la forma a(x - x₁)(x - x₂)",
-        "displayResult": "(x+2)(x+6)",
+        "displayResult": "1(x+2)(x+6)",
         "hints": [
           { "hintId": 0, "hint": "reemplazar el primer factor por x-x₁" },
           { "hintId": 1, "hint": "Un factor es x-x₁, entonces el valor a ingresar x+2" },
@@ -235,7 +235,7 @@
        "answers": [{ "answer": ["5", "4", "-1"], "nextStep": "2" }],
        "incorrectMsg": "no son los valores correspondientes a los valores a, b y c",
        "correctMsg": "Haz identificado los valores de a, b y c",
-       "summary":"1) Para factorizar la expresión de la forma a(x - x₁)(x - x₂), es necesario determinar los valores de a, x₁ y x₂. Donde x₁, x₂ son raíces del polinomio ax + bx + c = 0. Por lo tanto, para llevar a cabo esta factorización, la expresión debe ser tratada como un polinomio y para ello, se debe identificar los valores de a, b y c." 
+       "summary":"1) Para factorizar la expresión de la forma a(x - x₁)(x - x₂), es necesario determinar los valores de a, x₁ y x₂. Donde x₁, x₂ son las soluciones de la ecuación ax² + bx + c = 0. Por lo tanto, para llevar a cabo esta factorización, se debe identificar los valores de a, b y c." 
      },
      {
        "stepId": "1",
@@ -254,7 +254,7 @@
        "incorrectMsg":
          "no se han ingresado correctamente el discriminante de la expresión",
        "correctMsg": "Haz calculado correctamente el discriminante",
-       "summary":"2) Ya con los valores de a, b y c se puede calcular x₁ y x₂ con la fórmula x₁, x₂= (-b ± √Δ)/2a. Entonces es necesario calcular el discriminante Δ=b²-4ac"
+       "summary":"2) Ya con los valores de a, b y c se puede calcular x₁ y x₂ con la fórmula x₁ = (-b + √Δ)/2a, x₂ = (-b - √Δ)/2a. Entonces es necesario calcular el discriminante Δ=b²-4ac"
      },
      {
        "stepId": "2",
@@ -275,26 +275,26 @@
        "answers": [{ "answer": "1", "nextStep": "4" }],
        "incorrectMsg": "caso mal ingresado",
        "correctMsg": "Haz descubierto a que caso corresponde el discriminante",
-       "summary":"3) Si Δ>0 posee dos raices reales diferentes, si Δ=0 posee dos raices reales iguales y Δ<0 posee raices complejas conjugadas, entonces:"
+       "summary":"3) Si Δ>0 posee dos raices reales diferentes, si Δ=0 posee dos raices reales iguales y Δ<0 posee raices complejas conjugadas, aquí:"
      },
      {
        "stepId": "3",
        "expression": "Δ = 36, a = 5, b = 4",
-       "stepTitle": "Calcular raíces x₁, x₂ = (-b ± √Δ)/2a ",
+       "stepTitle": "Calcular raíces x₁ = (-b + √Δ)/2a, x₂ = (-b - √Δ)/2a ",
        "formula": [
          "x_{1}=\\frac{-b+\\sqrt{Δ}}{2a}",
          "x_{2}=\\frac{-b-\\sqrt{Δ}}{2a}"
        ],
        "displayResult": "x_{1}=1/5, x_{2}=-1",
        "hints": [
-         { "hintId": 0, "hint": "x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a" },
-         { "hintId": 1, "hint": "Reemplace los valores de a, b y Δ en la fórmula de x₁ y x₂" },
+         { "hintId": 0, "hint": "Reemplace los valores de a, b y Δ en la fórmula para calcular x₁ y x₂" },
+         { "hintId": 1, "hint": "x₁= 1/5" },
          { "hintId": 2, "hint": "El valor de x₁= 1/5 y x₂= -1" }
        ],
        "answers": [{ "answer": ["1/5", "-1"], "nextStep": "5" }],
        "incorrectMsg": "raices mal ingresadas",
        "correctMsg": "Haz encontrado las raices del polinomio",
-       "summary":"4) Obtenidos los valores de a, b y Δ se puede calcular x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a"
+       "summary":"4) Obtenidos los valores de a, b y Δ se puede calcular x₁= (-b + √Δ)/2a y x₂= (-b - √Δ)/2a, entonces:"
      },
      {
        "stepId": "4",

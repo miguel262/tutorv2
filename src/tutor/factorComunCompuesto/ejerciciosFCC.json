@@ -14,8 +14,8 @@
             "stepTitle": "Agrupar los sumandos",
             "displayResult": ["(ax + ay) + (bx + by)", "(ax + bx) + (ay + by)"],
             "hints": [
-              { "hintId": 0, "hint": "agrupa los sumandos con términos que se repiten" },
-              { "hintId": 1, "hint": "agrupa los sumandos con constantes iguales" },
+              { "hintId": 0, "hint": "agrupa los sumandos con los términos que se repiten" },
+              { "hintId": 1, "hint": "agrupa los sumandos que contengan x" },
               { "hintId": 2, "hint": "los grupos a ingresar son: (ax + ay) + (bx + by)" }
             ],
             "answers": [
@@ -35,7 +35,7 @@
           {
             "stepId": "1",
             "expression": "(ax + ay) + (bx + by)",
-            "stepTitle": "Ingrese el factor común de cada grupo",
+            "stepTitle": "Ingresar factor común a cada grupo",
             "displayResult": [
               ["(a)", "(x+y)"],
               ["(b)", "(x+y)"]
@@ -52,12 +52,12 @@
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
             "correctMsg": "Has encontrado el factor común",
-            "summary":"2) De los grupos creados en el paso anterior, se calcula el factor común a cada grupo"
+            "summary":"2) De los grupos creados en el paso anterior, se busca el factor común a cada grupo"
           },
           {
             "stepId": "2",
             "expression": "(ax + bx) + (ay + by)",
-            "stepTitle": "Ingrese el factor común de cada grupo",
+            "stepTitle": "Ingresar factor común a cada grupo",
             "displayResult": [
               ["(x)", "(a+b)"],
               ["(y)", "(a+b)"]
@@ -74,12 +74,12 @@
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
             "correctMsg": "Haz encontrado el factor común",
-            "summary":"2) De los grupos creados en el paso anterior, se calcula el factor común a cada grupo"
+            "summary":"2) De los grupos creados en el paso anterior, se busca el factor común a cada grupo"
           },
           {
             "stepId": "3",
             "expression": "a(x+y)+b(x+y)",
-            "stepTitle": "Ingrese el factor común",
+            "stepTitle": "Ingresar factor común de toda la expresión",
             "displayResult": "(a+b)",
             "hints": [
               { "hintId": 0, "hint": "Ver variables que se repite en ambos sumandos" },
@@ -95,7 +95,7 @@
           {
             "stepId": "4",
             "expression": "x(a+b)+y(a+b)",
-            "stepTitle": "Ingrese el factor común",
+            "stepTitle": "Ingresar factor común de toda la expresión",
             "displayResult": "(x+y)",
             "hints": [
               { "hintId": 0, "hint": "Ver variables que se repite en ambos sumandos" },
@@ -120,17 +120,17 @@
           {
             "stepId": "0",
             "expression": "2ax + 2bx - ay + 5a - by + 5b",
-            "stepTitle": "Paso 1: agrupe los sumandos",
+            "stepTitle": "Agrupar los sumandos",
             "displayResult": ["(2ax - ay + 5a) + (2bx - by + 5b)"],
             "hints": [
               {
                 "hintId": 0,
-                "hint": "agrupa los sumandos con términos que se repiten (comenzar con los primeros términos de los sumandos)"
+                "hint": "agrupa los sumandos que contengan 𝑎"
               },
               { "hintId": 1, "hint": "agrupa los sumandos con constantes iguales" },
               {
                 "hintId": 2,
-                "hint": "los grupos son: (2ax - ay + 5a) + (2bx - by + 5b)"
+                "hint": "los grupos son: (2𝑎𝑥 - 𝑎𝑦 + 5𝑎) + (2𝑏𝑥 - 𝑏𝑦 + 5𝑏)"
               }
             ],
             "answers": [
@@ -183,7 +183,7 @@
           {
             "stepId": "1",
             "expression": "(2ax-ay+5a) + (2bx-by+5b)",
-            "stepTitle": "Paso 2: ingrese el factor común de cada grupo",
+            "stepTitle": "Ingresar factor común a cada grupo",
             "displayResult": [
               ["(a)", "(2x-y+5)"],
               ["(b)", "(2x-y+5)"]
@@ -200,12 +200,12 @@
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
             "correctMsg": "Haz encontrado el factor común",
-            "summary":"2) De los grupos creados en el paso anterior, se calcula el factor común a cada grupo"
+            "summary":"2) De los grupos creados en el paso anterior, se busca el factor común a cada grupo"
           },
           {
             "stepId": "2",
             "expression": "a(2x-y+5)+b(2x-y+5)",
-            "stepTitle": "Paso 3: ingrese el factor común",
+            "stepTitle": "Ingresar factor común de toda la expresión",
             "displayResult": "(a+b)",
             "hints": [
               { "hintId": 0, "hint": "ver variable que se repite en ambos sumandos" },
