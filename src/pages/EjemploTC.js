@@ -4,22 +4,22 @@ import { Stack } from "@chakra-ui/react";
 import { useAction } from "../utils/action";
 import {useEffect} from "react";
 
-function IndexPage({ejercicio}) {
+function IndexPage({exercise}) {
   const action=useAction();
   useEffect(() => {
     action({
       verbName: "loadContent",
-      contentID:ejercicio.itemId,
+      contentID:exercise.itemId,
     })}, [])
   return (
     <Stack width="100%" padding="1em">
-      <TC ejercicio={ejercicio} nextRouter="/"></TC>
+      <TC exercise={exercise} nextRouter="/"></TC>
     </Stack>
   );
 }
 export async function getServerSideProps() {
   return {
-    props: {ejercicio:data[2]}, // will be passed to the page component as props
+    props: {exercise:data[2]}, // will be passed to the page component as props
   }
 }
 

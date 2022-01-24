@@ -3,7 +3,7 @@
   "itemTitle": "Factor común",
   "level": "1",
   "text": "Factorizar la siguiente expresión:",
-  "selectSteps":true,
+  "selectSteps":false,
   "steps": [
     {
       "stepId": 0,

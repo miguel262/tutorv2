@@ -9,64 +9,61 @@ import {
   Center,
   Spacer,
   Input,
-  WrapItem,
   Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 
-export const DSCpaso2 = ({
-  ejercicio,
-  setPaso2Valido,
-  paso2Valido,
-  hintsTerminado,
-  setHintsTerminado,
+export const DCstep2 = ({
+  step2,
+  setStep2Valid,
+  step2Valid,
   contentID,
 }) => {
-  const respuesta1 = useRef(null);
-  const respuesta2 = useRef(null);
-  const correcta = ejercicio.answers[0].answer;
-  const [estado, setEstado] = useState(null);
-  const [error, setError] = useState(false);
-  const action=useAction();
-  const comparar = () => {
-    const entrada = [
-      respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
-      respuesta2.current.value.replace(/[*]| /g, "").toLowerCase(),
+  const response1 = useRef(null); //first input response
+  const response2 = useRef(null); //second input response
+  const correctAlternatives = step2.answers[0].answer; //list of answers valid
+  const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
+  const [error, setError] = useState(false); //true when the student enters an incorrect answers
+  const action=useAction(); //send action to central system
+
+  const compare = () => {
+    const responseStudent = [
+      response1.current.value.replace(/[*]| /g, "").toLowerCase(),
+      response2.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
 
-    if (entrada[0] === correcta[0] && entrada[1] === correcta[1]) {
-      setPaso2Valido((paso2Valido = "Terminado"));
+    if (responseStudent[0] === correctAlternatives[0] && responseStudent[1] === correctAlternatives[1]) {
+      setStep2Valid((step2Valid = "Terminado"));
       action({
         verbName: "completeContent",
         contentID: contentID,
         result: 1,
       // topicID: ""+ejercicio.itemId,
       });
-      setEstado(
+      setFeedbackMsg(
         <Alert status="success">
           <AlertIcon />
-          {ejercicio.correctMsg}
+          {step2.correctMsg}
         </Alert>
-        // <MathComponent tex={ejercicio.result} display={false} />
       );
     } else {
       setError(true);
-      setEstado(
+      setFeedbackMsg(
         //error cuando la entrada es incorrecta
         <Alert status="error">
           <AlertIcon />
-          {ejercicio.incorrectMsg}
+          {step2.incorrectMsg}
         </Alert>
       );
     }
   };
-
   return (
     <>
       <Wrap padding="15px 10px 10px 10px">
         <WrapItem padding="5px 0px 10px 0px">
           <Center>
             <MathComponent
-              tex={String.raw`${ejercicio.expression}`}
+              tex={String.raw`${step2.expression}`}
               display={false}
             />
           </Center>
@@ -86,9 +83,9 @@ export const DSCpaso2 = ({
               size="sm"
               w={125}
               focusBorderColor="#9DECF9"
-              placeholder="Ingrese factor 1"
-              ref={respuesta1}
-              isReadOnly={paso2Valido != null}
+              placeholder="Ingrese suma"
+              ref={response1}
+              isReadOnly={step2Valid != null}
             />
             <label htmlFor="label2">)(</label>
             <Input
@@ -100,9 +97,9 @@ export const DSCpaso2 = ({
               size="sm"
               w={125}
               focusBorderColor="#9DECF9"
-              placeholder="Ingrese factor 2"
-              ref={respuesta2}
-              isReadOnly={paso2Valido != null}
+              placeholder="Ingrese resta"
+              ref={response2}
+              isReadOnly={step2Valid != null}
             />
             <label htmlFor="label3">)</label>
           </Center>
@@ -111,18 +108,18 @@ export const DSCpaso2 = ({
         <Spacer />
 
         <WrapItem>
-          {paso2Valido == null && (
+          {step2Valid == null && (
             <>
               <Button
                 colorScheme="cyan"
                 variant="outline"
                 onClick={()=>{
-                  comparar();
+                  compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+ejercicio.stepId,
+                    stepID: ""+step2.stepId,
                     contentID:contentID,
-                    result: paso2Valido===null?0:1,
+                    result: step2Valid===null?0:1,
                     kcsIDs:[4],
                   // topicID: ""+ejercicio.itemId,
                   })
@@ -133,12 +130,10 @@ export const DSCpaso2 = ({
               </Button>
               &nbsp;&nbsp;
               <Hint
-                ejercicio={ejercicio.hints}
-                setHintsTerminado={setHintsTerminado}
-                //stepId={ejercicio.stepId}
+                hints={step2.hints}
                 contentId={contentID}
-                stepId={ejercicio.stepId}
-                itemTitle="Diferencia/suma de cubos"
+                stepId={step2.stepId}
+                itemTitle="Diferencia de cuadrados"
                 error={error}
                 setError={setError}
               ></Hint>
@@ -146,7 +141,7 @@ export const DSCpaso2 = ({
           )}
         </WrapItem>
       </Wrap>
-      {estado}
+      {feedbackMsg}
     </>
   );
 };

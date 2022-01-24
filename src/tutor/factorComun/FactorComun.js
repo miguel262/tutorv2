@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FCpaso1 from "./steps/FCpaso1";
+import FCstep1 from "./steps/FCstep1";
 import { MathComponent } from "../../components/MathJax";
 import { BreadcrumbTutor } from "../tools/BreadcrumbTutor";
 import { Loading } from "../tools/Spinner";
@@ -15,33 +15,30 @@ import {
   Box,
   Wrap, Spacer, Button, Stack
 } from "@chakra-ui/react";
-
 import { FCsummary } from "../tools/Summary";
 import { SelectStep } from "../tools/SelectStep";
-import { VideoScreen } from "../tools/VideoScreen";
+//import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../utils/action";
 
-const FC = ({ ejercicio, nextRouter }) => {
+const FC = ({ exercise, nextRouter }) => {
 
-  const action=useAction();
-    
-  const [paso1Valido, setPaso1Valido] = useState(null);
-  const [index, setIndex] = useState([0]);
-  const [loading, setLoading] = useState(true);
+  const action=useAction(); //send action to central system
+  const [step1Valid, setStep1Valid] = useState(null); //change the value "null" when step 1 is completed
+  const [index, setIndex] = useState([0]); //list with to indexes of tabs open, initial 0 (only tab 1 open (step 1))
+  const [select, setSelect] = useState(exercise.selectSteps); //select is true when step is chosen, false when not selectStep 
+  const steps = exercise.steps.map((i)=>i.stepTitle); //list of all stepTitle for selectStep
+  const [loading, setLoading] = useState(true); //loading icon when not charge the math formula
 
-  const change = () => setLoading(false);
-//selectStep
-  const [select, setSelect] = useState(true);
-  const steps = ejercicio.steps.map((i)=>i.stepTitle);
+  const change = () => setLoading(false); //function that disable loading icon when charge the math formula
 
   return (
     <div>
       <BreadcrumbTutor
         root="Factorización"
-        item={ejercicio.itemTitle}
+        item={exercise.itemTitle}
       ></BreadcrumbTutor>
 
-      <Wrap>{ejercicio.text}
+      <Wrap>{exercise.text}
         <Spacer/>
         {//<VideoScreen></VideoScreen>
         }
@@ -50,7 +47,7 @@ const FC = ({ ejercicio, nextRouter }) => {
       <Wrap justify="center">
         {loading && <Loading />}
         <MathComponent
-          tex={ejercicio.steps[0].expression}
+          tex={exercise.steps[0].expression}
           display={true}
           onSuccess={change}
         />
@@ -58,33 +55,33 @@ const FC = ({ ejercicio, nextRouter }) => {
 
       <Accordion allowToggle allowMultiple index={index} style={{ padding: 0 }}>
         <AccordionItem isDisabled = {select}>
-          <Alert colorScheme={paso1Valido == null ? "blue" : "green"}>
+          <Alert colorScheme={step1Valid == null ? "blue" : "green"}>
             <AccordionButton
               onClick={() => {
                 if (index.some((element) => element === 0) && !select) {//cerrarTab
                   setIndex(index.filter((e) => e !== 0)); 
                   action({
                     verbName: "closeStep",
-                    stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:ejercicio.itemId,//cambiar para leer del json
+                    stepID: ""+exercise.steps[0].stepId,
+                    contentID:exercise.itemId,//cambiar para leer del json
                   });
                 }                
                 else { //no select= false (abrirTab)
                   setIndex(index.concat(0));
                   action({
                     verbName: "openStep",
-                    stepID: ""+ejercicio.steps[0].stepId,
-                    contentID:ejercicio.itemId, //leer del json (cambiar)
+                    stepID: ""+exercise.steps[0].stepId,
+                    contentID:exercise.itemId, //leer del json (cambiar)
                   });
                 }
               }}
             >
               <Box flex="1" textAlign="left">
-                {!select && ejercicio.steps[0].stepTitle
+                {!select && exercise.steps[0].stepTitle
                 }
-                {paso1Valido != null && !select && "    ✔ "
+                {step1Valid != null && !select && "    ✔ "
                 }
-                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={ejercicio.itemId}></SelectStep>
+                {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={exercise.itemId}></SelectStep>
                 </Wrap>}
               </Box>
               <AccordionIcon />
@@ -92,19 +89,19 @@ const FC = ({ ejercicio, nextRouter }) => {
           </Alert>
           <AccordionPanel style={{ padding: 0 }}>
             <>
-              {!select &&<FCpaso1
-                ejercicio={ejercicio.steps[0]}
-                setPaso1Valido={setPaso1Valido}
-                paso1Valido={paso1Valido}
-                loading={loading}
-                contentID={ejercicio.itemId} //cambiar a futuro
-              ></FCpaso1>}
+              {!select &&<FCstep1
+                step1={exercise.steps[0]}
+                setStep1Valid={setStep1Valid}
+                step1Valid={step1Valid}
+                contentID={exercise.itemId} //cambiar a futuro
+              ></FCstep1>}
             </>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      {paso1Valido != null && (<>
-                <FCsummary ejercicio={ejercicio.steps[0]} />
+      
+      {step1Valid != null && (<>
+                <FCsummary exercise={exercise.steps[0]} />
                 <Stack padding="1em"  alignItems="center">
                   <Link href={nextRouter}>
                     <Button 

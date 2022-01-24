@@ -13,42 +13,39 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCpaso5 = ({
-  ejercicio,
-  setPaso6Valido,
-  paso6Valido,
-  hintsTerminado,
-  setHintsTerminado,
-  a,
+export const TCstep5 = ({
+  step5,
+  setStep5Valid,
+  step5Valid,
   contentID,
 }) => {
-  const respuesta1 = useRef(null);
-  const respuesta2 = useRef(null);
-  const respuesta3 = useRef(null);
-  const [estado, setEstado] = useState(null);
-  const [error, setError] = useState(false);
+  const response1 = useRef(null); //1st input response
+  const response2 = useRef(null); //2nd input response
+  const response3 = useRef(null); //3nd input response
+  const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
+  const [error, setError] = useState(false); //true when the student enters an incorrect answers
+  const correctAlternatives = step5.answers[0].answer;  //list of answers valid
+  const action=useAction(); //send action to central system
 
-  const correctas = ejercicio.answers[0].answer;
-  const action=useAction();
   const comparar = () => {
-    const entrada = [
-      respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
-      respuesta2.current.value.replace(/[*]| /g, "").toLowerCase(),
-      respuesta3.current.value.replace(/[*]| /g, "").toLowerCase(),
+    const responseStudent = [
+      response1.current.value.replace(/[*]| /g, "").toLowerCase(),
+      response2.current.value.replace(/[*]| /g, "").toLowerCase(),
+      response3.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
-    const valida = (element) =>
-      (element[0] === entrada[0] && element[1] === entrada[1] && element[2] === entrada[2]) ||
-      (element[0] === entrada[0] && element[1] === entrada[2] && element[2] === entrada[1]);
-    if (correctas.some(valida)) {
-      setEstado(
+    const validate = (element) =>
+      (element[0] === responseStudent[0] && element[1] === responseStudent[1] && element[2] === responseStudent[2]) ||
+      (element[0] === responseStudent[0] && element[1] === responseStudent[2] && element[2] === responseStudent[1]);
+    if (correctAlternatives.some(validate)) {
+      setFeedbackMsg(
         <Alert status="success">
           <AlertIcon />
-          {ejercicio.correctMsg}
+          {step5.correctMsg}
           &nbsp;
-          <MathComponent tex={ejercicio.displayResult} display={false} />
+          <MathComponent tex={step5.displayResult} display={false} />
         </Alert>
       );
-      setPaso6Valido((paso6Valido = "Terminado"));
+      setStep5Valid((step5Valid = "Terminado"));
       action({
         verbName: "completeContent",
         contentID: contentID,
@@ -57,11 +54,11 @@ export const TCpaso5 = ({
       });
     } else {
       setError(true);
-      setEstado(
+      setFeedbackMsg(
         //error cuando la entrada es incorrecta
         <Alert status="error">
           <AlertIcon />
-          {ejercicio.incorrectMsg}
+          {step5.incorrectMsg}
         </Alert>
       );
     }
@@ -72,7 +69,7 @@ export const TCpaso5 = ({
         <WrapItem padding="8px 0px 10px 0px">
           <Center>
             <MathComponent
-              tex={String.raw`${ejercicio.expression}`}
+              tex={String.raw`${step5.expression}`}
               display={false}
             />
           </Center>
@@ -92,8 +89,8 @@ export const TCpaso5 = ({
               w={50}
               focusBorderColor="#9DECF9"
               placeholder="a"
-              ref={respuesta1}
-              isReadOnly={paso6Valido != null}
+              ref={response1}
+              isReadOnly={step5Valid != null}
             />
             <label>(</label>
             <Input
@@ -106,8 +103,8 @@ export const TCpaso5 = ({
               w={120}
               focusBorderColor="#9DECF9"
               placeholder="x - x₁"
-              ref={respuesta2}
-              isReadOnly={paso6Valido != null}
+              ref={response2}
+              isReadOnly={step5Valid != null}
             />
             <label>)(</label>
             <Input
@@ -120,8 +117,8 @@ export const TCpaso5 = ({
               w={120}
               focusBorderColor="#9DECF9"
               placeholder="x - x₂"
-              ref={respuesta3}
-              isReadOnly={paso6Valido != null}
+              ref={response3}
+              isReadOnly={step5Valid != null}
             />
             <label>)</label>
           </Center>
@@ -130,7 +127,7 @@ export const TCpaso5 = ({
         <Spacer />
 
         <WrapItem>
-          {paso6Valido == null && (
+          {step5Valid == null && (
             <>
               <Button
                 colorScheme="cyan"
@@ -139,9 +136,9 @@ export const TCpaso5 = ({
                   comparar();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+ejercicio.stepId,
+                    stepID: ""+step5.stepId,
                     contentID:contentID,
-                    result: paso6Valido===null?0:1,
+                    result: step5Valid===null?0:1,
                     kcsIDs:[8],
                   // topicID: ""+ejercicio.itemId,
                   })
@@ -152,11 +149,10 @@ export const TCpaso5 = ({
               </Button>{" "}
               &nbsp; &nbsp;
               <Hint
-                ejercicio={ejercicio.hints}
-                setHintsTerminado={setHintsTerminado}
+                hints={step5.hints}
                 //stepId={ejercicio.stepId}
                 contentId={contentID}
-                stepId={ejercicio.stepId}
+                stepId={step5.stepId}
                 itemTitle="Trinomios cuadráticos"
                 error={error}
                 setError={setError}
@@ -165,7 +161,7 @@ export const TCpaso5 = ({
           )}
         </WrapItem>
       </Wrap>
-      {estado}
+      {feedbackMsg}
     </>
   );
 };

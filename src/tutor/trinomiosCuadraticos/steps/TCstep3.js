@@ -13,22 +13,23 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido, contentID, }) => {
-  let idPasoSiguiente = null;
-  const [estado, setEstado] = useState(null);
+export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID, }) => {
+
+  const [feedbackMsg, setFeedbackMsg] = useState(null); // feedback message
   const [value, setValue] = React.useState(); //checked radio
-  const [error, setError] = useState(false);
-  const action=useAction();
-  const comparar = () => {
-    if (ejercicio.answers[0].answer === value) {
-      setPaso4Valido((paso4Valido = ejercicio.answers[0].nextStep));
+  const [error, setError] = useState(false); //true when the student enters an incorrect answers
+  const action=useAction(); //send action to central system
+
+  const compare = () => {
+    if (step3.answers[0].answer === value) {
+      setStep3Valid((step3Valid = step3.answers[0].nextStep));
     } else {
       setError(true);
-      setEstado(
+      setFeedbackMsg(
         //error cuando la entrada es incorrecta
         <Alert status="error">
           <AlertIcon />
-          {ejercicio.incorrectMsg}
+          {step3.incorrectMsg}
         </Alert>
       );
     }
@@ -40,13 +41,13 @@ export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido, contentID, }) 
           <Center>
             <RadioGroup onChange={setValue} value={value}>
               <Stack>
-                <Radio value="1" isReadOnly={paso4Valido != null}>
+                <Radio value="1" isReadOnly={step3Valid != null}>
                   Factorizable con diferentes raíces reales
                 </Radio>
-                <Radio value="2" isReadOnly={paso4Valido != null}>
+                <Radio value="2" isReadOnly={step3Valid != null}>
                   Factorizable con raíces reales iguales
                 </Radio>
-                <Radio value="3" isReadOnly={paso4Valido != null}>
+                <Radio value="3" isReadOnly={step3Valid != null}>
                   Factorizable con raíces complejas conjugadas
                 </Radio>
               </Stack>
@@ -55,18 +56,18 @@ export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido, contentID, }) 
         </WrapItem>
 
         <WrapItem padding="25px 0px 0px 70px">
-          {paso4Valido == null && (
+          {step3Valid == null && (
             <>
               <Button
                 colorScheme="cyan"
                 variant="outline"
                 onClick={()=>{
-                  comparar();
+                  compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+ejercicio.stepId,
+                    stepID: ""+step3.stepId,
                     contentID:contentID,
-                    result: paso4Valido===null?0:1,
+                    result: step3Valid===null?0:1,
                     kcsIDs:[6],
                   // topicID: ""+ejercicio.itemId,
                   })
@@ -77,10 +78,10 @@ export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido, contentID, }) 
               </Button>
               &nbsp;&nbsp;
               <Hint
-                ejercicio={ejercicio.hints}
+                hints={step3.hints}
                 //stepId={ejercicio.stepId}
                 contentId={contentID}
-                stepId={ejercicio.stepId}
+                stepId={step3.stepId}
                 itemTitle="Trinomios cuadráticos"
                 error={error}
                 setError={setError}
@@ -89,7 +90,7 @@ export const TCpaso3 = ({ ejercicio, setPaso4Valido, paso4Valido, contentID, }) 
           )}
         </WrapItem>
       </Wrap>
-      {paso4Valido == null && estado}
+      {step3Valid == null && feedbackMsg}
     </>
   );
 };

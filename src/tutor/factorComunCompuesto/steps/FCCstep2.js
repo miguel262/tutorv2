@@ -1,54 +1,47 @@
 import React, { useRef, useState } from "react";
 import Hint from "../../tools/Hint";
 import { MathComponent } from "../../../components/MathJax";
-import { Loading } from "../../tools/Spinner";
 import { useAction } from "../../../utils/action";
 import {
   Alert,
   AlertIcon,
   Button,
-  Center,
   Input,
   Wrap,
   WrapItem,
+  Center,
   Spacer,
 } from "@chakra-ui/react";
 
-export const DCpaso1 = ({
-  ejercicio,
-  setPaso1Valido,
-  paso1Valido,
-  hintsTerminado,
-  setHintsTerminado,
-  loading,
+const FCCstep2 = ({
+  step2,
+  setStep2Valid,
+  step2Valid,
   contentID,
 }) => {
-  const respuesta1 = useRef(null);
-  const respuesta2 = useRef(null);
-  const [estado, setEstado] = useState(null);
-  const [error, setError] = useState(false);
-  //let idPasoSiguiente = null;
-  const correctas = ejercicio.answers.map((elemento) => elemento.answer);
-  const action=useAction();
-  const comparar = () => {
-    const entrada = [
-      respuesta1.current.value.replace(/[*]| /g, "").toLowerCase(),
-      respuesta2.current.value.replace(/[*]| /g, "").toLowerCase(),
+  const response1 = useRef(null); //first input response
+  const response2 = useRef(null); //second input response
+  const correctAlternatives = step2.answers.answer; //list of answers valid
+  const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
+  const [error, setError] = useState(false); //true when the student enters an incorrect answers
+  const action=useAction(); //send action to central system
+
+  const compare = () => {
+    const responseStudent = [
+      response1.current.value.replace(/[*]| /g, "").toLowerCase(),
+      response2.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
-    const valida = (element) =>
-      element[0] === entrada[0] && element[1] === entrada[1];
-    if (correctas.some(valida)) {
-      setPaso1Valido(
-        (paso1Valido = ejercicio.answers[correctas.findIndex(valida)].nextStep)
-      );
+
+    if (responseStudent[0] === correctAlternatives[0] && responseStudent[1] === correctAlternatives[1]) {
+      setStep2Valid((step2Valid = step2.answers.nextStep));
     } else {
       setError(true);
-      //error cuando la entrada es incorrecta
-      setEstado(
+
+      setFeedbackMsg(
         //error cuando la entrada es incorrecta
         <Alert status="error">
           <AlertIcon />
-          {ejercicio.incorrectMsg}
+          {step2.incorrectMsg}
         </Alert>
       );
     }
@@ -58,9 +51,8 @@ export const DCpaso1 = ({
       <Wrap padding="15px 10px 10px 10px">
         <WrapItem padding="5px 0px 10px 0px">
           <Center>
-            {loading && <Loading />}
             <MathComponent
-              tex={String.raw`${ejercicio.expression}`}
+              tex={String.raw`${step2.expression}`}
               display={false}
             />
           </Center>
@@ -70,7 +62,7 @@ export const DCpaso1 = ({
 
         <WrapItem>
           <Center>
-            <label>( </label>
+            <label>(</label>
             <Input
               style={{
                 textAlign: "center",
@@ -80,12 +72,15 @@ export const DCpaso1 = ({
               size="sm"
               w={100}
               focusBorderColor="#9DECF9"
-              placeholder="Cuadrado 1"
-              ref={respuesta1}
-              isReadOnly={paso1Valido != null}
+              placeholder="F. común 1"
+              ref={response1}
+              isReadOnly={step2Valid != null}
             />
-            <label>)²</label>
-            <label>&nbsp;- ( </label>
+            <label>)</label>
+            
+            <MathComponent tex={step2.displayResult[0][1]} display={false} />
+            <label>&nbsp;+&nbsp;</label>
+            <label>(</label>
             <Input
               style={{
                 textAlign: "center",
@@ -95,30 +90,35 @@ export const DCpaso1 = ({
               size="sm"
               w={100}
               focusBorderColor="#9DECF9"
-              placeholder="Cuadrado 2"
-              ref={respuesta2}
-              isReadOnly={paso1Valido != null}
+              placeholder="F. común 2"
+              ref={response2}
+              isReadOnly={step2Valid != null}
             />
-            <label>)²</label>
+            <label>)</label>
+            <MathComponent
+              tex={step2.displayResult[1][1]}
+              display={false}
+              style={{ textAlign: "center" }}
+            />
           </Center>
         </WrapItem>
 
         <Spacer />
 
         <WrapItem>
-          {paso1Valido == null && (
+          {step2Valid == null && (
             <>
               <Button
                 colorScheme="cyan"
                 variant="outline"
                 onClick={()=>{
-                  comparar();
+                  compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+ejercicio.stepId,
+                    stepID: ""+step2.stepId,
                     contentID:contentID,
-                    result: paso1Valido===null?0:1,
-                    kcsIDs:[3],
+                    result: step2Valid===null?0:1,
+                    kcsIDs:[1],
                   // topicID: ""+ejercicio.itemId,
                   })
                 }}
@@ -126,14 +126,13 @@ export const DCpaso1 = ({
               >
                 Aceptar
               </Button>
-              &nbsp;&nbsp;
+              &nbsp; &nbsp;
               <Hint
-                ejercicio={ejercicio.hints}
-                setHintsTerminado={setHintsTerminado}
+                hints={step2.hints}
                 //stepId={ejercicio.stepId}
                 contentId={contentID}
-                stepId={ejercicio.stepId}
-                itemTitle="Diferencia de cuadrados"
+                stepId={step2.stepId}
+                itemTitle="Factor Común compuesto "
                 error={error}
                 setError={setError}
               ></Hint>
@@ -141,7 +140,8 @@ export const DCpaso1 = ({
           )}
         </WrapItem>
       </Wrap>
-      {paso1Valido == null && estado}
+      {step2Valid == null && feedbackMsg}
     </>
   );
 };
+export default FCCstep2;

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 //import { Ejercicio1 } from "./EjerciciosDSC";
 import { MathComponent } from "../../components/MathJax";
 import { BreadcrumbTutor } from "../tools/BreadcrumbTutor";
-import { DSCpaso1 } from "./steps/DSCpaso1";
-import { DSCpaso2 } from "./steps/DSCpaso2";
+import { DSCstep1 } from "./steps/DSCstep1";
+import { DSCstep2 } from "./steps/DSCstep2";
 import { DSCsummary } from "../tools/Summary";
 import { Loading } from "../tools/Spinner";
 import Link from 'next/link'
@@ -18,42 +18,38 @@ import {
   Wrap,
   Center, Spacer, Button, Stack
 } from "@chakra-ui/react";
-import { VideoScreen } from "../tools/VideoScreen";
+//import { VideoScreen } from "../tools/VideoScreen";
 import { SelectStep } from "../tools/SelectStep";
 import { useAction } from "../../utils/action";
 
 //react functional component
-const DSC = ({ejercicio, nextRouter}) => {
-  //const ejemplo = Ejercicio1;
-  //const ejercicio = Ejercicio1;
-  const [paso1Valido, setPaso1Valido] = useState(null);
-  const [paso2Valido, setPaso2Valido] = useState(null);
-  const [hintsTerminado, setHintsTerminado] = useState(null);
-  const [hintsTerminado2, setHintsTerminado2] = useState(null);
-  const [index, setIndex] = useState([1, 0]);
+const DSC = ({exercise , nextRouter}) => {
 
-  useEffect(() => {
-    if (paso1Valido != null) {
+  const [step1Valid, setStep1Valid] = useState(null); //change the value "null" when step 1 is completed
+  const [step2Valid, setStep2Valid] = useState(null); //change the value "null" when step 2 is completed
+  const [index, setIndex] = useState([0]); //list with to indexes of tabs open, initial 0 (only tab 1 open (step 1))
+  const [select, setSelect] = useState(exercise.selectSteps); //select is false when the student select the step 1 correct 
+  const [select2, setSelect2] = useState(exercise.selectSteps); //select is false when the student select the step 2 correct
+  const steps = exercise.steps.map((i)=>i.stepTitle); //list of all stepTitle for selectStep
+  const [loading, setLoading] = useState(true); //loading icon when not charge the math formula
+  const action=useAction(); //send action to central system
+  
+  useEffect(() => { //when step 1 is completed, open new tab of step 2 
+    if (step1Valid != null) {
       setIndex([1]);
     }
-  }, [paso1Valido]);
+  }, [step1Valid]);
 
-  const [loading, setLoading] = useState(true);
-  const change = () => setLoading(false);
-   //selectStep
-   const [select, setSelect] = useState(true);
-   const [select2, setSelect2] = useState(true);
-   const steps = ejercicio.steps.map((i)=>i.stepTitle);
-   const action=useAction();
+  const change = () => setLoading(false); //function that disable loading icon when charge the math formula
 
   return (
     <>
       <BreadcrumbTutor
         root="Factorización"
-        item={ejercicio.itemTitle}
+        item={exercise.itemTitle}
       ></BreadcrumbTutor>
 
-      <Wrap>{ejercicio.text}
+      <Wrap>{exercise.text}
         <Spacer/>
         {//<VideoScreen></VideoScreen>
         }
@@ -62,7 +58,7 @@ const DSC = ({ejercicio, nextRouter}) => {
       <Wrap justify="center">
         {loading && <Loading />}
         <MathComponent
-          tex={ejercicio.steps[0].expression}
+          tex={exercise.steps[0].expression}
           display={true}
           onSuccess={change}
         />
@@ -70,22 +66,22 @@ const DSC = ({ejercicio, nextRouter}) => {
 
       <Accordion allowToggle allowMultiple index={index} style={{ padding: 0 }}>
         <AccordionItem isFocusable={false} isDisabled = {select}>
-          <Alert colorScheme={paso1Valido == null ? "blue" : "green"}>
+          <Alert colorScheme={step1Valid == null ? "blue" : "green"}>
             <AccordionButton
               onClick={() => {
                 if (index.some((element) => element === 0)) {
                   setIndex(index.filter((e) => e !== 0));
                   action({
                     verbName: "closeStep",
-                    stepID: ""+ejercicio.steps[0].stepId,
-                    contentID: ejercicio.itemId,//cambiar para leer del json
+                    stepID: ""+exercise.steps[0].stepId,
+                    contentID: exercise.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(0));
                   action({
                     verbName: "openStep",
-                    stepID: ""+ejercicio.steps[0].stepId,
-                    contentID: ejercicio.itemId, //leer del json
+                    stepID: ""+exercise.steps[0].stepId,
+                    contentID: exercise.itemId, //leer del json
                   });
                 }
               }}
@@ -93,9 +89,9 @@ const DSC = ({ejercicio, nextRouter}) => {
               <Box flex="1" textAlign="left">
                 <Wrap>
                   <Center>
-                    {!select&& ejercicio.steps[0].stepTitle}
-                    {paso1Valido != null && !select&& "    ✔ "}
-                    {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={ejercicio.itemId}></SelectStep></Wrap>}
+                    {!select&& exercise.steps[0].stepTitle}
+                    {step1Valid != null && !select&& "    ✔ "}
+                    {select&&<Wrap>Paso 1:<SelectStep correct={0} steps={steps} setSelect={setSelect} contentID={exercise.itemId}></SelectStep></Wrap>}
                   </Center>
                 </Wrap>
               </Box>
@@ -103,24 +99,21 @@ const DSC = ({ejercicio, nextRouter}) => {
             </AccordionButton>
           </Alert>
           <AccordionPanel style={{ padding: 0 }}>
-            {!select&& <DSCpaso1
-              ejercicio={ejercicio.steps[0]}
-              setPaso1Valido={setPaso1Valido}
-              paso1Valido={paso1Valido}
-              signo={ejercicio.sign}
-              hintsTerminado={hintsTerminado}
-              setHintsTerminado={setHintsTerminado}
-              loading={loading}
-              contentID={ejercicio.itemId}
-            ></DSCpaso1>}
+            {!select&& <DSCstep1
+              step1={exercise.steps[0]}
+              setStep1Valid={setStep1Valid}
+              step1Valid={step1Valid}
+              sign={exercise.sign}
+              contentID={exercise.itemId}
+            ></DSCstep1>}
           </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem isDisabled = {select2}>
           <Alert
             colorScheme={
-              paso2Valido == null
-                ? paso1Valido == null
+              step2Valid == null
+                ? step1Valid == null
                   ? "gray"
                   : "blue"
                 : "green"
@@ -132,15 +125,15 @@ const DSC = ({ejercicio, nextRouter}) => {
                   setIndex(index.filter((e) => e !== 1));
                   action({
                     verbName: "closeStep",
-                    stepID: ""+ejercicio.steps[1].stepId,
-                    contentID: ejercicio.itemId,//cambiar para leer del json
+                    stepID: ""+exercise.steps[1].stepId,
+                    contentID: exercise.itemId,//cambiar para leer del json
                   });
                 } else {
                   setIndex(index.concat(1));
                   action({
                     verbName: "openStep",
-                    stepID: ""+ejercicio.steps[1].stepId,
-                    contentID: ejercicio.itemId, //leer del json
+                    stepID: ""+exercise.steps[1].stepId,
+                    contentID: exercise.itemId, //leer del json
                   });
                 }
               }}
@@ -148,9 +141,9 @@ const DSC = ({ejercicio, nextRouter}) => {
               <Box flex="1" textAlign="left">
                 <Wrap>
                   <Center>
-                    {!select2 && ejercicio.steps[1].stepTitle}
-                    {paso2Valido != null && !select2 && "    ✔ "}
-                    {select2&&paso1Valido != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID={ejercicio.itemId}></SelectStep></Wrap>}
+                    {!select2 && exercise.steps[1].stepTitle}
+                    {step2Valid != null && !select2 && "    ✔ "}
+                    {select2&&step1Valid != null&&<Wrap>Paso 2:<SelectStep correct={1} steps={steps} setSelect={setSelect2} contentID={exercise.itemId}></SelectStep></Wrap>}
                   </Center>
                 </Wrap>
               </Box>
@@ -158,25 +151,23 @@ const DSC = ({ejercicio, nextRouter}) => {
             </AccordionButton>
           </Alert>
           <AccordionPanel style={{ padding: 0 }}>
-            {paso1Valido != null && !select2 && (
-              <DSCpaso2
-                ejercicio={ejercicio.steps[paso1Valido]}
-                setPaso2Valido={setPaso2Valido}
-                paso2Valido={paso2Valido}
-                hintsTerminado={hintsTerminado2}
-                setHintsTerminado={setHintsTerminado2}
-                contentID={ejercicio.itemId}
-              ></DSCpaso2>
+            {step1Valid != null && !select2 && (
+              <DSCstep2
+                step2={exercise.steps[step1Valid]}
+                setStep2Valid={setStep2Valid}
+                step2Valid={step2Valid}
+                contentID={exercise.itemId}
+              ></DSCstep2>
             )}
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      {paso2Valido != null && (
+      {step2Valid != null && (
               <>
               <DSCsummary
-                step1={ejercicio.steps[0]}
-                step2={ejercicio.steps[1]}
-                sign={ejercicio.sign}
+                step1={exercise.steps[0]}
+                step2={exercise.steps[1]}
+                sign={exercise.sign}
               />
               <Stack padding="1em"  alignItems="center">
                   <Link href={nextRouter}>

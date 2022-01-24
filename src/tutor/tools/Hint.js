@@ -13,27 +13,24 @@ import {
 import { useAction } from "../../utils/action";
 
 const Hint = ({
-  ejercicio,
+  hints,
   stepId,
   contentId,
   itemTitle,
   error,
   setError,
 }) => {
-  const [i, setI] = useState(0); //para los hints
-  const [lista] = useState([ejercicio[0]]);
-  const [j, setJ] = useState(0); //para los botones
+  const [i, setI] = useState(0); //i es el último hint desbloqueado
+  const [list] = useState([hints[0]]);
+  const [j, setJ] = useState(0); //j es el hint que se despliega con los botones
   const [firstStep, setFirstStep] = useState(false);
 
   const action=useAction();
 
   const ayuda = () => {
     
-    if ((ejercicio.length > lista.length) & error & firstStep) {
-      
-
-      lista.push(ejercicio[i + 1]);
-
+    if ((hints.length > list.length) & error & firstStep) {
+      list.push(hints[i + 1]);
       setI(i + 1);
       setJ(i + 1);
     }
@@ -42,7 +39,7 @@ const Hint = ({
   };
   const siguiente = () => {
 
-    if (lista[j + 1] != null) {
+    if (list[j + 1] != null) {
       setJ(j + 1);
       action({
         verbName: "requestHint",
@@ -57,7 +54,7 @@ const Hint = ({
   };
   const atras = () => {
 
-    if (lista[j - 1] != null) {
+    if (list[j - 1] != null) {
       setJ(j - 1);
       action({
         verbName: "requestHint",
@@ -82,7 +79,7 @@ const Hint = ({
                 verbName: "requestHint",
                 stepID: ""+stepId,
                 contentID: contentId,
-                hintID: ""+lista.length-1,
+                hintID: ""+list.length-1,
                 extra:{
                   source:"Open"
                 }
@@ -93,7 +90,7 @@ const Hint = ({
             size="sm"
           >
             Ayuda &nbsp;
-            {error && i < ejercicio.length - 1 ? ( //en esta parte va la notificación de un nuevo hint
+            {error && i < hints.length - 1 ? ( //en esta parte va la notificación de un nuevo hint
               <Badge
                 boxSize="1.25em"
                 color="white"
@@ -114,21 +111,21 @@ const Hint = ({
           <PopoverCloseButton />
           <PopoverBody>
             <br />
-            {lista[j].hint} <br />
+            {list[j].hint} <br />
             <br />
             <Center>
-              {lista[j - 1] && (
+              {list[j - 1] && (
                 <Button
                   onClick={atras}
                   colorScheme="cyan"
                   variant="outline"
                   size="sm"
                 >
-                  atras
+                  atrás
                 </Button>
               )}
               &nbsp;&nbsp;&nbsp;
-              {lista[j + 1] && (
+              {list[j + 1] && (
                 <Button
                   onClick={siguiente}
                   colorScheme="cyan"

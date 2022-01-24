@@ -1,6 +1,5 @@
 import React, { useRef, useState,useEffect } from "react";
 import { MathComponent } from "../../../components/MathJax";
-import { Loading } from "../../tools/Spinner";
 import {
   Alert,
   AlertIcon,
@@ -14,24 +13,21 @@ import {
 
 import Hint from "../../tools/Hint";
 import { useAction } from "../../../utils/action";
-const FCCpaso1 = ({
-  ejercicio,
-  setPaso1Valido,
-  paso1Valido,
-  loading,
+const FCCstep1 = ({
+  step1,
+  setStep1Valid,
+  step1Valid,
   contentID,
 }) => {
-  const response = useRef(null);
-  const [estado, setEstado] = useState(null);
-  const [error, setError] = useState(false);
-  //let idPasoSiguiente = null;
-  const correctAlternatives = ejercicio.answers.map((element) => element.answer);
-  const action=useAction();
+  const response = useRef(null);   // answer entered by the student
+  const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
+  const [error, setError] = useState(false); //true when the student enters an incorrect answers
+  const correctAlternatives = step1.answers.map((element) => element.answer); //list of answers valid
+  const action=useAction(); //send action to central system
 
   const compare = () => {
     //parametro de entrada recibido, replace elimina "espacios" y "*", trabajar todo en minuscula
     const responseStudent = response.current.value.replace(/[*]| /g, "").toLowerCase();
-
     //valida que la entrada es correctas
     const validate = (element) => element === responseStudent;
     //El método some() comprueba si al menos un elemento del array
@@ -39,15 +35,15 @@ const FCCpaso1 = ({
     
 
     if (correctAlternatives.some(validate)) {
-      setEstado(
+      setFeedbackMsg(
         <>
           <Alert status="success">
             <AlertIcon />
-            {ejercicio.correctMsg}
+            {step1.correctMsg}
           </Alert>
         </>
       );
-      setPaso1Valido((paso1Valido = "Terminado"));
+      setStep1Valid((step1Valid = "Terminado"));
       action({
         verbName: "completeContent",
         contentID: contentID,
@@ -55,11 +51,11 @@ const FCCpaso1 = ({
     } else {
       /**/
       setError(true);
-      setEstado(
+      setFeedbackMsg(
         //error cuando la entrada es incorrecta
         <Alert status="error">
           <AlertIcon />
-          {ejercicio.incorrectMsg}
+          {step1.incorrectMsg}
         </Alert>
       );
     }
@@ -69,9 +65,8 @@ const FCCpaso1 = ({
     <>
       <Wrap padding="15px 10px 10px 10px">
         <WrapItem padding="5px 0px 10px 0px">
-          {loading && <Loading />}
           <MathComponent
-            tex={String.raw`${ejercicio.expression}`}
+            tex={String.raw`${step1.expression}`}
             display={false}
           />
         </WrapItem>
@@ -92,16 +87,16 @@ const FCCpaso1 = ({
               focusBorderColor="#9DECF9"
               placeholder="Ingrese factor común"
               ref={response}
-              isReadOnly={paso1Valido != null}
+              isReadOnly={step1Valid != null}
             />
             <label>)</label>
 
-            {paso1Valido === null ? (
+            {step1Valid === null ? (
               <label>&nbsp;(?)</label>
             ) : (
               <>
                 <MathComponent
-                  tex={String.raw`${ejercicio.displayResult}`}
+                  tex={String.raw`${step1.displayResult}`}
                   display={false}
                 />
               </>
@@ -112,7 +107,7 @@ const FCCpaso1 = ({
         <Spacer />
 
         <WrapItem>
-          {paso1Valido === null && (
+          {step1Valid === null && (
             <>
               <Button
                 colorScheme="cyan"
@@ -122,14 +117,13 @@ const FCCpaso1 = ({
                     compare();
                     action({
                       verbName: "tryStep",
-                      stepID: ""+ejercicio.stepId,
+                      stepID: ""+step1.stepId,
                       contentID:contentID,
-                      result: paso1Valido===null?0:1,
+                      result: step1Valid===null?0:1,
                       kcsIDs:[1],
                       //extra:{
                        // resp: response
                      // }
-                    // topicID: ""+ejercicio.itemId,
                     });
                     
                   }
@@ -139,9 +133,9 @@ const FCCpaso1 = ({
               </Button>
               &nbsp;&nbsp;
               <Hint
-                ejercicio={ejercicio.hints}
+                hints={step1.hints}
                 contentId={contentID}
-                stepId={ejercicio.stepId}
+                stepId={step1.stepId}
                 itemTitle="Factor Común"
                 error={error}
                 setError={setError}
@@ -152,8 +146,8 @@ const FCCpaso1 = ({
         </WrapItem>
       </Wrap>
 
-      {estado}
+      {feedbackMsg}
     </>
   );
 };
-export default FCCpaso1;
+export default FCCstep1;
