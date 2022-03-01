@@ -120,7 +120,7 @@ const FCCstep1 = ({
                       stepID: ""+step1.stepId,
                       contentID:contentID,
                       result: step1Valid===null?0:1,
-                      kcsIDs:[1],
+                      kcsIDs:step1.KCs,
                       //extra:{
                        // resp: response
                      // }
@@ -136,7 +136,8 @@ const FCCstep1 = ({
                 hints={step1.hints}
                 contentId={contentID}
                 stepId={step1.stepId}
-                itemTitle="Factor Común"
+                matchingError={step1.matchingError}
+                response={[response]}
                 error={error}
                 setError={setError}
                 

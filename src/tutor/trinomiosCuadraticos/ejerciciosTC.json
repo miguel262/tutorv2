@@ -15,6 +15,12 @@
         { "hintId": 1, "hint": "El valor de b es 8" },
         { "hintId": 2, "hint": "a =3, b=8, c=-11" }
       ],
+      "matchingError":[
+        {"error":["","",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+        {"error":["","*","*"],"hintId":4,"hint": "No ha ingresado el valor de 𝑎"},
+        {"error":["*","","*"],"hintId":5,"hint": "No ha ingresado el valor de 𝑏"},
+        {"error":["*","*",""],"hintId":6,"hint": "No ha ingresado el valor de 𝑐"}
+      ],
       "answers": [{ "answer": ["3", "8", "-11"], "nextStep": "1" }],
       "incorrectMsg": "no son los valores correspondientes a los valores a, b y c",
       "correctMsg": "Haz identificado los valores de a, b y c",
@@ -32,6 +38,9 @@
         },
         { "hintId": 1, "hint": "Reemplace en la fórmula Δ los valores de: a=3, b=8 y c=-11" },
         { "hintId": 2, "hint": "El valor del discriminante (Δ) es 196" }
+      ],
+      "matchingError":[
+        {"error":[""],"hintId":3,"hint": "No ha ingresado respuesta"}
       ],
       "answers": [{ "answer": "196", "nextStep": "2" }],
       "incorrectMsg":
@@ -55,6 +64,9 @@
         },
         { "hintId": 2, "hint": "Δ>0, por lo tanto este ejercicio posee dos raices reales diferentes" }
       ],
+      "matchingError":[
+        {"error":["*"],"hintId":3,"hint": "Debe seleccionar la alternativa correcta"}
+      ],
       "answers": [{ "answer": "1", "nextStep": "3" }],
       "incorrectMsg": "caso mal ingresado",
       "correctMsg": "Haz descubierto a que caso corresponde el discriminante",
@@ -74,6 +86,11 @@
         { "hintId": 1, "hint": "x₁= 1" },
         { "hintId": 2, "hint": "El valor de x₁= 1 y x₂= -11/3" }
       ],
+      "matchingError":[
+        {"error":["",""],"hintId":3,"hint": "No ha ingresado las raices"},
+        {"error":["","*"],"hintId":4,"hint": "No ha ingresado la raíz x₁"},
+        {"error":["*",""],"hintId":5,"hint": "No ha ingresado la raíz x₂"}
+      ],
       "answers": [{ "answer": ["1", "-11/3"], "nextStep": "4" }],
       "incorrectMsg": "raices mal ingresadas",
       "correctMsg": "Haz encontrado las raices del polinomio",
@@ -91,6 +108,12 @@
           "hint": "Una de las restas es x-x₁, un valor a ingresar x-1"
         },
         { "hintId": 2, "hint": "3(x-1)(x+11/3)" }
+      ],
+      "matchingError":[
+        {"error":["","",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+        {"error":["","*","*"],"hintId":4,"hint": "No ha ingresado a"},
+        {"error":["*","","*"],"hintId":5,"hint": "No ha ingresado x - x₁"},
+        {"error":["*","*",""],"hintId":6,"hint": "No ha ingresado x - x₂"}
       ],
       "answers": [
         {
@@ -129,6 +152,12 @@
           { "hintId": 1, "hint": "El valor de a es 1" },
           { "hintId": 2, "hint": "a =1, b=8, c=12" }
         ],
+        "matchingError":[
+          {"error":["","",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+          {"error":["","*","*"],"hintId":4,"hint": "No ha ingresado el valor de a"},
+          {"error":["*","","*"],"hintId":5,"hint": "No ha ingresado el valor de b"},
+          {"error":["*","*",""],"hintId":6,"hint": "No ha ingresado el valor de c"}
+        ],
         "answers": [{ "answer": ["1", "8", "12"], "nextStep": "1" }],
         "incorrectMsg": "no son los valores correspondientes a los valores a, b y c",
         "correctMsg": "Haz identificado los valores de a, b y c",
@@ -144,6 +173,9 @@
           { "hintId": 1, "hint": "reemplace en la fórmula Δ por: a=1, b=8 y c=12" },
           { "hintId": 2, "hint": "El valor del discriminante es 16" }
         ],
+        "matchingError":[
+          {"error":[""],"hintId":3,"hint": "No ha ingresado respuesta"}
+        ],
         "answers": [{ "answer": "16", "nextStep": "2" }],
         "incorrectMsg":
           "no se han ingresado correctamente el discriminante de la expresión",
@@ -155,7 +187,7 @@
         "expression": "Δ=16",
         "stepTitle": "¿A qué caso corresponde el discriminante?",
         "displayResult": "Δ>0, por lo tanto este ejercicio posee dos raices reales diferentes",
-          "hints": [
+        "hints": [
             {
               "hintId": 0,
               "hint": "Recuerda que el discriminante determina si el trinomio tiene soluciones"
@@ -165,7 +197,10 @@
               "hint": "Como el determinante es mayor a cero, ver a qué caso corresponde"
             },
             { "hintId": 2, "hint":  "Δ>0, por lo tanto este ejercicio posee dos raices reales diferentes" }
-          ],
+        ],
+        "matchingError":[
+          {"error":["*"],"hintId":3,"hint": "Debe seleccionar la alternativa correcta"}
+        ],
         "answers": [{ "answer": "1", "nextStep": "3" }],
         "incorrectMsg": "caso mal ingresado",
         "correctMsg": "Haz descubierto a que caso corresponde el discriminante",
@@ -185,6 +220,11 @@
           { "hintId": 1, "hint": "x1=-2" },
           { "hintId": 2, "hint": "El valor de x1=-2 y x2=-6" }
         ],
+        "matchingError":[
+          {"error":["",""],"hintId":3,"hint": "No ha ingresado las raices"},
+          {"error":["","*"],"hintId":4,"hint": "No ha ingresado la raíz x₁"},
+          {"error":["*",""],"hintId":5,"hint": "No ha ingresado la raíz x₂"}
+        ],
         "answers": [{ "answer": ["-2", "-6"], "nextStep": "4" }],
         "incorrectMsg": "raices mal ingresadas",
         "correctMsg": "Haz encontrado las raices del polinomio",
@@ -199,6 +239,12 @@
           { "hintId": 0, "hint": "reemplazar el primer factor por x-x₁" },
           { "hintId": 1, "hint": "Un factor es x-x₁, entonces el valor a ingresar x+2" },
           { "hintId": 2, "hint": "1(x+2)(x+6)" }
+        ],
+        "matchingError":[
+          {"error":["","",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+          {"error":["","*","*"],"hintId":4,"hint": "No ha ingresado a"},
+          {"error":["*","","*"],"hintId":5,"hint": "No ha ingresado x - x₁"},
+          {"error":["*","*",""],"hintId":6,"hint": "No ha ingresado x - x₂"}
         ],
         "answers": [
           {
@@ -232,6 +278,12 @@
          { "hintId": 1, "hint": "El valor de b es 4" },
          { "hintId": 2, "hint": "a =5, b=4, c=-1" }
        ],
+       "matchingError":[
+        {"error":["","",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+        {"error":["","*","*"],"hintId":4,"hint": "No ha ingresado el valor de a"},
+        {"error":["*","","*"],"hintId":5,"hint": "No ha ingresado el valor de b"},
+        {"error":["*","*",""],"hintId":6,"hint": "No ha ingresado el valor de c"}
+      ],
        "answers": [{ "answer": ["5", "4", "-1"], "nextStep": "2" }],
        "incorrectMsg": "no son los valores correspondientes a los valores a, b y c",
        "correctMsg": "Haz identificado los valores de a, b y c",
@@ -250,6 +302,9 @@
          { "hintId": 1, "hint": "Reemplace en la fórmula Δ los valores de: a=5, b=4 y c=-1" },
          { "hintId": 2, "hint": "El valor del discriminante (Δ) es 36" }
        ],
+       "matchingError":[
+        {"error":[""],"hintId":3,"hint": "No ha ingresado respuesta"}
+      ],
        "answers": [{ "answer": "36", "nextStep": "3" }],
        "incorrectMsg":
          "no se han ingresado correctamente el discriminante de la expresión",
@@ -272,6 +327,9 @@
          },
          { "hintId": 2, "hint": "Δ>0, por lo tanto este ejercicio posee dos raices reales diferentes" }
        ],
+       "matchingError":[
+        {"error":["*"],"hintId":3,"hint": "Debe seleccionar la alternativa correcta"}
+      ],
        "answers": [{ "answer": "1", "nextStep": "4" }],
        "incorrectMsg": "caso mal ingresado",
        "correctMsg": "Haz descubierto a que caso corresponde el discriminante",
@@ -291,6 +349,11 @@
          { "hintId": 1, "hint": "x₁= 1/5" },
          { "hintId": 2, "hint": "El valor de x₁= 1/5 y x₂= -1" }
        ],
+       "matchingError":[
+        {"error":["",""],"hintId":3,"hint": "No ha ingresado las raices"},
+        {"error":["","*"],"hintId":4,"hint": "No ha ingresado la raíz x₁"},
+        {"error":["*",""],"hintId":5,"hint": "No ha ingresado la raíz x₂"}
+      ],
        "answers": [{ "answer": ["1/5", "-1"], "nextStep": "5" }],
        "incorrectMsg": "raices mal ingresadas",
        "correctMsg": "Haz encontrado las raices del polinomio",
@@ -309,6 +372,12 @@
          },
          { "hintId": 2, "hint": "5(x-1/5)(x+1)" }
        ],
+       "matchingError":[
+        {"error":["","",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+        {"error":["","*","*"],"hintId":4,"hint": "No ha ingresado a"},
+        {"error":["*","","*"],"hintId":5,"hint": "No ha ingresado x - x₁"},
+        {"error":["*","*",""],"hintId":6,"hint": "No ha ingresado x - x₂"}
+      ],
        "answers": [
          {
            "answer": [

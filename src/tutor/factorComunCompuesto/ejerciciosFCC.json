@@ -18,6 +18,11 @@
               { "hintId": 1, "hint": "agrupa los sumandos que contengan x" },
               { "hintId": 2, "hint": "los grupos a ingresar son: (ax + ay) + (bx + by)" }
             ],
+            "matchingError":[
+              {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+              {"error":["","*"],"hintId":4,"hint": "No ha ingresado el primer grupo"},
+              {"error":["*",""],"hintId":5,"hint": "No ha ingresado el segundo grupo"}
+            ],
             "answers": [
               { "answer": ["ax+ay", "bx+by"], "nextStep": "1" },
               { "answer": ["ay+ax", "bx+by"], "nextStep": "1" },
@@ -48,6 +53,11 @@
               { "hintId": 1, "hint": "El factor común del primer grupo es a" },
               { "hintId": 2, "hint": "Los factores comunes a ingresar son a y b" }
             ],
+            "matchingError":[
+              {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+              {"error":["","*"],"hintId":4,"hint": "No ha factorizado el primer grupo"},
+              {"error":["*",""],"hintId":5,"hint": "No ha factorizado el segundo grupo"}
+            ],
             "answers": { "answer": ["a", "b"], "nextStep": "3" },
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
@@ -70,6 +80,11 @@
               { "hintId": 1, "hint": "El factor común del primer grupo es x" },
               { "hintId": 2, "hint": "Los factores comunes a ingresar son x e y" }
             ],
+            "matchingError":[
+              {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+              {"error":["","*"],"hintId":4,"hint": "No ha factorizado el primer grupo"},
+              {"error":["*",""],"hintId":5,"hint": "No ha factorizado el segundo grupo"}
+            ],
             "answers": { "answer": ["x", "y"], "nextStep": "4" },
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
@@ -86,6 +101,9 @@
               { "hintId": 1, "hint": "El factor común es una suma de variables" },
               { "hintId": 2, "hint": "El factor común de la expresión es: x + y" }
             ],
+            "matchingError":[
+              {"error":[""],"hintId":3,"hint": "No ha ingresado respuesta"}
+            ],
             "answers": [{ "answer": "x+y", "nextStep": null }],
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
@@ -101,6 +119,9 @@
               { "hintId": 0, "hint": "Ver variables que se repite en ambos sumandos" },
               { "hintId": 1, "hint": "El factor común es una suma de variables" },
               { "hintId": 2, "hint": "El factor común de la expresión es: a + b" }
+            ],
+            "matchingError":[
+              {"error":[""],"hintId":3,"hint": "No ha ingresado respuesta"}
             ],
             "answers": [{ "answer": "a+b", "nextStep": null }],
             "incorrectMsg":
@@ -132,6 +153,11 @@
                 "hintId": 2,
                 "hint": "los grupos son: (2𝑎𝑥 - 𝑎𝑦 + 5𝑎) + (2𝑏𝑥 - 𝑏𝑦 + 5𝑏)"
               }
+            ],
+            "matchingError":[
+              {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+              {"error":["","*"],"hintId":4,"hint": "No ha ingresado el primer grupo"},
+              {"error":["*",""],"hintId":5,"hint": "No ha ingresado el segundo grupo"}
             ],
             "answers": [
               { "answer": ["2ax-ay+5a", "2bx-by+5b"], "nextStep": "1" },
@@ -196,6 +222,11 @@
               { "hintId": 1, "hint": "hint2" },
               { "hintId": 2, "hint": "hint3" }
             ],
+            "matchingError":[
+              {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+              {"error":["","*"],"hintId":4,"hint": "No ha factorizado el primer grupo"},
+              {"error":["*",""],"hintId":5,"hint": "No ha factorizado el segundo grupo"}
+            ],
             "answers": { "answer": ["a", "b"], "nextStep": "2" },
             "incorrectMsg":
               "factor común incorrecto, ingrese el factor común correspondiente a la expresión dada",
@@ -210,6 +241,9 @@
             "hints": [
               { "hintId": 0, "hint": "ver variable que se repite en ambos sumandos" },
               { "hintId": 2, "hint": "el factor común de la expresión es: x + y" }
+            ],
+            "matchingError":[
+              {"error":[""],"hintId":3,"hint": "No ha ingresado respuesta"}
             ],
             "answers": [
               { "answer": "2x-y+5", "nextStep": null },

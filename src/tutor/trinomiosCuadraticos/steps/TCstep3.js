@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Hint from "../../tools/Hint";
 import { useAction } from "../../../utils/action";
 import {
@@ -19,6 +19,7 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID, }) => {
   const [value, setValue] = React.useState(); //checked radio
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const action=useAction(); //send action to central system
+  const hintUnique =["*"]
 
   const compare = () => {
     if (step3.answers[0].answer === value) {
@@ -82,6 +83,8 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID, }) => {
                 //stepId={ejercicio.stepId}
                 contentId={contentID}
                 stepId={step3.stepId}
+                matchingError={step3.matchingError}
+                response={hintUnique}
                 itemTitle="Trinomios cuadráticos"
                 error={error}
                 setError={setError}

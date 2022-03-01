@@ -19,6 +19,11 @@
           { "hintId": 1, "hint": "Un valor al cubo a ingresar es x" },
           { "hintId": 2, "hint": "Los cubos a ingresar son: (x)³ - (y)³" }
         ],
+        "matchingError":[
+          {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+          {"error":["","*"],"hintId":4,"hint": "No ha ingresado el primer término al cubo"},
+          {"error":["*",""],"hintId":5,"hint": "No ha ingresado el segundo término al cubo"}
+        ],
         "answers": [{ "answer": ["x", "y"], "nextStep": "1" }],
         "incorrectMsg":
           "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
@@ -34,6 +39,11 @@
           { "hintId": 0, "hint": "Reemplace la identidad de cubos con x₁ y x₂" },
           { "hintId": 1, "hint": "x₁ = x y x₂ = y" },
           { "hintId": 2, "hint": "(x-y)(x²+xy+y²)" }
+        ],
+        "matchingError":[
+          {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+          {"error":["","*"],"hintId":4,"hint": "No ha ingresado x₁ - x₂"},
+          {"error":["*",""],"hintId":5,"hint": "No ha ingresado x₁² + x₁x₂ + x₂²"}
         ],
         "answers": [{ "answer": ["x-y", "x^2+xy+y^2"], "nextStep": null }],
         "incorrectMsg": "valores mal ingresados",
@@ -63,9 +73,14 @@
             "hint": "los cubos son: (2x)^3 + (y)^3, donde los valores a ingresar son x e y"
           }
         ],
+        "matchingError":[
+          {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+          {"error":["","*"],"hintId":4,"hint": "No ha ingresado el primer término al cubo"},
+          {"error":["*",""],"hintId":5,"hint": "No ha ingresado el segundo término al cubo"},
+          {"error":["x","y"],"hintId":3,"hint": "x₁ corresponde a la raíz cúbica del primer sumando: x₁ ≠ x"}
+        ],
         "answers": [{ "answer": ["2x", "y"], "nextStep": "1" }],
-        "incorrectMsg":
-          "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
+        "incorrectMsg": "no se han ingresado correctamente los términos que al cubos dan como resultado la expresión",
         "correctMsg": "Haz encontrado los términos al cubo",
         "summary":"1) Para aplicar factorización por suma de cubos, se deben identificar los términos que están al cubo de la forma (x₁)³ + (x₂)³, donde: "
       },
@@ -81,6 +96,11 @@
             "hintId": 2,
             "hint": "Factorización por suma de cubos: (2x+y)(4x^2-2xy+y^2)"
           }
+        ],
+        "matchingError":[
+          {"error":["",""],"hintId":3,"hint": "No ha ingresado respuesta"},
+          {"error":["","*"],"hintId":4,"hint": "No ha ingresado x₁ + x₂"},
+          {"error":["*",""],"hintId":5,"hint": "No ha ingresado x₁² - x₁x₂ + x₂²"}
         ],
         "answers": [{ "answer": ["2x+y", "4x^2-2xy+y^2"], "nextStep": null }],
         "incorrectMsg": "Valores mal ingresados",
