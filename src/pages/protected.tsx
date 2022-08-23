@@ -2,7 +2,7 @@ import { Text } from "@chakra-ui/react";
 import { useAuth, withAuth } from "../components/Auth";
 
 export default withAuth(function ProtectedPage() {
-  const { user, authorizationToken } = useAuth();
+  const { user } = useAuth();
 
-  return <Text whiteSpace="pre-wrap">{JSON.stringify(authorizationToken)}</Text>;
+  return <Text whiteSpace="pre-wrap">{JSON.stringify(user)}</Text>;
 });
