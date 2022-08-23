@@ -3,6 +3,8 @@ schema: "https://lm.inf.uach.cl/graphql"
 documents:
   - "src/**/*.tsx"
   - "src/**/*.ts"
+  - "src/**/*.js"
+  - "src/**/*.jsx"
 generates:
   src/graphql/:
     preset: rq-gql/preset

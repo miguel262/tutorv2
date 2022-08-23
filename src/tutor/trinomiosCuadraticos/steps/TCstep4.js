@@ -13,30 +13,30 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCstep4 = ({
-  step4,
-  setStep4Valid,
-  step4Valid,
-  contentID,
-}) => {
+export const TCstep4 = ({ step4, setStep4Valid, step4Valid, contentID }) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //2nd input response
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step4.answers.map((elemento) => elemento.answer); //list of answers valid
-  const action=useAction(); //send action to central system
-   
+  const action = useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
+
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
     const responseStudent = [
       response1.current.value.replace(/[*]| /g, "").toLowerCase(),
       response2.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
     const validate = (element) =>
-      (element[0] === responseStudent[0] && element[1] === responseStudent[1]) ||
+      (element[0] === responseStudent[0] &&
+        element[1] === responseStudent[1]) ||
       (element[0] === responseStudent[1] && element[1] === responseStudent[0]);
     if (correctAlternatives.some(validate)) {
       setStep4Valid(
-        (step4Valid = step4.answers[correctAlternatives.findIndex(validate)].nextStep)
+        (step4Valid =
+          step4.answers[correctAlternatives.findIndex(validate)].nextStep)
       );
     } else {
       setError(true);
@@ -105,16 +105,23 @@ export const TCstep4 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step4.stepId,
-                    contentID:contentID,
-                    result: step4Valid===null?0:1,
-                    kcsIDs:[7],
-                  // topicID: ""+ejercicio.itemId,
-                  })
+                    stepID: "" + step4.stepId,
+                    contentID: contentID,
+                    result: step4Valid === null ? 0 : 1,
+                    kcsIDs: step4.KCs,
+                    extra: {
+                      response: [
+                        response1.current.value,
+                        response2.current.value,
+                      ],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
                 }}
                 size="sm"
               >
@@ -126,8 +133,8 @@ export const TCstep4 = ({
                 contentId={contentID}
                 stepId={step4.stepId}
                 matchingError={step4.matchingError}
-                response={[response1,response2]}
-                itemTitle="Trinomios cuadráticos"
+                response={[response1, response2]}
+                itemTitle="Trinomios cuadráticos" //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>

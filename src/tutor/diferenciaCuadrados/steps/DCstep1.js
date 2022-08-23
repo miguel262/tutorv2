@@ -25,9 +25,13 @@ export const DCstep1 = ({
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step1.answers.map((elemento) => elemento.answer); //list of answers valid
-  const action=useAction();//send action to central system
+  const action = useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
 
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
+
     const responseStudent = [
       response1.current.value.replace(/[*]| /g, "").toLowerCase(),
       response2.current.value.replace(/[*]| /g, "").toLowerCase(),
@@ -36,7 +40,8 @@ export const DCstep1 = ({
       element[0] === responseStudent[0] && element[1] === responseStudent[1];
     if (correctAlternatives.some(validate)) {
       setStep1Valid(
-        (step1Valid = step1.answers[correctAlternatives.findIndex(validate)].nextStep)
+        (step1Valid =
+          step1.answers[correctAlternatives.findIndex(validate)].nextStep)
       );
     } else {
       setError(true);
@@ -107,16 +112,23 @@ export const DCstep1 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step1.stepId,
-                    contentID:contentID,
-                    result: step1Valid===null?0:1,
-                    kcsIDs:[3],
-                  // topicID: ""+ejercicio.itemId,
-                  })
+                    stepID: "" + step1.stepId,
+                    contentID: contentID,
+                    result: step1Valid === null ? 0 : 1,
+                    kcsIDs: step1.KCs,
+                    extra: {
+                      response: [
+                        response1.current.value,
+                        response2.current.value,
+                      ],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
                 }}
                 size="sm"
               >
@@ -128,8 +140,8 @@ export const DCstep1 = ({
                 contentId={contentID}
                 stepId={step1.stepId}
                 matchingError={step1.matchingError}
-                response={[response1,response2]}
-                itemTitle="Diferencia de cuadrados"
+                response={[response1, response2]}
+                itemTitle="Diferencia de cuadrados" //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>

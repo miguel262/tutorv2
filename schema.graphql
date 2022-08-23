@@ -378,6 +378,16 @@ type AdminDomainMutations {
   createTopic(input: CreateTopic!): Topic!
 
   """
+  Set KC Relation
+  """
+  setKCRelation(data: KCRelationInput!): KCRelation!
+
+  """
+  Unset KC Relation
+  """
+  unsetKCRelation(data: KCRelationInput!): Void
+
+  """
   Update an existent domain entity
   """
   updateDomain(input: UpdateDomain!): Domain!
@@ -1226,6 +1236,11 @@ type KC {
   label: String!
 
   """
+  All relations of KC
+  """
+  relations: [KCRelation!]!
+
+  """
   Topics associated with the KC
   """
   topics: [Topic!]!
@@ -1234,6 +1249,97 @@ type KC {
   Date of last update
   """
   updatedAt: DateTime!
+}
+
+"""
+Relations between KCs
+"""
+type KCRelation {
+  """
+  Custom Comment of KC Relation
+  """
+  comment: String
+
+  """
+  Domain shared by both KCs
+  """
+  domain: Domain!
+
+  """
+  Domain id shared by both KCs
+  """
+  domainId: IntID!
+
+  """
+  Unique numeric identifier
+  """
+  id: IntID!
+
+  """
+  KC A
+  """
+  kcA: KC!
+
+  """
+  KC A id
+  """
+  kcAId: IntID!
+
+  """
+  KC B
+  """
+  kcB: KC!
+
+  """
+  KC B id
+  """
+  kcBId: IntID!
+
+  """
+  Custom Label of KC Relation
+  """
+  label: String
+
+  """
+  Type of relation
+  """
+  type: KCRelationType!
+}
+
+input KCRelationInput {
+  """
+  Custom comment text
+  """
+  comment: String
+
+  """
+  KC A
+  """
+  kcA: IntID!
+
+  """
+  KC B
+  """
+  kcB: IntID!
+
+  """
+  Relation readable label
+  """
+  label: String
+
+  """
+  Type of KC Relation
+  """
+  type: KCRelationType!
+}
+
+"""
+Type of KC Relationship
+"""
+enum KCRelationType {
+  INTERACT
+  PARTOF
+  PREREQUISITE
 }
 
 """

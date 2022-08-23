@@ -51,7 +51,7 @@ export function SyncAuth() {
             tags
           }
         }
-        project(code: "factorize_tutor") {
+        project(code: "NivPreAlg") {
           id
           code
           label

@@ -1,30 +1,46 @@
 import FC from "../tutor/factorComun/FactorComun";
-//import { Ejercicio1 } from "../../tutor/factorComun/EjerciciosFC";
-import data from "../tutor/factorComun/ejercicioFC.json";
-import { Stack } from "@chakra-ui/react";
-import { useAction } from "../utils/action";
-import {useEffect} from "react";
+import { Spinner, Stack } from "@chakra-ui/react";
+import { useGQLQuery } from "rq-gql";
+import { gql } from "../graphql";
+import { Loading } from "../tutor/tools/Spinner";
+//import { useAction } from "../utils/action";
+//import { useEffect } from "react";
 
-function IndexPage({exercise}) {
-  const action=useAction();
-  useEffect(() => {
-    action({
-      verbName: "loadContent",
-      contentID:exercise.itemId,// leer contentId del JSON
-    })}, [])
-  
-  return (
-      <Stack width="100%" padding="1em">
-        <FC exercise={exercise} nextRouter="/FC2"></FC>
-      </Stack>
+function IndexPage() {
+  const { data, isLoading } = useGQLQuery(
+    gql(/* GraphQL */ `
+      query ProjectData {
+        project(code: "NivPreAlg") {
+          content(pagination: { first: 25 }, filters: { topics: 3 }) {
+            nodes {
+              json
+            }
+          }
+        }
+      }
+    `)
   );
-}
-export async function getServerSideProps() {
-  //const fs = require('fs');
-  //const exercise = data[0]
-  return {
-    props: {exercise:data[0]}, // will be passed to the page component as props
-  }
+
+  /*const action = useAction();
+    useEffect(() => {
+      action({
+        verbName: "loadContent",
+        contentID: exercise.code, // leer contentId del JSON
+      });
+    }, []);*/
+
+  return (
+    <Stack width="100%" padding="1em">
+      {!isLoading ? (
+        <FC
+          exercise={data.project.content.nodes[0].json}
+          nextRouter="/FC2"
+        ></FC>
+      ) : (
+        <Loading></Loading>
+      )}
+    </Stack>
+  );
 }
 
 export default IndexPage;

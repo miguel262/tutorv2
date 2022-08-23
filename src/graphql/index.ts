@@ -3,15 +3,20 @@ import type { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-
 import * as graphql from "./graphql";
 
 const documents = {
-  '\n      query currentUser {\n        currentUser {\n          id\n          email\n          name\n          role\n          picture\n          tags\n          projects {\n            id\n            code\n            label\n          }\n          groups {\n            id\n            code\n            label\n            tags\n          }\n        }\n        project(code: "factorize_tutor") {\n          id\n          code\n          label\n        }\n      }\n    ':
+  '\n      query currentUser {\n        currentUser {\n          id\n          email\n          name\n          role\n          picture\n          tags\n          projects {\n            id\n            code\n            label\n          }\n          groups {\n            id\n            code\n            label\n            tags\n          }\n        }\n        project(code: "NivPreAlg") {\n          id\n          code\n          label\n        }\n      }\n    ':
     graphql.CurrentUserDocument,
+  '\n      query ProjectData {\n        project(code: "NivPreAlg") {\n          content(pagination: { first: 25 }, filters: { topics: 3 }) {\n            nodes {\n              json\n            }\n          }\n        }\n      }\n    ':
+    graphql.ProjectDataDocument,
   "\n      mutation Action($data: ActionInput!) {\n        action(data: $data)\n      }\n    ":
     graphql.ActionDocument,
 };
 
 export function gql(
-  source: '\n      query currentUser {\n        currentUser {\n          id\n          email\n          name\n          role\n          picture\n          tags\n          projects {\n            id\n            code\n            label\n          }\n          groups {\n            id\n            code\n            label\n            tags\n          }\n        }\n        project(code: "factorize_tutor") {\n          id\n          code\n          label\n        }\n      }\n    '
-): typeof documents['\n      query currentUser {\n        currentUser {\n          id\n          email\n          name\n          role\n          picture\n          tags\n          projects {\n            id\n            code\n            label\n          }\n          groups {\n            id\n            code\n            label\n            tags\n          }\n        }\n        project(code: "factorize_tutor") {\n          id\n          code\n          label\n        }\n      }\n    '];
+  source: '\n      query currentUser {\n        currentUser {\n          id\n          email\n          name\n          role\n          picture\n          tags\n          projects {\n            id\n            code\n            label\n          }\n          groups {\n            id\n            code\n            label\n            tags\n          }\n        }\n        project(code: "NivPreAlg") {\n          id\n          code\n          label\n        }\n      }\n    '
+): typeof documents['\n      query currentUser {\n        currentUser {\n          id\n          email\n          name\n          role\n          picture\n          tags\n          projects {\n            id\n            code\n            label\n          }\n          groups {\n            id\n            code\n            label\n            tags\n          }\n        }\n        project(code: "NivPreAlg") {\n          id\n          code\n          label\n        }\n      }\n    '];
+export function gql(
+  source: '\n      query ProjectData {\n        project(code: "NivPreAlg") {\n          content(pagination: { first: 25 }, filters: { topics: 3 }) {\n            nodes {\n              json\n            }\n          }\n        }\n      }\n    '
+): typeof documents['\n      query ProjectData {\n        project(code: "NivPreAlg") {\n          content(pagination: { first: 25 }, filters: { topics: 3 }) {\n            nodes {\n              json\n            }\n          }\n        }\n      }\n    '];
 export function gql(
   source: "\n      mutation Action($data: ActionInput!) {\n        action(data: $data)\n      }\n    "
 ): typeof documents["\n      mutation Action($data: ActionInput!) {\n        action(data: $data)\n      }\n    "];

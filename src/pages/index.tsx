@@ -5,7 +5,6 @@ import { useAuth } from "./../components/Auth";
 export default function IndexPage() {
   const { user } = useAuth();
   return <Stack width="100%" padding="3em">
-    
     {user&&(<><Stack alignItems="center">
       <Heading>Tópico de factorización</Heading>
     </Stack>
@@ -21,7 +20,7 @@ export default function IndexPage() {
     </UnorderedList>
     </Stack>
     <Stack padding="1em"  alignItems="center">
-      <Link href="/FC1">
+      <Link href="/ejemplo">
       <Button 
         colorScheme="cyan" 
         variant="outline"

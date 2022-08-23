@@ -13,32 +13,33 @@ import {
   Wrap,
 } from "@chakra-ui/react";
 
-export const DSCstep2 = ({
-  step2,
-  setStep2Valid,
-  step2Valid,
-  contentID,
-}) => {
+export const DSCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
   const correctAlternatives = step2.answers[0].answer; //list of answers valid
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
-  const [error, setError] = useState(false);  //true when the student enters an incorrect answers
-  const action=useAction(); //send action to central system
-  
+  const [error, setError] = useState(false); //true when the student enters an incorrect answers
+  const action = useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
+
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
     const responseStudent = [
       response1.current.value.replace(/[*]| /g, "").toLowerCase(),
       response2.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
 
-    if (responseStudent[0] === correctAlternatives[0] && responseStudent[1] === correctAlternatives[1]) {
+    if (
+      responseStudent[0] === correctAlternatives[0] &&
+      responseStudent[1] === correctAlternatives[1]
+    ) {
       setStep2Valid((step2Valid = "Terminado"));
       action({
         verbName: "completeContent",
         contentID: contentID,
         result: 1,
-      // topicID: ""+ejercicio.itemId,
+        // topicID: ""+ejercicio.code,
       });
       setFeedbackMsg(
         <Alert status="success">
@@ -115,16 +116,23 @@ export const DSCstep2 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step2.stepId,
-                    contentID:contentID,
-                    result: step2Valid===null?0:1,
-                    kcsIDs:[4],
-                  // topicID: ""+ejercicio.itemId,
-                  })
+                    stepID: "" + step2.stepId,
+                    contentID: contentID,
+                    result: step2Valid === null ? 0 : 1,
+                    kcsIDs: step2.KCs,
+                    extra: {
+                      response: [
+                        response1.current.value,
+                        response2.current.value,
+                      ],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
                 }}
                 size="sm"
               >
@@ -137,8 +145,8 @@ export const DSCstep2 = ({
                 contentId={contentID}
                 stepId={step2.stepId}
                 matchingError={step2.matchingError}
-                response={[response1,response2]}
-                itemTitle="Diferencia/suma de cubos"
+                response={[response1, response2]}
+                itemTitle="Diferencia/suma de cubos" //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>

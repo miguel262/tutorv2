@@ -13,26 +13,27 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-const FCCstep2 = ({
-  step2,
-  setStep2Valid,
-  step2Valid,
-  contentID,
-}) => {
+const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
   const correctAlternatives = step2.answers.answer; //list of answers valid
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
-  const action=useAction(); //send action to central system
+  const action = useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
 
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
     const responseStudent = [
       response1.current.value.replace(/[*]| /g, "").toLowerCase(),
       response2.current.value.replace(/[*]| /g, "").toLowerCase(),
     ];
 
-    if (responseStudent[0] === correctAlternatives[0] && responseStudent[1] === correctAlternatives[1]) {
+    if (
+      responseStudent[0] === correctAlternatives[0] &&
+      responseStudent[1] === correctAlternatives[1]
+    ) {
       setStep2Valid((step2Valid = step2.answers.nextStep));
     } else {
       setError(true);
@@ -77,7 +78,7 @@ const FCCstep2 = ({
               isReadOnly={step2Valid != null}
             />
             <label>)</label>
-            
+
             <MathComponent tex={step2.displayResult[0][1]} display={false} />
             <label>&nbsp;+&nbsp;</label>
             <label>(</label>
@@ -111,16 +112,23 @@ const FCCstep2 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step2.stepId,
-                    contentID:contentID,
-                    result: step2Valid===null?0:1,
-                    kcsIDs:[1],
-                  // topicID: ""+ejercicio.itemId,
-                  })
+                    stepID: "" + step2.stepId,
+                    contentID: contentID,
+                    result: step2Valid === null ? 0 : 1,
+                    kcsIDs: step2.KCs,
+                    extra: {
+                      response: [
+                        response1.current.value,
+                        response2.current.value,
+                      ],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
                 }}
                 size="sm"
               >
@@ -133,8 +141,8 @@ const FCCstep2 = ({
                 contentId={contentID}
                 stepId={step2.stepId}
                 matchingError={step2.matchingError}
-                response={[response1,response2]}
-                itemTitle="Factor Común compuesto "
+                response={[response1, response2]}
+                itemTitle="Factor Común compuesto " //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>

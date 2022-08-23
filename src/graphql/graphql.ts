@@ -314,6 +314,10 @@ export type AdminDomainMutations = {
   createKC: Kc;
   /** Create a new topic entity */
   createTopic: Topic;
+  /** Set KC Relation */
+  setKCRelation: KcRelation;
+  /** Unset KC Relation */
+  unsetKCRelation?: Maybe<Scalars["Void"]>;
   /** Update an existent domain entity */
   updateDomain: Domain;
   /** Update an existent KC entity */
@@ -335,6 +339,16 @@ export type AdminDomainMutationsCreateKcArgs = {
 /** Admin Domain-Related Queries */
 export type AdminDomainMutationsCreateTopicArgs = {
   input: CreateTopic;
+};
+
+/** Admin Domain-Related Queries */
+export type AdminDomainMutationsSetKcRelationArgs = {
+  data: KcRelationInput;
+};
+
+/** Admin Domain-Related Queries */
+export type AdminDomainMutationsUnsetKcRelationArgs = {
+  data: KcRelationInput;
 };
 
 /** Admin Domain-Related Queries */
@@ -930,12 +944,60 @@ export type Kc = {
   id: Scalars["IntID"];
   /** Human readable identifier */
   label: Scalars["String"];
+  /** All relations of KC */
+  relations: Array<KcRelation>;
   /** Topics associated with the KC */
   topics: Array<Topic>;
   /** Date of last update */
   updatedAt: Scalars["DateTime"];
 };
 
+/** Relations between KCs */
+export type KcRelation = {
+  __typename?: "KCRelation";
+  /** Custom Comment of KC Relation */
+  comment?: Maybe<Scalars["String"]>;
+  /** Domain shared by both KCs */
+  domain: Domain;
+  /** Domain id shared by both KCs */
+  domainId: Scalars["IntID"];
+  /** Unique numeric identifier */
+  id: Scalars["IntID"];
+  /** KC A */
+  kcA: Kc;
+  /** KC A id */
+  kcAId: Scalars["IntID"];
+  /** KC B */
+  kcB: Kc;
+  /** KC B id */
+  kcBId: Scalars["IntID"];
+  /** Custom Label of KC Relation */
+  label?: Maybe<Scalars["String"]>;
+  /** Type of relation */
+  type: KcRelationType;
+};
+
+export type KcRelationInput = {
+  /** Custom comment text */
+  comment?: InputMaybe<Scalars["String"]>;
+  /** KC A */
+  kcA: Scalars["IntID"];
+  /** KC B */
+  kcB: Scalars["IntID"];
+  /** Relation readable label */
+  label?: InputMaybe<Scalars["String"]>;
+  /** Type of KC Relation */
+  type: KcRelationType;
+};
+
+/** Type of KC Relationship */
+export const KcRelationType = {
+  Interact: "INTERACT",
+  Partof: "PARTOF",
+  Prerequisite: "PREREQUISITE",
+} as const;
+
+export type KcRelationType = typeof KcRelationType[keyof typeof KcRelationType];
 /** Paginated KCs */
 export type KCsConnection = Connection & {
   __typename?: "KCsConnection";
@@ -1689,6 +1751,25 @@ export type CurrentUserQuery = {
     | undefined;
 };
 
+export type ProjectDataQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ProjectDataQuery = {
+  __typename?: "Query";
+  project?:
+    | {
+        __typename?: "Project";
+        content: {
+          __typename?: "ContentConnection";
+          nodes: Array<{
+            __typename?: "Content";
+            json?: Record<string, unknown> | null | undefined;
+          }>;
+        };
+      }
+    | null
+    | undefined;
+};
+
 export type ActionMutationVariables = Exact<{
   data: ActionInput;
 }>;
@@ -1757,7 +1838,7 @@ export const CurrentUserDocument = {
                 name: { kind: "Name", value: "code" },
                 value: {
                   kind: "StringValue",
-                  value: "factorize_tutor",
+                  value: "NivPreAlg",
                   block: false,
                 },
               },
@@ -1776,6 +1857,93 @@ export const CurrentUserDocument = {
     },
   ],
 } as unknown as DocumentNode<CurrentUserQuery, CurrentUserQueryVariables>;
+export const ProjectDataDocument = {
+  kind: "Document",
+  definitions: [
+    {
+      kind: "OperationDefinition",
+      operation: "query",
+      name: { kind: "Name", value: "ProjectData" },
+      selectionSet: {
+        kind: "SelectionSet",
+        selections: [
+          {
+            kind: "Field",
+            name: { kind: "Name", value: "project" },
+            arguments: [
+              {
+                kind: "Argument",
+                name: { kind: "Name", value: "code" },
+                value: {
+                  kind: "StringValue",
+                  value: "NivPreAlg",
+                  block: false,
+                },
+              },
+            ],
+            selectionSet: {
+              kind: "SelectionSet",
+              selections: [
+                {
+                  kind: "Field",
+                  name: { kind: "Name", value: "content" },
+                  arguments: [
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "pagination" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "first" },
+                            value: { kind: "IntValue", value: "25" },
+                          },
+                        ],
+                      },
+                    },
+                    {
+                      kind: "Argument",
+                      name: { kind: "Name", value: "filters" },
+                      value: {
+                        kind: "ObjectValue",
+                        fields: [
+                          {
+                            kind: "ObjectField",
+                            name: { kind: "Name", value: "topics" },
+                            value: { kind: "IntValue", value: "3" },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                  selectionSet: {
+                    kind: "SelectionSet",
+                    selections: [
+                      {
+                        kind: "Field",
+                        name: { kind: "Name", value: "nodes" },
+                        selectionSet: {
+                          kind: "SelectionSet",
+                          selections: [
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "json" },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ProjectDataQuery, ProjectDataQueryVariables>;
 export const ActionDocument = {
   kind: "Document",
   definitions: [

@@ -13,21 +13,19 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCstep1 = ({
-  step1,
-  setStep1Valid,
-  step1Valid,
-  contentID,
-}) => {
+export const TCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
   const response1 = useRef(null); //1st input response
   const response2 = useRef(null); //2nd input response
   const response3 = useRef(null); //3nd input response
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step1.answers.map((elemento) => elemento.answer); //list of answers valid
-  const action=useAction(); //send action to central system
+  const action = useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
 
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
     const responseStudent = [
       response1.current.value.replace(/[*]| /g, "").toLowerCase(),
       response2.current.value.replace(/[*]| /g, "").toLowerCase(),
@@ -39,7 +37,8 @@ export const TCstep1 = ({
       element[2] === responseStudent[2];
     if (correctAlternatives.some(validate)) {
       setStep1Valid(
-        (step1Valid = step1.answers[correctAlternatives.findIndex(validate)].nextStep)
+        (step1Valid =
+          step1.answers[correctAlternatives.findIndex(validate)].nextStep)
       );
     } else {
       setError(true);
@@ -121,16 +120,24 @@ export const TCstep1 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step1.stepId,
-                    contentID:contentID,
-                    result: step1Valid===null?0:1,
-                    kcsIDs:[3],
-                  // topicID: ""+ejercicio.itemId,
-                  })
+                    stepID: "" + step1.stepId,
+                    contentID: contentID,
+                    result: step1Valid === null ? 0 : 1,
+                    kcsIDs: step1.KCs,
+                    extra: {
+                      response: [
+                        response1.current.value,
+                        response2.current.value,
+                        response3.current.value,
+                      ],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
                 }}
                 size="sm"
               >
@@ -143,8 +150,8 @@ export const TCstep1 = ({
                 contentId={contentID}
                 stepId={step1.stepId}
                 matchingError={step1.matchingError}
-                response={[response1,response2,response3]}
-                itemTitle="Trinomios cuadráticos"
+                response={[response1, response2, response3]}
+                itemTitle="Trinomios cuadráticos" //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>

@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { MathComponent } from "../../../components/MathJax";
 import {
   Alert,
@@ -12,28 +12,28 @@ import {
 } from "@chakra-ui/react";
 
 import Hint from "../../tools/Hint";
+
 import { useAction } from "../../../utils/action";
-const FCCstep1 = ({
-  step1,
-  setStep1Valid,
-  step1Valid,
-  contentID,
-}) => {
-  const response = useRef(null);   // answer entered by the student
+const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
+  const action = useAction(); //send action to central system
+  const response = useRef(null); // answer entered by the student
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step1.answers.map((element) => element.answer); //list of answers valid
-  const action=useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
 
+  //function compare when press button "Aceptar"
   const compare = () => {
-    //parametro de entrada recibido, replace elimina "espacios" y "*", trabajar todo en minuscula
-    const responseStudent = response.current.value.replace(/[*]| /g, "").toLowerCase();
-    //valida que la entrada es correctas
+    //contador de intentos
+    setAttempts(attempts + 1);
+    //responseStudent equals response with replace "space" and "*" (work string in lower case)
+    const responseStudent = response.current.value
+      .replace(/[*]| /g, "")
+      .toLowerCase();
+    //validate is a function that compares each element with response of student
     const validate = (element) => element === responseStudent;
-    //El método some() comprueba si al menos un elemento del array
-    //cumple con la condición implementada por la función proporcionada.
-    
 
+    //if response of student is correct (response == one element of correctAlternatives)
     if (correctAlternatives.some(validate)) {
       setFeedbackMsg(
         <>
@@ -49,10 +49,9 @@ const FCCstep1 = ({
         contentID: contentID,
       });
     } else {
-      /**/
+      /*if response is incorrect*/
       setError(true);
       setFeedbackMsg(
-        //error cuando la entrada es incorrecta
         <Alert status="error">
           <AlertIcon />
           {step1.incorrectMsg}
@@ -113,21 +112,20 @@ const FCCstep1 = ({
                 colorScheme="cyan"
                 size="sm"
                 variant="outline"
-                onClick={()=>{
-                    compare();
-                    action({
-                      verbName: "tryStep",
-                      stepID: ""+step1.stepId,
-                      contentID:contentID,
-                      result: step1Valid===null?0:1,
-                      kcsIDs:step1.KCs,
-                      //extra:{
-                       // resp: response
-                     // }
-                    });
-                    
-                  }
-                }
+                onClick={() => {
+                  compare();
+                  action({
+                    verbName: "tryStep",
+                    stepID: "" + step1.stepId,
+                    contentID: contentID,
+                    result: step1Valid === null ? 0 : 1,
+                    kcsIDs: step1.KCs,
+                    extra: {
+                      response: [response.current.value],
+                      attempts: attempts,
+                    },
+                  });
+                }}
               >
                 Aceptar
               </Button>
@@ -140,7 +138,6 @@ const FCCstep1 = ({
                 response={[response]}
                 error={error}
                 setError={setError}
-                
               ></Hint>
             </>
           )}
@@ -151,4 +148,4 @@ const FCCstep1 = ({
     </>
   );
 };
-export default FCCstep1;
+export default FCstep1;

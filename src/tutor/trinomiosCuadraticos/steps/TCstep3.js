@@ -13,15 +13,17 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID, }) => {
-
+export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID }) => {
   const [feedbackMsg, setFeedbackMsg] = useState(null); // feedback message
   const [value, setValue] = React.useState(); //checked radio
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
-  const action=useAction(); //send action to central system
-  const hintUnique =["*"]
+  const action = useAction(); //send action to central system
+  const hintUnique = ["*"];
+  const [attempts, setAttempts] = useState(0);
 
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
     if (step3.answers[0].answer === value) {
       setStep3Valid((step3Valid = step3.answers[0].nextStep));
     } else {
@@ -62,16 +64,20 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID, }) => {
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step3.stepId,
-                    contentID:contentID,
-                    result: step3Valid===null?0:1,
-                    kcsIDs:[6],
-                  // topicID: ""+ejercicio.itemId,
-                  })
+                    stepID: "" + step3.stepId,
+                    contentID: contentID,
+                    result: step3Valid === null ? 0 : 1,
+                    kcsIDs: step3.KCs,
+                    extra: {
+                      response: [value],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
                 }}
                 size="sm"
               >
@@ -85,7 +91,7 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID, }) => {
                 stepId={step3.stepId}
                 matchingError={step3.matchingError}
                 response={hintUnique}
-                itemTitle="Trinomios cuadráticos"
+                itemTitle="Trinomios cuadráticos" //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>

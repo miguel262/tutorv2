@@ -13,21 +13,18 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-const FCCstep1 = ({
-  step1,
-  setStep1Valid,
-  step1Valid,
-  loading,
-  contentID,
-}) => {
+const FCCstep1 = ({ step1, setStep1Valid, step1Valid, loading, contentID }) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step1.answers.map((elemento) => elemento.answer); //list of answers valid
-  const action=useAction();//send action to central system
+  const action = useAction(); //send action to central system
+  const [attempts, setAttempts] = useState(0);
 
   const compare = () => {
+    //contador de intentos
+    setAttempts(attempts + 1);
     //parametro de entrada recibido, replace elimina "espacios" y "*", trabajar todo en minuscula
     const responseStudent = [
       response1.current.value.replace(/[*]| /g, "").toLowerCase(),
@@ -35,13 +32,15 @@ const FCCstep1 = ({
     ];
     //valida que la entrada es correctas
     const validate = (element) =>
-      (element[0] === responseStudent[0] && element[1] === responseStudent[1]) ||
+      (element[0] === responseStudent[0] &&
+        element[1] === responseStudent[1]) ||
       (element[0] === responseStudent[1] && element[1] === responseStudent[0]);
     //El método some() comprueba si al menos un elemento del array
     //cumple con la condición implementada por la función proporcionada.
     if (correctAlternatives.some(validate)) {
       setStep1Valid(
-        (step1Valid = step1.answers[correctAlternatives.findIndex(validate)].nextStep)
+        (step1Valid =
+          step1.answers[correctAlternatives.findIndex(validate)].nextStep)
       );
     } else {
       setError(true);
@@ -112,18 +111,24 @@ const FCCstep1 = ({
               <Button
                 colorScheme="cyan"
                 variant="outline"
-                onClick={()=>{
+                onClick={() => {
                   compare();
                   action({
                     verbName: "tryStep",
-                    stepID: ""+step1.stepId,
-                    contentID:contentID,
-                    result: step1Valid===null?0:1,
-                    kcsIDs:[2],
-                  // topicID: ""+ejercicio.itemId,
-                  })
-                }
-                }
+                    stepID: "" + step1.stepId,
+                    contentID: contentID,
+                    result: step1Valid === null ? 0 : 1,
+                    kcsIDs: step1.KCs,
+                    extra: {
+                      response: [
+                        response1.current.value,
+                        response2.current.value,
+                      ],
+                      attempts: attempts,
+                    },
+                    // topicID: ""+ejercicio.code,
+                  });
+                }}
                 size="sm"
               >
                 Aceptar
@@ -135,8 +140,8 @@ const FCCstep1 = ({
                 contentId={contentID}
                 stepId={step1.stepId}
                 matchingError={step1.matchingError}
-                response={[response1,response2]}
-                itemTitle="Factor Común compuesto "
+                response={[response1, response2]}
+                itemTitle="Factor Común compuesto " //no se utiliza
                 error={error}
                 setError={setError}
               ></Hint>
