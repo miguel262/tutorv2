@@ -1,17 +1,10 @@
 import TC from "../tutor/trinomiosCuadraticos/TrinomiosCuadraticos";
 import data from "../tutor/trinomiosCuadraticos/ejerciciosTC.json";
 import { Stack } from "@chakra-ui/react";
-import { useAction } from "../utils/action";
-import { useEffect } from "react";
+import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage({ exercise }) {
-  const action = useAction();
-  useEffect(() => {
-    action({
-      verbName: "loadContent",
-      contentID: exercise.code,
-    });
-  }, []);
+  LoadContentAction(exercise); //action
   return (
     <Stack width="100%" padding="1em">
       <TC exercise={exercise} nextRouter="/"></TC>
@@ -20,7 +13,7 @@ function IndexPage({ exercise }) {
 }
 export async function getServerSideProps() {
   return {
-    props: { exercise: data[3] }, //1 will be passed to the page component as props
+    props: { exercise: data[1] }, //1 will be passed to the page component as props
   };
 }
 

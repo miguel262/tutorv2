@@ -1,17 +1,10 @@
 import DSC from "../tutor/diferenciaSumaCubos/DiferenciaSumaCubos";
 import data from "../tutor/diferenciaSumaCubos/ejerciciosDSC.json";
 import { Stack } from "@chakra-ui/react";
-import { useAction } from "../utils/action";
-import { useEffect } from "react";
+import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage({ exercise }) {
-  const action = useAction();
-  useEffect(() => {
-    action({
-      verbName: "loadContent",
-      contentID: exercise.code,
-    });
-  }, []);
+  LoadContentAction(exercise);
   return (
     <Stack width="100%" padding="1em">
       <DSC exercise={exercise} nextRouter="/DSC2"></DSC>

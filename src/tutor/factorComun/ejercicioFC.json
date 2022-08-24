@@ -79,7 +79,7 @@
   },
 
   {
-    "code": "fc2",
+    "code": "fc3",
     "title": "Factor común",
     "contentType": "FC",
     "level": "3",
@@ -127,7 +127,7 @@
   },
 
   {
-    "code": "fc3",
+    "code": "fc4",
     "title": "Factor común",
     "contentType": "FC",
     "level": "1",
@@ -163,7 +163,7 @@
   },
 
   {
-    "code": "fc4",
+    "code": "fc5",
     "title": "Factor común",
     "contentType": "FC",
     "level": "4",
@@ -209,7 +209,7 @@
   },
 
   {
-    "code": "fc5",
+    "code": "fc6",
     "title": "Factor común",
     "contentType": "FC",
     "level": "3",
@@ -250,7 +250,7 @@
   },
 
   {
-    "code": "fc6",
+    "code": "fc7",
     "title": "Factor común",
     "contentType": "FC",
     "level": "4",

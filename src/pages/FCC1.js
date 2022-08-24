@@ -1,17 +1,10 @@
 import FCC from "../tutor/factorComunCompuesto/FactorComunCompuesto";
 import data from "../tutor/factorComunCompuesto/ejerciciosFCC.json";
 import { Stack } from "@chakra-ui/react";
-import { useAction } from "../utils/action";
-import { useEffect } from "react";
+import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage({ exercise }) {
-  const action = useAction();
-  useEffect(() => {
-    action({
-      verbName: "loadContent",
-      contentID: exercise.code,
-    });
-  }, []);
+  LoadContentAction(exercise);
   return (
     <Stack width="100%" padding="1em">
       <FCC exercise={exercise}></FCC>

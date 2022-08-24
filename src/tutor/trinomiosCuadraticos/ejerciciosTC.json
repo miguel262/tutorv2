@@ -576,11 +576,10 @@
       }
     ]
   },
-
   {
     "code": "tc4",
     "title": "Trinomios cuadráticos.",
-
+    "contentType": "TC",
     "level": "4",
     "text": "Factorice la expresión de la forma: a(x - x₁)(x - x₂)",
     "selectSteps": true,

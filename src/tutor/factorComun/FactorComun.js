@@ -68,7 +68,7 @@ const FC = ({ exercise, nextRouter }) => {
                   action({
                     verbName: "closeStep",
                     stepID: "" + exercise?.steps[0]?.stepId,
-                    contentID: exercise?.contentType,
+                    contentID: exercise?.code,
                   });
                 } else {
                   //no select= false (openTab)

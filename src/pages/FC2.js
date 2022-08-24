@@ -3,10 +3,9 @@ import { Spinner, Stack } from "@chakra-ui/react";
 import { useGQLQuery } from "rq-gql";
 import { gql } from "../graphql";
 import { Loading } from "../tutor/tools/Spinner";
-//import { useAction } from "../utils/action";
-//import { useEffect } from "react";
+import { LoadContentAction } from "../components/actions/LoadContentAction";
 
-function IndexPage({ exercise }) {
+function IndexPage() {
   const { data, isLoading } = useGQLQuery(
     gql(/* GraphQL */ `
       query ProjectData {
@@ -21,20 +20,18 @@ function IndexPage({ exercise }) {
     `)
   );
 
-  /* const action=useAction();
-  useEffect(() => {
-    action({
-      verbName: "loadContent",
-      contentID:exercise.code,// leer contentId del JSON
-    })}, [])*/
+  LoadContentAction(data);
 
   return (
     <Stack width="100%" padding="1em">
       {!isLoading ? (
-        <FC
-          exercise={data.project.content.nodes[1].json}
-          nextRouter="/FCC1"
-        ></FC>
+        <>
+          <FC
+            exercise={data?.project?.content?.nodes[1]?.json}
+            nextRouter="/FCC1"
+          ></FC>
+          {LoadContentAction(data?.project?.content?.nodes[1]?.json)}
+        </>
       ) : (
         <Loading></Loading>
       )}
