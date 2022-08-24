@@ -25,8 +25,10 @@ import {
 //import { VideoScreen } from "../tools/VideoScreen";  //aun no usado
 import { SelectStep } from "../tools/SelectStep";
 import { useAction } from "../../utils/action";
+import { LoadContentAction } from "../../components/actions/LoadContentAction";
 
 const DC = ({ exercise }) => {
+  LoadContentAction(exercise); // report action loadContent
   const [step1Valid, setStep1Valid] = useState(null); //change the value "null" when step 1 is completed
   const [step2Valid, setStep2Valid] = useState(null); //change the value "null" when step 2 is completed
   const [index, setIndex] = useState([0]); //list with to indexes of tabs open, initial 0 (only tab 1 open (step 1))
@@ -79,14 +81,16 @@ const DC = ({ exercise }) => {
                   action({
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[0].stepId,
-                    contentID: exercise.code, //cambiar para leer del json
+                    contentID: exercise.code,
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(0));
                   action({
                     verbName: "openStep",
                     stepID: "" + exercise.steps[0].stepId,
-                    contentID: exercise.code, //leer del json
+                    contentID: exercise.code,
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -104,6 +108,7 @@ const DC = ({ exercise }) => {
                           steps={steps}
                           setSelect={setSelect}
                           contentID={exercise.code}
+                          topic={exercise.contentType}
                         ></SelectStep>
                       </Wrap>
                     )}
@@ -120,6 +125,7 @@ const DC = ({ exercise }) => {
                 setStep1Valid={setStep1Valid}
                 step1Valid={step1Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></DCstep1>
             )}
           </AccordionPanel>
@@ -143,6 +149,7 @@ const DC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(1));
@@ -150,6 +157,7 @@ const DC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -167,6 +175,7 @@ const DC = ({ exercise }) => {
                           steps={steps}
                           setSelect={setSelect2}
                           contentID={exercise.code}
+                          topic={exercise.contentType}
                         ></SelectStep>
                       </Wrap>
                     )}
@@ -183,6 +192,7 @@ const DC = ({ exercise }) => {
                 setStep2Valid={setStep2Valid}
                 step2Valid={step2Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></DCstep2>
             )}
           </AccordionPanel>

@@ -4,7 +4,6 @@ import { Stack } from "@chakra-ui/react";
 import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage({ exercise }) {
-  LoadContentAction(exercise);
   return (
     <Stack width="100%" padding="1em">
       <DSC exercise={exercise} nextRouter="/DSC2"></DSC>

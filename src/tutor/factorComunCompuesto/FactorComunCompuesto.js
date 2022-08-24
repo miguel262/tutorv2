@@ -23,8 +23,10 @@ import {
 } from "@chakra-ui/react";
 import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../utils/action";
+import { LoadContentAction } from "../../components/actions/LoadContentAction";
 
 const FCC = ({ exercise }) => {
+  LoadContentAction(exercise); // report action loadContent
   //info usuario, ---
   const [step1Valid, setStep1Valid] = useState(null); //change the value "null" when step 1 is completed
   const [step2Valid, setStep2Valid] = useState(null); //change the value "null" when step 2 is completed
@@ -89,6 +91,7 @@ const FCC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(0));
@@ -96,6 +99,7 @@ const FCC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -111,6 +115,7 @@ const FCC = ({ exercise }) => {
                       steps={steps}
                       setSelect={setSelect}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -126,6 +131,7 @@ const FCC = ({ exercise }) => {
                 step1Valid={step1Valid}
                 stepId={"" + exercise.steps[0].stepId}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></FCCstep1>
             )}
           </AccordionPanel>
@@ -149,6 +155,7 @@ const FCC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(1));
@@ -156,6 +163,7 @@ const FCC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -171,6 +179,7 @@ const FCC = ({ exercise }) => {
                       steps={steps}
                       setSelect={setSelect2}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -185,6 +194,7 @@ const FCC = ({ exercise }) => {
                 setStep2Valid={setStep2Valid}
                 step2Valid={step2Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></FCCstep2>
             )}
           </AccordionPanel>
@@ -208,6 +218,7 @@ const FCC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[2].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(2));
@@ -215,6 +226,7 @@ const FCC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[2].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -225,12 +237,13 @@ const FCC = ({ exercise }) => {
                 {step3Valid != null && !select3 && "    ✔ "}
                 {select3 && step2Valid != null && (
                   <Wrap>
-                    Paso 2:
+                    Paso 3:
                     <SelectStep
                       correct={2}
                       steps={steps}
                       setSelect={setSelect3}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}

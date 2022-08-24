@@ -13,7 +13,13 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
+export const TCstep2 = ({
+  step2,
+  setStep2Valid,
+  step2Valid,
+  contentID,
+  topicID,
+}) => {
   const response = useRef(null); //input response
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
@@ -92,6 +98,7 @@ export const TCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                     verbName: "tryStep",
                     stepID: "" + step2.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step2Valid === null ? 0 : 1,
                     kcsIDs: step2.KCs,
                     extra: {

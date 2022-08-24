@@ -22,8 +22,10 @@ import { FCsummary } from "../tools/Summary";
 import { SelectStep } from "../tools/SelectStep";
 //import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../utils/action";
+import { LoadContentAction } from "../../components/actions/LoadContentAction";
 
 const FC = ({ exercise, nextRouter }) => {
+  LoadContentAction(exercise); // report action loadContent
   const action = useAction(); //send action to central system
   const [step1Valid, setStep1Valid] = useState(null); //change the value "null" when step 1 is completed
   const [index, setIndex] = useState([0]); //list with to indexes of tabs open, initial 0 (only tab 1 open (step 1))
@@ -69,6 +71,7 @@ const FC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise?.steps[0]?.stepId,
                     contentID: exercise?.code,
+                    topicID: exercise.contentType,
                   });
                 } else {
                   //no select= false (openTab)
@@ -77,6 +80,7 @@ const FC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise?.steps[0]?.stepId,
                     contentID: exercise?.code,
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -92,6 +96,7 @@ const FC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -106,7 +111,8 @@ const FC = ({ exercise, nextRouter }) => {
                   step1={exercise.steps[0]}
                   setStep1Valid={setStep1Valid}
                   step1Valid={step1Valid}
-                  contentID={exercise.code} //cambiar a futuro
+                  contentID={exercise.code}
+                  topicID={exercise.contentType}
                 ></FCstep1>
               )}
             </>

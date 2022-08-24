@@ -27,9 +27,11 @@ import {
 //import { VideoScreen } from "../tools/VideoScreen";
 import { SelectStep } from "../tools/SelectStep";
 import { useAction } from "../../utils/action";
+import { LoadContentAction } from "../../components/actions/LoadContentAction";
 
 //react functional component
 const TC = ({ exercise, nextRouter }) => {
+  LoadContentAction(exercise); // report action loadContent
   const [step1Valid, setStep1Valid] = useState(null); //change the value "null" when step 1 is completed
   const [step2Valid, setStep2Valid] = useState(null); //change the value "null" when step 2 is completed
   const [step3Valid, setStep3Valid] = useState(null); //change the value "null" when step 3 is completed
@@ -110,6 +112,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(0));
@@ -117,6 +120,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -132,6 +136,7 @@ const TC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -146,6 +151,7 @@ const TC = ({ exercise, nextRouter }) => {
                 setStep1Valid={setStep1Valid}
                 step1Valid={step1Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></TCstep1>
             )}
           </AccordionPanel>
@@ -169,6 +175,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(1));
@@ -176,6 +183,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -191,6 +199,7 @@ const TC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect2}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -205,6 +214,7 @@ const TC = ({ exercise, nextRouter }) => {
                 setStep2Valid={setStep2Valid}
                 step2Valid={step2Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></TCstep2>
             )}
           </AccordionPanel>
@@ -228,6 +238,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[2].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(2));
@@ -235,6 +246,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[2].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -250,6 +262,7 @@ const TC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect3}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -264,6 +277,7 @@ const TC = ({ exercise, nextRouter }) => {
                 setStep3Valid={setStep3Valid}
                 step3Valid={step3Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></TCstep3>
             )}
           </AccordionPanel>
@@ -287,6 +301,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[3].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(3));
@@ -294,6 +309,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[3].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -309,6 +325,7 @@ const TC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect4}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -323,6 +340,7 @@ const TC = ({ exercise, nextRouter }) => {
                 setStep4Valid={setStep4Valid}
                 step4Valid={step4Valid}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></TCstep4>
             )}
           </AccordionPanel>
@@ -346,6 +364,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[4].stepId,
                     contentID: exercise.code, //cambiar para leer del json
+                    topicID: exercise.contentType,
                   });
                 } else {
                   setIndex(index.concat(4));
@@ -353,6 +372,7 @@ const TC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[4].stepId,
                     contentID: exercise.code, //leer del json
+                    topicID: exercise.contentType,
                   });
                 }
               }}
@@ -368,6 +388,7 @@ const TC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect5}
                       contentID={exercise.code}
+                      topic={exercise.contentType}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -383,6 +404,7 @@ const TC = ({ exercise, nextRouter }) => {
                 step5Valid={step5Valid}
                 //a={exercise.steps[0].answers[0].answer[0]}
                 contentID={exercise.code}
+                topicID={exercise.contentType}
               ></TCstep5>
             )}
           </AccordionPanel>

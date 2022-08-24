@@ -13,7 +13,14 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-const FCCstep1 = ({ step1, setStep1Valid, step1Valid, loading, contentID }) => {
+const FCCstep1 = ({
+  step1,
+  setStep1Valid,
+  step1Valid,
+  loading,
+  contentID,
+  topicID,
+}) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
@@ -118,6 +125,7 @@ const FCCstep1 = ({ step1, setStep1Valid, step1Valid, loading, contentID }) => {
                     verbName: "tryStep",
                     stepID: "" + step1.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step1Valid === null ? 0 : 1,
                     kcsIDs: step1.KCs,
                     extra: {

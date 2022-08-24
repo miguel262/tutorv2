@@ -13,7 +13,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
+const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID, topicID }) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
   const correctAlternatives = step2.answers.answer; //list of answers valid
@@ -119,6 +119,7 @@ const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                     verbName: "tryStep",
                     stepID: "" + step2.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step2Valid === null ? 0 : 1,
                     kcsIDs: step2.KCs,
                     extra: {

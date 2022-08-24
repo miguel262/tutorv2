@@ -14,7 +14,7 @@ import {
 import Hint from "../../tools/Hint";
 
 import { useAction } from "../../../utils/action";
-const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
+const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID, topicID }) => {
   const action = useAction(); //send action to central system
   const response = useRef(null); // answer entered by the student
   const [feedbackMsg, setFeedbackMsg] = useState(null); //feedback message
@@ -48,6 +48,7 @@ const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
       action({
         verbName: "completeContent",
         contentID: contentID,
+        topicID: topicID,
       });
     } else {
       /*if response is incorrect*/
@@ -119,6 +120,7 @@ const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
                     verbName: "tryStep",
                     stepID: "" + step1.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step1Valid === null ? 0 : 1,
                     kcsIDs: step1.KCs,
                     extra: {

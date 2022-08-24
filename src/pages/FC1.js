@@ -3,7 +3,6 @@ import { Spinner, Stack } from "@chakra-ui/react";
 import { useGQLQuery } from "rq-gql";
 import { gql } from "../graphql";
 import { Loading } from "../tutor/tools/Spinner";
-import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage() {
   const { data, isLoading } = useGQLQuery(
@@ -28,7 +27,6 @@ function IndexPage() {
             exercise={data?.project?.content?.nodes[0]?.json}
             nextRouter="/FC2"
           ></FC>
-          {LoadContentAction(data?.project?.content?.nodes[0]?.json)}
         </>
       ) : (
         <Loading></Loading>

@@ -13,7 +13,13 @@ import {
   Wrap,
 } from "@chakra-ui/react";
 
-export const DSCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
+export const DSCstep2 = ({
+  step2,
+  setStep2Valid,
+  step2Valid,
+  contentID,
+  topicID,
+}) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
   const correctAlternatives = step2.answers[0].answer; //list of answers valid
@@ -39,6 +45,7 @@ export const DSCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
       action({
         verbName: "completeContent",
         contentID: contentID,
+        topicID: topicID,
         result: 1,
         // topicID: ""+ejercicio.code,
       });
@@ -123,6 +130,7 @@ export const DSCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                     verbName: "tryStep",
                     stepID: "" + step2.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step2Valid === null ? 0 : 1,
                     kcsIDs: step2.KCs,
                     extra: {

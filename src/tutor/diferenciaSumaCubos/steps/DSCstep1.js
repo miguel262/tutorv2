@@ -20,6 +20,7 @@ export const DSCstep1 = ({
   step1Valid,
   sign,
   contentID,
+  topicID,
 }) => {
   const response1 = useRef(null); //first input response
   const response2 = useRef(null); //second input response
@@ -120,6 +121,7 @@ export const DSCstep1 = ({
                     verbName: "tryStep",
                     stepID: "" + step1.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step1Valid === null ? 0 : 1,
                     kcsIDs: step1.KCs,
                     extra: {

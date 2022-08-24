@@ -13,7 +13,13 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-export const TCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
+export const TCstep1 = ({
+  step1,
+  setStep1Valid,
+  step1Valid,
+  contentID,
+  topicID,
+}) => {
   const response1 = useRef(null); //1st input response
   const response2 = useRef(null); //2nd input response
   const response3 = useRef(null); //3nd input response
@@ -127,6 +133,7 @@ export const TCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
                     verbName: "tryStep",
                     stepID: "" + step1.stepId,
                     contentID: contentID,
+                    topicID: topicID,
                     result: step1Valid === null ? 0 : 1,
                     kcsIDs: step1.KCs,
                     extra: {
