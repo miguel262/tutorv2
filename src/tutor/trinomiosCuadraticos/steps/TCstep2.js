@@ -20,6 +20,7 @@ export const TCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
   const correctAlternatives = step2.answers[0].answer; //list of answers valid
   const action = useAction(); //send action to central system
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -96,6 +97,7 @@ export const TCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                     extra: {
                       response: [response.current.value],
                       attempts: attempts,
+                      hints: hints,
                     },
                   });
                 }}
@@ -113,6 +115,8 @@ export const TCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                 itemTitle="Trinomios cuadráticos" //no se utiliza
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

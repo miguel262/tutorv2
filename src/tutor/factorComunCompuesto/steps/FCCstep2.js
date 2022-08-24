@@ -21,6 +21,7 @@ const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const action = useAction(); //send action to central system
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -126,6 +127,7 @@ const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                         response2.current.value,
                       ],
                       attempts: attempts,
+                      hints: hints,
                     },
                     // topicID: ""+ejercicio.code,
                   });
@@ -145,6 +147,8 @@ const FCCstep2 = ({ step2, setStep2Valid, step2Valid, contentID }) => {
                 itemTitle="Factor Común compuesto " //no se utiliza
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

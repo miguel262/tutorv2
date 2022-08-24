@@ -21,6 +21,7 @@ const FCCstep1 = ({ step1, setStep1Valid, step1Valid, loading, contentID }) => {
   const correctAlternatives = step1.answers.map((elemento) => elemento.answer); //list of answers valid
   const action = useAction(); //send action to central system
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -125,6 +126,7 @@ const FCCstep1 = ({ step1, setStep1Valid, step1Valid, loading, contentID }) => {
                         response2.current.value,
                       ],
                       attempts: attempts,
+                      hints: hints,
                     },
                     // topicID: ""+ejercicio.code,
                   });
@@ -144,6 +146,8 @@ const FCCstep1 = ({ step1, setStep1Valid, step1Valid, loading, contentID }) => {
                 itemTitle="Factor Común compuesto " //no se utiliza
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

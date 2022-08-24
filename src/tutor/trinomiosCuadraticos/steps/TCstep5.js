@@ -22,6 +22,7 @@ export const TCstep5 = ({ step5, setStep5Valid, step5Valid, contentID }) => {
   const correctAlternatives = step5.answers[0].answer; //list of answers valid
   const action = useAction(); //send action to central system
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -149,6 +150,7 @@ export const TCstep5 = ({ step5, setStep5Valid, step5Valid, contentID }) => {
                         response3.current.value,
                       ],
                       attempts: attempts,
+                      hints: hints,
                     },
                     // topicID: ""+ejercicio.code,
                   });
@@ -167,6 +169,8 @@ export const TCstep5 = ({ step5, setStep5Valid, step5Valid, contentID }) => {
                 response={[response1, response2, response3]}
                 itemTitle="Trinomios cuadráticos" //no se utiliza
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

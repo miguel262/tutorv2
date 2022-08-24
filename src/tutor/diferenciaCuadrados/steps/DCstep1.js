@@ -26,7 +26,8 @@ export const DCstep1 = ({
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step1.answers.map((elemento) => elemento.answer); //list of answers valid
   const action = useAction(); //send action to central system
-  const [attempts, setAttempts] = useState(0);
+  const [attempts, setAttempts] = useState(0); //attemps counts
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -126,6 +127,7 @@ export const DCstep1 = ({
                         response2.current.value,
                       ],
                       attempts: attempts,
+                      hints: hints,
                     },
                     // topicID: ""+ejercicio.code,
                   });
@@ -144,6 +146,8 @@ export const DCstep1 = ({
                 itemTitle="Diferencia de cuadrados" //no se utiliza
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

@@ -21,6 +21,7 @@ const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
   const [error, setError] = useState(false); //true when the student enters an incorrect answers
   const correctAlternatives = step1.answers.map((element) => element.answer); //list of answers valid
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   //function compare when press button "Aceptar"
   const compare = () => {
@@ -123,6 +124,7 @@ const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
                     extra: {
                       response: [response.current.value],
                       attempts: attempts,
+                      hints: hints,
                     },
                   });
                 }}
@@ -138,6 +140,8 @@ const FCstep1 = ({ step1, setStep1Valid, step1Valid, contentID }) => {
                 response={[response]}
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

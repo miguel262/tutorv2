@@ -20,6 +20,7 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID }) => {
   const action = useAction(); //send action to central system
   const hintUnique = ["*"];
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -75,6 +76,7 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID }) => {
                     extra: {
                       response: [value],
                       attempts: attempts,
+                      hints: hints,
                     },
                     // topicID: ""+ejercicio.code,
                   });
@@ -94,6 +96,8 @@ export const TCstep3 = ({ step3, setStep3Valid, step3Valid, contentID }) => {
                 itemTitle="Trinomios cuadráticos" //no se utiliza
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}

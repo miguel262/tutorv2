@@ -28,6 +28,7 @@ export const DSCstep1 = ({
   const correctAlternatives = step1.answers.map((elemento) => elemento.answer); //list of answers valid
   const action = useAction(); //send action to central system
   const [attempts, setAttempts] = useState(0);
+  const [hints, setHints] = useState(0); //hint counts
 
   const compare = () => {
     //contador de intentos
@@ -127,6 +128,7 @@ export const DSCstep1 = ({
                         response2.current.value,
                       ],
                       attempts: attempts,
+                      hints: hints,
                     },
                     // topicID: ""+ejercicio.code,
                   });
@@ -146,6 +148,8 @@ export const DSCstep1 = ({
                 itemTitle="Diferencia/suma de cubos" //no se utiliza
                 error={error}
                 setError={setError}
+                hintCount={hints}
+                setHints={setHints}
               ></Hint>
             </>
           )}
