@@ -25,7 +25,7 @@ import {
 //import { VideoScreen } from "../tools/VideoScreen";  //aun no usado
 import { SelectStep } from "../tools/SelectStep";
 import { useAction } from "../../../utils/action";
-import { LoadContentAction } from "../../actions/LoadContentAction";
+import { LoadContentAction } from "../tools/LoadContentAction";
 
 const DC = ({ exercise }) => {
   LoadContentAction(exercise); // report action loadContent

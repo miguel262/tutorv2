@@ -22,7 +22,7 @@ import { FCsummary } from "../tools/Summary";
 import { SelectStep } from "../tools/SelectStep";
 //import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../../utils/action";
-import { LoadContentAction } from "../../actions/LoadContentAction";
+import { LoadContentAction } from "../tools/LoadContentAction";
 
 const FC = ({ exercise, nextRouter }) => {
   LoadContentAction(exercise); // report action loadContent

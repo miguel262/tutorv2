@@ -24,7 +24,7 @@ import {
 //import { VideoScreen } from "../tools/VideoScreen";
 import { SelectStep } from "../tools/SelectStep";
 import { useAction } from "../../../utils/action";
-import { LoadContentAction } from "../../actions/LoadContentAction";
+import { LoadContentAction } from "../tools/LoadContentAction";
 
 //react functional component
 const DSC = ({ exercise, nextRouter }) => {

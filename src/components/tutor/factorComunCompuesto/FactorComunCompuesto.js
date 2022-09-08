@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { VideoScreen } from "../tools/VideoScreen";
 import { useAction } from "../../../utils/action";
-import { LoadContentAction } from "../../actions/LoadContentAction";
+import { LoadContentAction } from "../tools/LoadContentAction";
 
 const FCC = ({ exercise }) => {
   LoadContentAction(exercise); // report action loadContent

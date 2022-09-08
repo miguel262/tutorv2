@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAction } from "../../utils/action";
+import { useAction } from "../../../utils/action";
 
 export const LoadContentAction = (exercise: {
   code: string | any;

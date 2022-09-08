@@ -1,7 +1,6 @@
 import TC from "../components/tutor/trinomiosCuadraticos/TrinomiosCuadraticos";
 import data from "../components/tutor/trinomiosCuadraticos/ejerciciosTC.json";
 import { Stack } from "@chakra-ui/react";
-import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage({ exercise }) {
   return (

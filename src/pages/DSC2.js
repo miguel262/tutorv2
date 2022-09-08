@@ -1,7 +1,6 @@
 import DSC from "../components/tutor/diferenciaSumaCubos/DiferenciaSumaCubos";
 import data from "../components/tutor/diferenciaSumaCubos/ejerciciosDSC.json";
 import { Stack } from "@chakra-ui/react";
-import { LoadContentAction } from "../components/actions/LoadContentAction";
 
 function IndexPage({ exercise }) {
   return (
