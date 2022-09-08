@@ -1,8 +1,8 @@
-import FC from "../tutor/factorComun/FactorComun";
+import FC from "../components/tutor/factorComun/FactorComun";
 import { Spinner, Stack } from "@chakra-ui/react";
 import { useGQLQuery } from "rq-gql";
 import { gql } from "../graphql";
-import { Loading } from "../tutor/tools/Spinner";
+import { Loading } from "../components/tutor/tools/Spinner";
 
 function IndexPage() {
   const { data, isLoading } = useGQLQuery(

@@ -1,5 +1,5 @@
-import DC from "../tutor/diferenciaCuadrados/DiferenciaCuadrados";
-import data from "../tutor/diferenciaCuadrados/ejerciciosDC.json";
+import DC from "../components/tutor/diferenciaCuadrados/DiferenciaCuadrados";
+import data from "../components/tutor/diferenciaCuadrados/ejerciciosDC.json";
 import { Stack } from "@chakra-ui/react";
 import { LoadContentAction } from "../components/actions/LoadContentAction";
 
