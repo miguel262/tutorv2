@@ -91,7 +91,7 @@ const FCC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //cambiar para leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(0));
@@ -99,7 +99,7 @@ const FCC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -115,7 +115,7 @@ const FCC = ({ exercise }) => {
                       steps={steps}
                       setSelect={setSelect}
                       contentID={exercise.code}
-                      topic={exercise.contentType}
+                      topic={exercise.type}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -131,7 +131,7 @@ const FCC = ({ exercise }) => {
                 step1Valid={step1Valid}
                 stepId={"" + exercise.steps[0].stepId}
                 contentID={exercise.code}
-                topicID={exercise.contentType}
+                topicID={exercise.type}
               ></FCCstep1>
             )}
           </AccordionPanel>
@@ -155,7 +155,7 @@ const FCC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //cambiar para leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(1));
@@ -163,7 +163,7 @@ const FCC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -179,7 +179,7 @@ const FCC = ({ exercise }) => {
                       steps={steps}
                       setSelect={setSelect2}
                       contentID={exercise.code}
-                      topic={exercise.contentType}
+                      topic={exercise.type}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -194,7 +194,7 @@ const FCC = ({ exercise }) => {
                 setStep2Valid={setStep2Valid}
                 step2Valid={step2Valid}
                 contentID={exercise.code}
-                topicID={exercise.contentType}
+                topicID={exercise.type}
               ></FCCstep2>
             )}
           </AccordionPanel>
@@ -218,7 +218,7 @@ const FCC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[2].stepId,
                     contentID: exercise.code, //cambiar para leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(2));
@@ -226,7 +226,7 @@ const FCC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[2].stepId,
                     contentID: exercise.code, //leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -243,7 +243,7 @@ const FCC = ({ exercise }) => {
                       steps={steps}
                       setSelect={setSelect3}
                       contentID={exercise.code}
-                      topic={exercise.contentType}
+                      topic={exercise.type}
                     ></SelectStep>
                   </Wrap>
                 )}

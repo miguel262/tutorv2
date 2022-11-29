@@ -2,7 +2,7 @@
   {
     "code": "fc1",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "1",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": false,
@@ -37,7 +37,7 @@
   {
     "code": "fc2",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "3",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": true,
@@ -81,7 +81,7 @@
   {
     "code": "fc3",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "3",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": true,
@@ -129,7 +129,7 @@
   {
     "code": "fc4",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "1",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": true,
@@ -165,7 +165,7 @@
   {
     "code": "fc5",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "4",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": true,
@@ -211,7 +211,7 @@
   {
     "code": "fc6",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "3",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": true,
@@ -252,7 +252,7 @@
   {
     "code": "fc7",
     "title": "Factor común",
-    "contentType": "FC",
+    "type": "FC",
     "level": "4",
     "text": "Factorizar la siguiente expresión:",
     "selectSteps": true,

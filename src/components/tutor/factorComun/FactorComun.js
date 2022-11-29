@@ -71,7 +71,7 @@ const FC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise?.steps[0]?.stepId,
                     contentID: exercise?.code,
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   //no select= false (openTab)
@@ -80,7 +80,7 @@ const FC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise?.steps[0]?.stepId,
                     contentID: exercise?.code,
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -96,7 +96,7 @@ const FC = ({ exercise, nextRouter }) => {
                       steps={steps}
                       setSelect={setSelect}
                       contentID={exercise.code}
-                      topic={exercise.contentType}
+                      topic={exercise.type}
                     ></SelectStep>
                   </Wrap>
                 )}
@@ -112,7 +112,7 @@ const FC = ({ exercise, nextRouter }) => {
                   setStep1Valid={setStep1Valid}
                   step1Valid={step1Valid}
                   contentID={exercise.code}
-                  topicID={exercise.contentType}
+                  topicID={exercise.type}
                 ></FCstep1>
               )}
             </>

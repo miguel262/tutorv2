@@ -82,7 +82,7 @@ const DC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code,
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(0));
@@ -90,7 +90,7 @@ const DC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code,
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -108,7 +108,7 @@ const DC = ({ exercise }) => {
                           steps={steps}
                           setSelect={setSelect}
                           contentID={exercise.code}
-                          topic={exercise.contentType}
+                          topic={exercise.type}
                         ></SelectStep>
                       </Wrap>
                     )}
@@ -125,7 +125,7 @@ const DC = ({ exercise }) => {
                 setStep1Valid={setStep1Valid}
                 step1Valid={step1Valid}
                 contentID={exercise.code}
-                topicID={exercise.contentType}
+                topicID={exercise.type}
               ></DCstep1>
             )}
           </AccordionPanel>
@@ -149,7 +149,7 @@ const DC = ({ exercise }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //cambiar para leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(1));
@@ -157,7 +157,7 @@ const DC = ({ exercise }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -175,7 +175,7 @@ const DC = ({ exercise }) => {
                           steps={steps}
                           setSelect={setSelect2}
                           contentID={exercise.code}
-                          topic={exercise.contentType}
+                          topic={exercise.type}
                         ></SelectStep>
                       </Wrap>
                     )}
@@ -192,7 +192,7 @@ const DC = ({ exercise }) => {
                 setStep2Valid={setStep2Valid}
                 step2Valid={step2Valid}
                 contentID={exercise.code}
-                topicID={exercise.contentType}
+                topicID={exercise.type}
               ></DCstep2>
             )}
           </AccordionPanel>

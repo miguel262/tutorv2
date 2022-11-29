@@ -82,7 +82,7 @@ const DSC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //cambiar para leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(0));
@@ -90,7 +90,7 @@ const DSC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[0].stepId,
                     contentID: exercise.code, //leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -108,7 +108,7 @@ const DSC = ({ exercise, nextRouter }) => {
                           steps={steps}
                           setSelect={setSelect}
                           contentID={exercise.code}
-                          topic={exercise.contentType}
+                          topic={exercise.type}
                         ></SelectStep>
                       </Wrap>
                     )}
@@ -126,7 +126,7 @@ const DSC = ({ exercise, nextRouter }) => {
                 step1Valid={step1Valid}
                 sign={exercise.sign}
                 contentID={exercise.code}
-                topicID={exercise.contentType}
+                topicID={exercise.type}
               ></DSCstep1>
             )}
           </AccordionPanel>
@@ -150,7 +150,7 @@ const DSC = ({ exercise, nextRouter }) => {
                     verbName: "closeStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //cambiar para leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 } else {
                   setIndex(index.concat(1));
@@ -158,7 +158,7 @@ const DSC = ({ exercise, nextRouter }) => {
                     verbName: "openStep",
                     stepID: "" + exercise.steps[1].stepId,
                     contentID: exercise.code, //leer del json
-                    topicID: exercise.contentType,
+                    topicID: exercise.type,
                   });
                 }
               }}
@@ -176,7 +176,7 @@ const DSC = ({ exercise, nextRouter }) => {
                           steps={steps}
                           setSelect={setSelect2}
                           contentID={exercise.code}
-                          topic={exercise.contentType}
+                          topic={exercise.type}
                         ></SelectStep>
                       </Wrap>
                     )}
@@ -193,7 +193,7 @@ const DSC = ({ exercise, nextRouter }) => {
                 setStep2Valid={setStep2Valid}
                 step2Valid={step2Valid}
                 contentID={exercise.code}
-                topicID={exercise.contentType}
+                topicID={exercise.type}
               ></DSCstep2>
             )}
           </AccordionPanel>
